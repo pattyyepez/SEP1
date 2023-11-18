@@ -30,10 +30,10 @@
       </MenuBar>
       <TabPane prefHeight="376.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Untitled Tab 1">
-              <fx:include fx:id="allProjects" source="AllProjects.fxml" />
+          <Tab text="On-going Projects">
+              <fx:include fx:id="allProjects" prefHeight="340.0" source="AllProjects.fxml" />
           </Tab>
-          <Tab text="Untitled Tab 2" />
+          <Tab text="Completed Projects" />
         </tabs>
       </TabPane>
    </children>
