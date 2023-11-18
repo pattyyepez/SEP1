@@ -4,9 +4,13 @@ import Model.*;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeTableColumn;
+import javafx.scene.control.TreeTableView;
 
-public class AllProjectsController {
+public class CompletedProjectsController
+{
   private ProjectModelManager modelManager;
 
   @FXML private Button getProjectsButton;
@@ -84,21 +88,23 @@ public class AllProjectsController {
 
     for (int i = 0; i < projects.getSize(); i++) {
       Project temp = projects.getProject(i);
-      if(temp instanceof Residential) {
-        TreeItem<Project> tempNode = new TreeItem<>(temp);
-        residentialNode.getChildren().add(tempNode);
-      }
-      if(temp instanceof Commercial) {
-        TreeItem<Project> tempNode = new TreeItem<>(temp);
-        commercialNode.getChildren().add(tempNode);
-      }
-      if(temp instanceof Industrial) {
-        TreeItem<Project> tempNode = new TreeItem<>(temp);
-        industrialNode.getChildren().add(tempNode);
-      }
-      if(temp instanceof Road) {
-        TreeItem<Project> tempNode = new TreeItem<>(temp);
-        roadNode.getChildren().add(tempNode);
+      if(temp.isCompleted()){
+        if(temp instanceof Residential) {
+          TreeItem<Project> tempNode = new TreeItem<>(temp);
+          residentialNode.getChildren().add(tempNode);
+        }
+        if(temp instanceof Commercial) {
+          TreeItem<Project> tempNode = new TreeItem<>(temp);
+          commercialNode.getChildren().add(tempNode);
+        }
+        if(temp instanceof Industrial) {
+          TreeItem<Project> tempNode = new TreeItem<>(temp);
+          industrialNode.getChildren().add(tempNode);
+        }
+        if(temp instanceof Road) {
+          TreeItem<Project> tempNode = new TreeItem<>(temp);
+          roadNode.getChildren().add(tempNode);
+        }
       }
     }
   }
