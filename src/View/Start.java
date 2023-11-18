@@ -1,19 +1,18 @@
 package View;
 
+import Model.ProjectModelManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import javax.swing.text.View;
+
 public class Start extends Application
 {
-  public void start(Stage window) throws Exception
-  {
-    window.setTitle("Bob's Building Contractor Company");
-    FXMLLoader loader = new FXMLLoader();
-    loader.setLocation(getClass().getResource("MainView.fxml"));
-    Scene scene = new Scene(loader.load());
-    window.setScene(scene);
-    window.show();
+  public void start(Stage window) {
+    ProjectModelManager modelManager = new ProjectModelManager("projects.bin");
+    ViewHandler viewHandler = new ViewHandler(window, modelManager);
+    viewHandler.start();
   }
 }

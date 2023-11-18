@@ -4,11 +4,15 @@ import Model.*;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 
 public class OnGoingProjectsController
 {
   private ProjectModelManager modelManager;
+  private ViewHandler viewHandler;
+  private Scene window;
+
 
   @FXML private Button getProjectsButton;
   @FXML private Button addProjectButton;
@@ -24,10 +28,10 @@ public class OnGoingProjectsController
   private TreeItem<Project> industrialNode;
   private TreeItem<Project> roadNode;
 
-
-
-  public void initialize(ProjectModelManager modelManager){
+  public void initialize(ViewHandler viewHandler, ProjectModelManager modelManager, Scene window){
     this.modelManager = modelManager;
+    this.viewHandler = viewHandler;
+    this.window = window;
 
     residentialNode = new TreeItem<>(new Residential("Residential"));
     residentialNode.setExpanded(true);
@@ -44,14 +48,14 @@ public class OnGoingProjectsController
     titleColumn = new TreeTableColumn<>("Title");
     titleColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
         new ReadOnlyStringWrapper(p.getValue().getValue().getTitle()));
-    titleColumn.setPrefWidth(319);
+    titleColumn.setPrefWidth(100);
     titleColumn.setReorderable(false);
     titleColumn.setSortable(false);
 
     addressColumn = new TreeTableColumn<>("Address");
     addressColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
         new ReadOnlyStringWrapper(p.getValue().getValue().getAddress()));
-    addressColumn.setPrefWidth(319);
+    addressColumn.setPrefWidth(100);
     addressColumn.setReorderable(false);
     addressColumn.setSortable(false);
 
@@ -72,7 +76,7 @@ public class OnGoingProjectsController
       updateProjects();
     }
     else if(e.getSource() == addProjectButton){
-
+      viewHandler.openView("AddProject");
     }
   }
 

@@ -9,9 +9,12 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
 
+import javax.swing.text.View;
+
 public class CompletedProjectsController
 {
   private ProjectModelManager modelManager;
+  private ViewHandler viewHandler;
 
   @FXML private Button getProjectsButton;
   @FXML private Button addProjectButton;
@@ -29,8 +32,9 @@ public class CompletedProjectsController
 
 
 
-  public void initialize(ProjectModelManager modelManager){
+  public void initialize(ViewHandler viewHandler, ProjectModelManager modelManager){
     this.modelManager = modelManager;
+    this.viewHandler = viewHandler;
 
     residentialNode = new TreeItem<>(new Residential("Residential"));
     residentialNode.setExpanded(true);

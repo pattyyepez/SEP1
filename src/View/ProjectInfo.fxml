@@ -9,15 +9,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="350.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="350.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.ProjectInfoController">
    <children>
       <HBox prefHeight="310.0" prefWidth="640.0">
          <children>
-            <VBox alignment="CENTER" prefHeight="180.0" prefWidth="180.0" spacing="12.0">
+            <VBox alignment="TOP_CENTER" prefHeight="180.0" prefWidth="180.0" spacing="12.0">
                <children>
-                  <ComboBox fx:id="typeCombo" prefWidth="150.0">
+                  <ComboBox fx:id="typeCombo" onAction="#updateFields" prefWidth="150.0">
                      <VBox.margin>
-                        <Insets bottom="40.0" />
+                        <Insets bottom="20.0" top="20.0" />
                      </VBox.margin>
                      
                   </ComboBox>
@@ -26,7 +26,7 @@
                         <Font size="14.0" />
                      </font>
                      <VBox.margin>
-                        <Insets />
+                        <Insets top="55.0" />
                      </VBox.margin>
                   </Label>
                   <HBox prefHeight="100.0" prefWidth="200.0">
@@ -46,9 +46,9 @@
                         </VBox>
                         <VBox prefHeight="109.0" prefWidth="114.0" spacing="22.0">
                            <children>
-                              <TextField fx:id="customerNameField" prefWidth="100.0" />
-                              <TextField fx:id="customerPhoneField" prefWidth="100.0" />
-                              <TextField fx:id="customerEmailField" prefWidth="100.0" />
+                              <TextField fx:id="customerName" prefWidth="100.0" />
+                              <TextField fx:id="customerPhone" prefWidth="100.0" />
+                              <TextField fx:id="customerEmail" prefWidth="100.0" />
                            </children>
                         </VBox>
                      </children>
@@ -65,7 +65,7 @@
                <children>
                   <Label text="General project information">
                      <VBox.margin>
-                        <Insets top="30.0" />
+                        <Insets top="15.0" />
                      </VBox.margin>
                      <font>
                         <Font size="14.0" />
@@ -125,11 +125,11 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="310.0" prefWidth="230.0">
+            <VBox fx:id="specificPane" alignment="CENTER" prefHeight="310.0" prefWidth="230.0">
                <children>
                   <Label text="Specific project information">
                      <VBox.margin>
-                        <Insets top="30.0" />
+                        <Insets top="15.0" />
                      </VBox.margin>
                      <font>
                         <Font size="14.0" />
@@ -137,7 +137,7 @@
                   </Label>
                   <HBox prefHeight="250.0" prefWidth="230.0">
                      <children>
-                        <VBox fx:id="projectSpecificLabelPane" alignment="CENTER_RIGHT" prefHeight="310.0" prefWidth="115.0" spacing="30.0">
+                        <VBox fx:id="projectSpecificLabelPane" alignment="CENTER_RIGHT" prefHeight="310.0" prefWidth="115.0" spacing="20.0">
                            <padding>
                               <Insets right="10.0" />
                            </padding>
@@ -157,8 +157,8 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="50.0">
          <children>
-            <Button fx:id="backButton" mnemonicParsing="false" text="Back" />
-            <Button fx:id="createButton" mnemonicParsing="false" text="Create" />
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleActions" text="Back" />
+            <Button fx:id="actionButton" mnemonicParsing="false" onAction="#handleActions" text="Create" />
          </children>
       </HBox>
    </children>
