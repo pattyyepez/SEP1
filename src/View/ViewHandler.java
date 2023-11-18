@@ -25,6 +25,8 @@ public class ViewHandler
   {
     this.stage = stage;
     this.modelManager = modelManager;
+
+    stage.setResizable(false);
   }
 
   public void start()

@@ -23,6 +23,8 @@ public class CompletedProjectsController
 
   private TreeTableColumn<Project, String> titleColumn;
   private TreeTableColumn<Project, String> addressColumn;
+  private TreeTableColumn<Project, String> budgetColumn;
+  private TreeTableColumn<Project, String> timelineColumn;
 
   private TreeItem<Project> parentNode;
   private TreeItem<Project> residentialNode;
@@ -51,20 +53,32 @@ public class CompletedProjectsController
     titleColumn = new TreeTableColumn<>("Title");
     titleColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
         new ReadOnlyStringWrapper(p.getValue().getValue().getTitle()));
-    titleColumn.setPrefWidth(319);
     titleColumn.setReorderable(false);
     titleColumn.setSortable(false);
 
     addressColumn = new TreeTableColumn<>("Address");
     addressColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
         new ReadOnlyStringWrapper(p.getValue().getValue().getAddress()));
-    addressColumn.setPrefWidth(319);
     addressColumn.setReorderable(false);
     addressColumn.setSortable(false);
 
+    budgetColumn = new TreeTableColumn<>("Budget range");
+    budgetColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
+        new ReadOnlyStringWrapper((p.getValue().getValue().getBudgetMax() == 0 ? "" :
+            p.getValue().getValue().getBudgetMin() + " - " + p.getValue().getValue().getBudgetMax())));
+    budgetColumn.setReorderable(false);
+    budgetColumn.setSortable(false);
+
+    timelineColumn = new TreeTableColumn<>("Timeline");
+    timelineColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
+        new ReadOnlyStringWrapper((p.getValue().getValue().getTimeline() == 0 ? "" :
+            p.getValue().getValue().getTimeline() + " months")));
+    timelineColumn.setReorderable(false);
+    timelineColumn.setSortable(false);
+
     updateProjects();
 
-    TreeTable.getColumns().addAll(titleColumn, addressColumn);
+    TreeTable.getColumns().addAll(titleColumn, addressColumn, budgetColumn, timelineColumn);
 
     parentNode = new TreeItem<>(new GUINode("Parent"));
     parentNode.getChildren().addAll(residentialNode, commercialNode, industrialNode, roadNode);

@@ -23,7 +23,7 @@
                   </ComboBox>
                   <Label text="Customer information">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
                      <VBox.margin>
                         <Insets top="55.0" />
@@ -33,9 +33,9 @@
                      <children>
                         <VBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="60.0" spacing="30.0">
                            <children>
-                              <Label text="Name" />
-                              <Label text="Phone" />
-                              <Label text="Email" />
+                              <Label text="Name*" />
+                              <Label text="Phone*" />
+                              <Label text="Email*" />
                            </children>
                            <HBox.margin>
                               <Insets />
@@ -68,19 +68,19 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                      <font>
-                        <Font size="14.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
                   <HBox prefHeight="250.0" prefWidth="230.0">
                      <children>
                         <VBox alignment="CENTER_RIGHT" prefHeight="250.0" prefWidth="77.0" spacing="16.0">
                            <children>
-                              <Label text="Title">
+                              <Label text="Title*">
                                  <VBox.margin>
                                     <Insets bottom="10.0" />
                                  </VBox.margin>
                               </Label>
-                              <Label text="Address">
+                              <Label text="Address*">
                                  <VBox.margin>
                                     <Insets />
                                  </VBox.margin>
@@ -125,14 +125,14 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox fx:id="specificPane" alignment="CENTER" prefHeight="310.0" prefWidth="230.0">
+            <VBox alignment="CENTER" prefHeight="310.0" prefWidth="230.0">
                <children>
                   <Label text="Specific project information">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
                      <font>
-                        <Font size="14.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
                   <HBox prefHeight="250.0" prefWidth="230.0">
@@ -157,6 +157,11 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="50.0">
          <children>
+            <Label text="*Must be filled out." textFill="RED">
+               <HBox.margin>
+                  <Insets left="-240.0" right="85.0" />
+               </HBox.margin>
+            </Label>
             <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleActions" text="Back" />
             <Button fx:id="actionButton" mnemonicParsing="false" onAction="#handleActions" text="Create" />
          </children>

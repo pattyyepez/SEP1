@@ -27,13 +27,13 @@ public class ProjectInfoController {
   @FXML private TextField projectBudgetMax;
   @FXML private TextField projectTimeline;
 
-  @FXML VBox specificPane;
   @FXML VBox projectSpecificLabelPane;
   @FXML VBox projectSpecificFieldPane;
 
   @FXML Button backButton;
   @FXML Button actionButton;
 
+//  RESIDENTIAL
   private Label residentialsizeLabel;
   private Label residentialkitchenLabel;
   private Label residentialbathroomLabel;
@@ -45,6 +45,18 @@ public class ProjectInfoController {
   private TextField residentialbathroomField;
   private TextField residentialroomsWPField;
   private ToggleButton residentialnewBuild;
+
+// COMMERCIAL
+
+  private Label commercialSizeLabel;
+  private Label commercialFloorsLabel;
+  private Label commercialIntendedUseLabel;
+
+  private TextField commercialSizeField;
+  private TextField commercialFloorsField;
+  private TextField commercialIntendedUseField;
+
+//  INDUSTRIAL
 
   public void initialize(ViewHandler viewHandler, Scene window, String action, ProjectModelManager modelManager){
     this.window = window;
@@ -80,24 +92,64 @@ public class ProjectInfoController {
       viewHandler.openView("MainView");
     }
     else if(e.getSource() == actionButton){
-      if(typeCombo.getSelectionModel().getSelectedItem().equals("Residential")){
-        Residential project = new Residential(
-            projectTitle.getText(),
-            projectAddress.getText(),
-            Double.parseDouble(projectBudgetMin.getText()),
-            Double.parseDouble(projectBudgetMax.getText()),
-            Integer.parseInt(projectTimeline.getText()),
-            new Customer(
-                customerName.getText(),
-                customerPhone.getText(),
-                customerEmail.getText()
-            ),
-            Double.parseDouble(residentialsizeField.getText()),
-            Integer.parseInt(residentialkitchenField.getText()),
-            Integer.parseInt(residentialbathroomField.getText()),
-            Integer.parseInt(residentialroomsWPField.getText()),
-            residentialnewBuild.isSelected()
-        );
+      Project project = null;
+      try{
+        switch (typeCombo.getSelectionModel().getSelectedItem()){
+          case "Residential":
+             project = new Residential(
+                projectTitle.getText(),
+                projectAddress.getText(),
+                (projectBudgetMin.getText().isEmpty() ? 100000:
+                    Double.parseDouble(projectBudgetMin.getText())),
+                (projectBudgetMax.getText().isEmpty() ? 500000:
+                    Double.parseDouble(projectBudgetMax.getText())),
+                (projectTimeline.getText().isEmpty() ? 9:
+                    Integer.parseInt(projectTimeline.getText())),
+                new Customer(
+                    customerName.getText(),
+                    customerPhone.getText(),
+                    customerEmail.getText()
+                ),
+                Double.parseDouble(residentialsizeField.getText()),
+                (residentialkitchenField.getText().isEmpty() ? 1:
+                    Integer.parseInt(residentialkitchenField.getText())),
+                (residentialbathroomField.getText().isEmpty() ? 1:
+                    Integer.parseInt(residentialbathroomField.getText())),
+                (residentialroomsWPField.getText().isEmpty() ? 1:
+                    Integer.parseInt(residentialroomsWPField.getText())),
+                residentialnewBuild.isSelected()
+             );
+          break;
+          case "Commercial":
+            project = new Commercial(
+                projectTitle.getText(),
+                projectAddress.getText(),
+                (projectBudgetMin.getText().isEmpty() ? 100000:
+                    Double.parseDouble(projectBudgetMin.getText())),
+                (projectBudgetMax.getText().isEmpty() ? 500000:
+                    Double.parseDouble(projectBudgetMax.getText())),
+                (projectTimeline.getText().isEmpty() ? 9:
+                    Integer.parseInt(projectTimeline.getText())),
+                new Customer(
+                    customerName.getText(),
+                    customerPhone.getText(),
+                    customerEmail.getText()
+                ),
+                Double.parseDouble(commercialSizeField.getText()),
+                (commercialFloorsField.getText().isEmpty() ? 1:
+                    Integer.parseInt(commercialFloorsField.getText())),
+                commercialIntendedUseField.getText()
+            );
+          break;
+        }
+      }
+      catch(java.lang.NumberFormatException exception){
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setHeaderText(null);
+        alert.setContentText("You left one of the necessary fields empty.");
+        alert.showAndWait();
+      }
+      if(project!=null) {
         modelManager.addProject(project);
         viewHandler.openView("MainView");
       }
@@ -110,14 +162,14 @@ public class ProjectInfoController {
   }
 
   public void updateFields(){
-
-    projectSpecificFieldPane.getChildren().setAll();
-    projectSpecificLabelPane.getChildren().setAll();
-
     switch (typeCombo.getSelectionModel().getSelectedItem()){
       case "Residential":
 
-        residentialsizeLabel = new Label("Building size");
+        projectBudgetMin.setPromptText("100000");
+        projectBudgetMax.setPromptText("500000");
+        projectTimeline.setPromptText("9");
+
+        residentialsizeLabel = new Label("Building size*");
         residentialkitchenLabel = new Label("Number of\nkitchens");
         residentialkitchenLabel.setTextAlignment(TextAlignment.CENTER);
         residentialbathroomLabel = new Label("Number of\nbathrooms");
@@ -126,23 +178,52 @@ public class ProjectInfoController {
         residentialroomsWPLabel.setTextAlignment(TextAlignment.CENTER);
         residentialnewBuildLabel = new Label("New build?");
 
-        projectSpecificLabelPane.getChildren().addAll(residentialsizeLabel, residentialkitchenLabel,
+        projectSpecificLabelPane.getChildren().setAll(residentialsizeLabel, residentialkitchenLabel,
             residentialbathroomLabel, residentialroomsWPLabel, residentialnewBuildLabel);
         projectSpecificLabelPane.setSpacing(20);
 
         residentialsizeField = new TextField();
         residentialkitchenField = new TextField();
+        residentialkitchenField.setPromptText("1");
         residentialbathroomField = new TextField();
+        residentialbathroomField.setPromptText("1");
         residentialroomsWPField = new TextField();
+        residentialroomsWPField.setPromptText("1");
 
         residentialnewBuild = new ToggleButton("True");
         residentialnewBuild.setSelected(true);
 
-        projectSpecificFieldPane.getChildren().addAll(residentialsizeField, residentialkitchenField,
+        projectSpecificFieldPane.getChildren().setAll(residentialsizeField, residentialkitchenField,
             residentialbathroomField, residentialroomsWPField, residentialnewBuild);
         projectSpecificFieldPane.setSpacing(30);
         break;
       case "Commercial":
+        projectBudgetMin.setPromptText("500000");
+        projectBudgetMax.setPromptText("2000000");
+        projectTimeline.setPromptText("18");
+
+        commercialSizeLabel = new Label("Building size*");
+        commercialFloorsLabel = new Label("Number of floors");
+        commercialIntendedUseLabel = new Label("Intended use*");
+
+        projectSpecificLabelPane.getChildren().setAll(commercialSizeLabel, commercialFloorsLabel,
+            commercialIntendedUseLabel);
+        projectSpecificLabelPane.setSpacing(21);
+
+        commercialSizeField = new TextField();
+        commercialFloorsField = new TextField();
+        commercialFloorsField.setPromptText("1");
+        commercialIntendedUseField = new TextField();
+
+        projectSpecificFieldPane.getChildren().setAll(commercialSizeField, commercialFloorsField,
+            commercialIntendedUseField);
+        projectSpecificFieldPane.setSpacing(15);
+        break;
+      case "Industrial":
+        projectSpecificLabelPane.getChildren().setAll();
+        projectSpecificFieldPane.getChildren().setAll();
+        break;
+      case "Road":
         projectSpecificLabelPane.getChildren().setAll();
         projectSpecificFieldPane.getChildren().setAll();
         break;
