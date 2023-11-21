@@ -32,7 +32,6 @@ public class ViewHandler
   public void start()
   {
     loadViewMain();
-    loadAddProject();
     openView("MainView");
   }
 
@@ -45,6 +44,7 @@ public class ViewHandler
         mainViewController.getOnGoingProjectsController().updateProjects();
         break;
       case "AddProject":
+        loadAddProject();
         stage.setScene(projectInfoController.getScene());
         break;
       case "ChangeCountryView":

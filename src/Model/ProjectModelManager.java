@@ -31,22 +31,22 @@ public class ProjectModelManager {
     return allProjects;
   }
 
-  public ProjectList getProjectsOfType(String projectType){
+  public ProjectList getProjectsOfType(String type){
     ProjectList allProjects = getAllProjects();
     ProjectList projectsType = new ProjectList();
 
     for(int i = 0; i < allProjects.getSize(); i++) {
       Project temp = allProjects.getProject(i);
-      if(temp instanceof Residential && projectType.equalsIgnoreCase("residential")){
+      if(temp instanceof Residential && type.equalsIgnoreCase("residential")){
         projectsType.addProject(temp);
       }
-      else if(temp instanceof Commercial && projectType.equalsIgnoreCase("commercial")){
+      else if(temp instanceof Commercial && type.equalsIgnoreCase("commercial")){
         projectsType.addProject(temp);
       }
-      else if(temp instanceof Industrial && projectType.equalsIgnoreCase("industrial")){
+      else if(temp instanceof Industrial && type.equalsIgnoreCase("industrial")){
         projectsType.addProject(temp);
       }
-      else if(temp instanceof Road && projectType.equalsIgnoreCase("road")) {
+      else if(temp instanceof Road && type.equalsIgnoreCase("road")) {
         projectsType.addProject(temp);
       }
     }
@@ -68,8 +68,10 @@ public class ProjectModelManager {
 
   public void addProject(Project project){
     ProjectList allProjects = getAllProjects();
-    allProjects.addProject(project);
-    saveProjects(allProjects);
+    if(!allProjects.containsTitle(project.getTitle())){
+      allProjects.addProject(project);
+      saveProjects(allProjects);
+    }
   }
 
   public void removeProject(String title){
@@ -78,9 +80,11 @@ public class ProjectModelManager {
     saveProjects(allProjects);
   }
 
-  public void completeProject(String title){
+  public void completeProject(String title, Double expenses, int hours){
     ProjectList allProjects = getAllProjects();
     allProjects.getProject(title).setCompleted(true);
+    allProjects.getProject(title).setExpectedExpenses(expenses);
+    allProjects.getProject(title).setTotalHours(hours);
     saveProjects(allProjects);
   }
 }

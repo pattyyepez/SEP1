@@ -8,18 +8,19 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
-
-import javax.swing.text.View;
+import javafx.scene.input.MouseButton;
 
 public class CompletedProjectsController
 {
   private ProjectModelManager modelManager;
   private ViewHandler viewHandler;
 
-  @FXML private Button refreshButton;
-  @FXML private Button addProjectButton;
+  private TreeItem<Project> selectedIndex;
 
-  @FXML private TreeTableView<Project> TreeTable;
+  @FXML private Button refreshButton;
+  @FXML private Button removeButton;
+
+  @FXML private TreeTableView<Project> treeTable;
 
   private TreeTableColumn<Project, String> titleColumn;
   private TreeTableColumn<Project, String> addressColumn;
@@ -38,6 +39,8 @@ public class CompletedProjectsController
     this.modelManager = modelManager;
     this.viewHandler = viewHandler;
 
+    removeButton.setDisable(true);
+
     residentialNode = new TreeItem<>(new Residential("Residential"));
     residentialNode.setExpanded(true);
 
@@ -55,6 +58,7 @@ public class CompletedProjectsController
         new ReadOnlyStringWrapper(p.getValue().getValue().getTitle()));
     titleColumn.setReorderable(false);
     titleColumn.setSortable(false);
+    titleColumn.setMinWidth(100);
 
     addressColumn = new TreeTableColumn<>("Address");
     addressColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
@@ -62,29 +66,39 @@ public class CompletedProjectsController
     addressColumn.setReorderable(false);
     addressColumn.setSortable(false);
 
-    budgetColumn = new TreeTableColumn<>("Budget range");
+    budgetColumn = new TreeTableColumn<>("Expenses used");
     budgetColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
-        new ReadOnlyStringWrapper((p.getValue().getValue().getBudgetMax() == 0 ? "" :
-            p.getValue().getValue().getBudgetMin() + " - " + p.getValue().getValue().getBudgetMax())));
+        new ReadOnlyStringWrapper(p.getValue().getValue().getExpectedExpenses() + ""));
     budgetColumn.setReorderable(false);
     budgetColumn.setSortable(false);
 
-    timelineColumn = new TreeTableColumn<>("Timeline");
+    timelineColumn = new TreeTableColumn<>("Total man-hours");
     timelineColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
-        new ReadOnlyStringWrapper((p.getValue().getValue().getTimeline() == 0 ? "" :
-            p.getValue().getValue().getTimeline() + " months")));
+        new ReadOnlyStringWrapper(p.getValue().getValue().getTotalHours() + ""));
     timelineColumn.setReorderable(false);
     timelineColumn.setSortable(false);
 
     updateProjects();
 
-    TreeTable.getColumns().addAll(titleColumn, addressColumn, budgetColumn, timelineColumn);
+    treeTable.getColumns().addAll(titleColumn, addressColumn, budgetColumn, timelineColumn);
 
     parentNode = new TreeItem<>(new GUINode("Parent"));
     parentNode.getChildren().addAll(residentialNode, commercialNode, industrialNode, roadNode);
 
-    TreeTable.setShowRoot(false);
-    TreeTable.setRoot(parentNode);
+    treeTable.setShowRoot(false);
+    treeTable.setRoot(parentNode);
+
+    treeTable.setOnMouseClicked(e -> {
+      if (e.getButton().equals(MouseButton.PRIMARY)) {
+        selectedIndex = treeTable.getSelectionModel().getSelectedItem();
+        if(selectedIndex != null && !selectedIndex.equals(roadNode) && !selectedIndex.equals(industrialNode) && !selectedIndex.equals(commercialNode) && !selectedIndex.equals(residentialNode)){
+          removeButton.setDisable(false);
+        }
+        else{
+          removeButton.setDisable(true);
+        }
+      }
+    });
   }
 
   public void handleActions(ActionEvent e)
@@ -92,12 +106,16 @@ public class CompletedProjectsController
     if (e.getSource() == refreshButton) {
       updateProjects();
     }
-    else if(e.getSource() == addProjectButton){
 
+    else if(e.getSource() == removeButton){
+      modelManager.removeProject(selectedIndex.getValue().getTitle());
+      updateProjects();
     }
   }
 
   public void updateProjects(){
+    removeButton.setDisable(true);
+
     ProjectList projects = modelManager.getAllProjects();
     residentialNode.getChildren().setAll();
     commercialNode.getChildren().setAll();

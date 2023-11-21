@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
-import javafx.scene.layout.TilePane;
 
 public class OnGoingProjectsController
 {
@@ -16,7 +15,6 @@ public class OnGoingProjectsController
   private Scene window;
 
   private TreeItem<Project> selectedIndex;
-
 
   @FXML private Button completeButton;
   @FXML private Button addProjectButton;
@@ -109,7 +107,7 @@ public class OnGoingProjectsController
     treeTable.setOnMouseClicked(e -> {
       if (e.getButton().equals(MouseButton.PRIMARY)) {
         selectedIndex = treeTable.getSelectionModel().getSelectedItem();
-        if(!selectedIndex.equals(roadNode) && !selectedIndex.equals(industrialNode) && !selectedIndex.equals(commercialNode) && !selectedIndex.equals(residentialNode)){
+        if(selectedIndex != null && !selectedIndex.equals(roadNode) && !selectedIndex.equals(industrialNode) && !selectedIndex.equals(commercialNode) && !selectedIndex.equals(residentialNode)){
           removeButton.setDisable(false);
           completeButton.setDisable(false);
         }
@@ -133,9 +131,28 @@ public class OnGoingProjectsController
     }
 
     else if (e.getSource() == completeButton) {
-//      TilePane completingProject = new TilePane();
-//      TextInputDialog
-      modelManager.completeProject(selectedIndex.getValue().getTitle());
+      double totalExpenses;
+      int totalHours;
+
+      TextInputDialog hours = new TextInputDialog();
+      hours.setHeaderText("Enter the amount of man hours used on this project");
+      hours.showAndWait();
+
+      if(!hours.getEditor().getText().isEmpty()){
+        totalHours = Integer.parseInt(hours.getEditor().getText());
+      }
+      else return;
+
+      TextInputDialog expenses = new TextInputDialog();
+      expenses.setHeaderText("Enter the expenses used on this project");
+      expenses.showAndWait();
+
+      if(!expenses.getEditor().getText().isEmpty()){
+        totalExpenses = Double.parseDouble(expenses.getEditor().getText());
+      }
+      else return;
+
+      modelManager.completeProject(selectedIndex.getValue().getTitle(), totalExpenses, totalHours);
       updateProjects();
     }
 

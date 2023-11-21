@@ -217,6 +217,8 @@ public class ProjectInfoController {
         modelManager.addProject(project);
         viewHandler.openView("MainView");
       }
+
+
     }
 
   }
@@ -226,8 +228,8 @@ public class ProjectInfoController {
   }
 
   public void updateFields(){
-    projectSpecificLabelPane.setPrefWidth(115);
-    projectSpecificFieldPane.setPrefWidth(110);
+    projectSpecificLabelPane.setAlignment(Pos.CENTER_RIGHT);
+    specificPane.getChildren().remove(residentialRenovation);
     switch (typeCombo.getSelectionModel().getSelectedItem()){
       case "Residential":
 
@@ -315,8 +317,8 @@ public class ProjectInfoController {
         roadChallengesLabel.setTextAlignment(TextAlignment.CENTER);
 
         projectSpecificLabelPane.getChildren().setAll(roadLengthLabel, roadWidthLabel, roadBortLabel, roadChallengesLabel);
-        projectSpecificLabelPane.setPrefWidth(90);
-        projectSpecificLabelPane.setSpacing(15);
+        projectSpecificLabelPane.setAlignment(Pos.TOP_RIGHT);
+        projectSpecificLabelPane.setSpacing(25);
 
         roadLengthField = new TextField();
         roadWidthField = new TextField();
@@ -326,7 +328,7 @@ public class ProjectInfoController {
         roadChallengesArea.setPromptText("Separate different challenges with a comma (,)");
 
         projectSpecificFieldPane.getChildren().setAll(roadLengthField, roadWidthField, roadBortField, roadChallengesArea);
-        projectSpecificFieldPane.setPrefWidth(135);
+        projectSpecificFieldPane.setSpacing(20);
         break;
     }
   }

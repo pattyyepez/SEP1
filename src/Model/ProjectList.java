@@ -5,13 +5,19 @@ import java.util.ArrayList;
 
 public class ProjectList implements Serializable {
   private ArrayList<Project> projects;
+  private ArrayList<String> titles;
 
   public ProjectList(){
     projects = new ArrayList<>();
+    titles = new ArrayList<>();
   }
 
   public int getSize(){
     return projects.size();
+  }
+
+  public boolean containsTitle(String title){
+    return titles.contains(title);
   }
 
   public Project getProject(int index){
@@ -27,12 +33,14 @@ public class ProjectList implements Serializable {
 
   public void addProject(Project project){
     projects.add(project);
+    titles.add(project.getTitle());
   }
 
   public void removeProject(String title){
     for(int x = 0; x < projects.size(); x++){
       if(projects.get(x).getTitle().equals(title)){
         projects.remove(x);
+        titles.remove(x);
         break;
       }
     }

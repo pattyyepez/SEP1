@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="350.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.ProjectInfoController">
+<VBox prefHeight="350.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.ProjectInfoController">
    <children>
       <HBox prefHeight="310.0" prefWidth="640.0">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="180.0" prefWidth="180.0" spacing="12.0">
+            <VBox alignment="TOP_CENTER" prefHeight="180.0" prefWidth="220.0" spacing="12.0">
                <children>
                   <ComboBox fx:id="typeCombo" onAction="#updateFields" prefWidth="150.0">
                      <VBox.margin>
@@ -44,7 +44,7 @@
                               <Insets right="10.0" />
                            </padding>
                         </VBox>
-                        <VBox prefHeight="109.0" prefWidth="114.0" spacing="22.0">
+                        <VBox prefHeight="109.0" prefWidth="150.0" spacing="22.0">
                            <children>
                               <TextField fx:id="customerName" prefWidth="100.0" />
                               <TextField fx:id="customerPhone" prefWidth="100.0" />
@@ -61,7 +61,7 @@
                   <Insets />
                </HBox.margin>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="310.0" prefWidth="230.0">
+            <VBox alignment="CENTER" prefHeight="310.0" prefWidth="220.0">
                <children>
                   <Label text="General project information">
                      <VBox.margin>
@@ -73,7 +73,7 @@
                   </Label>
                   <HBox prefHeight="250.0" prefWidth="230.0">
                      <children>
-                        <VBox alignment="CENTER_RIGHT" prefHeight="250.0" prefWidth="77.0" spacing="16.0">
+                        <VBox alignment="CENTER_RIGHT" prefHeight="250.0" prefWidth="80.0" spacing="16.0">
                            <children>
                               <Label text="Title*">
                                  <VBox.margin>
@@ -105,7 +105,7 @@
                               <Insets right="10.0" />
                            </padding>
                         </VBox>
-                        <VBox alignment="CENTER_LEFT" prefHeight="240.0" prefWidth="138.0" spacing="18.0">
+                        <VBox alignment="CENTER_LEFT" prefHeight="240.0" prefWidth="140.0" spacing="18.0">
                            <children>
                               <TextField fx:id="projectTitle" />
                               <TextField fx:id="projectAddress" />
@@ -125,7 +125,7 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox fx:id="specificPane" alignment="CENTER" prefHeight="310.0" prefWidth="230.0">
+            <VBox fx:id="specificPane" alignment="CENTER" prefHeight="310.0" prefWidth="310.0">
                <children>
                   <Label text="Specific project information">
                      <VBox.margin>
@@ -137,12 +137,12 @@
                   </Label>
                   <HBox prefHeight="250.0" prefWidth="230.0">
                      <children>
-                        <VBox fx:id="projectSpecificLabelPane" alignment="CENTER_RIGHT" prefHeight="310.0" prefWidth="115.0" spacing="20.0">
+                        <VBox fx:id="projectSpecificLabelPane" alignment="CENTER_RIGHT" prefHeight="310.0" prefWidth="110.0" spacing="20.0">
                            <padding>
                               <Insets right="10.0" />
                            </padding>
                         </VBox>
-                        <VBox fx:id="projectSpecificFieldPane" alignment="CENTER_LEFT" prefHeight="250.0" prefWidth="110.0" spacing="22.0" />
+                        <VBox fx:id="projectSpecificFieldPane" alignment="CENTER_LEFT" prefHeight="250.0" prefWidth="190.0" spacing="22.0" />
                      </children>
                      <VBox.margin>
                         <Insets top="20.0" />
