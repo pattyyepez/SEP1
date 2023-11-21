@@ -58,6 +58,24 @@ public class ProjectInfoController {
 
 //  INDUSTRIAL
 
+  private Label industrialSizeLabel;
+  private Label industrialIntendedUseLabel;
+
+  private TextField industrialSizeField;
+  private TextField industrialIntendedUseField;
+
+//  ROAD
+
+  private Label roadLengthLabel;
+  private Label roadWidthLabel;
+  private Label roadBortLabel;
+  private Label roadChallengesLabel;
+
+  private TextField roadLengthField;
+  private TextField roadWidthField;
+  private TextField roadBortField;
+  private TextArea roadChallengesArea;
+
   public void initialize(ViewHandler viewHandler, Scene window, String action, ProjectModelManager modelManager){
     this.window = window;
     this.viewHandler = viewHandler;
@@ -141,12 +159,56 @@ public class ProjectInfoController {
                 commercialIntendedUseField.getText()
             );
           break;
+          case "Industrial":
+            project = new Industrial(
+                projectTitle.getText(),
+                projectAddress.getText(),
+                (projectBudgetMin.getText().isEmpty() ? 100000:
+                    Double.parseDouble(projectBudgetMin.getText())),
+                (projectBudgetMax.getText().isEmpty() ? 500000:
+                    Double.parseDouble(projectBudgetMax.getText())),
+                (projectTimeline.getText().isEmpty() ? 9:
+                    Integer.parseInt(projectTimeline.getText())),
+                new Customer(
+                    customerName.getText(),
+                    customerPhone.getText(),
+                    customerEmail.getText()
+                ),
+                Double.parseDouble(industrialSizeField.getText()),
+                industrialIntendedUseField.getText()
+            );
+            break;
+          case "Road":
+            project = new Road(
+                projectTitle.getText(),
+                projectAddress.getText(),
+                (projectBudgetMin.getText().isEmpty() ? 100000:
+                    Double.parseDouble(projectBudgetMin.getText())),
+                (projectBudgetMax.getText().isEmpty() ? 500000:
+                    Double.parseDouble(projectBudgetMax.getText())),
+                (projectTimeline.getText().isEmpty() ? 9:
+                    Integer.parseInt(projectTimeline.getText())),
+                new Customer(
+                    customerName.getText(),
+                    customerPhone.getText(),
+                    customerEmail.getText()
+                ),
+                Double.parseDouble(roadLengthField.getText()),
+                Double.parseDouble(roadWidthField.getText()),
+                Integer.parseInt(roadBortField.getText())
+            );
+            if(!roadChallengesArea.getText().isEmpty()){
+              for(String temp : roadChallengesArea.getText().split(",", 0)){
+                ((Road) project).addChallenge(temp);
+              }
+            }
+            break;
         }
       }
       catch(java.lang.NumberFormatException exception){
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setHeaderText(null);
-        alert.setContentText("You left one of the necessary fields empty.");
+        alert.setContentText("You left one of the necessary fields empty or entered a letter/letters in a numbers-only field.");
         alert.showAndWait();
       }
       if(project!=null) {
@@ -162,6 +224,8 @@ public class ProjectInfoController {
   }
 
   public void updateFields(){
+    projectSpecificLabelPane.setPrefWidth(115);
+    projectSpecificFieldPane.setPrefWidth(110);
     switch (typeCombo.getSelectionModel().getSelectedItem()){
       case "Residential":
 
@@ -220,12 +284,47 @@ public class ProjectInfoController {
         projectSpecificFieldPane.setSpacing(15);
         break;
       case "Industrial":
-        projectSpecificLabelPane.getChildren().setAll();
-        projectSpecificFieldPane.getChildren().setAll();
+        projectBudgetMin.setPromptText("2000000");
+        projectBudgetMax.setPromptText("10000000");
+        projectTimeline.setPromptText("30");
+
+        industrialSizeLabel = new Label("Facility size*");
+        industrialIntendedUseLabel = new Label("Intended use*");
+
+        projectSpecificLabelPane.getChildren().setAll(industrialSizeLabel, industrialIntendedUseLabel);
+        projectSpecificLabelPane.setSpacing(24);
+
+        industrialSizeField = new TextField();
+        industrialIntendedUseField = new TextField();
+
+        projectSpecificFieldPane.getChildren().setAll(industrialSizeField, industrialIntendedUseField);
+        projectSpecificFieldPane.setSpacing(17);
         break;
       case "Road":
-        projectSpecificLabelPane.getChildren().setAll();
-        projectSpecificFieldPane.getChildren().setAll();
+        projectBudgetMin.setPromptText("1000000");
+        projectBudgetMax.setPromptText("5000000");
+        projectTimeline.setPromptText("18");
+
+        roadLengthLabel = new Label("Length*");
+        roadWidthLabel = new Label("Width*");
+        roadBortLabel = new Label("Number of\nbridges,\ntunnels");
+        roadBortLabel.setTextAlignment(TextAlignment.CENTER);
+        roadChallengesLabel = new Label("Geographical,\nenvironmental\nchallenges");
+        roadChallengesLabel.setTextAlignment(TextAlignment.CENTER);
+
+        projectSpecificLabelPane.getChildren().setAll(roadLengthLabel, roadWidthLabel, roadBortLabel, roadChallengesLabel);
+        projectSpecificLabelPane.setPrefWidth(90);
+        projectSpecificLabelPane.setSpacing(15);
+
+        roadLengthField = new TextField();
+        roadWidthField = new TextField();
+        roadBortField = new TextField();
+        roadBortField.setPromptText("0");
+        roadChallengesArea = new TextArea();
+        roadChallengesArea.setPromptText("Separate different challenges with a comma (,)");
+
+        projectSpecificFieldPane.getChildren().setAll(roadLengthField, roadWidthField, roadBortField, roadChallengesArea);
+        projectSpecificFieldPane.setPrefWidth(135);
         break;
     }
   }

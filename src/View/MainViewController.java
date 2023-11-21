@@ -24,13 +24,8 @@ public class MainViewController {
     this.viewHandler = viewHandler;
     this.window = window;
     this.modelManager = modelManager;
-//    addProject.setVisible(false);
-////    addProject.setManaged(false);
-//    addProject.managedProperty().bind(addProject.visibleProperty());
     onGoingProjectsController.initialize(viewHandler, modelManager, window);
     completedProjectsController.initialize(viewHandler, modelManager);
-//    projectInfoController.initialize(window, "ADD");
-
   }
 
   public Scene getScene(){

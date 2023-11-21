@@ -1,11 +1,14 @@
 package View;
 
 import Model.*;
+import com.sun.source.tree.Tree;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 
 public class OnGoingProjectsController
 {
@@ -13,11 +16,14 @@ public class OnGoingProjectsController
   private ViewHandler viewHandler;
   private Scene window;
 
+  private TreeItem<Project> selectedIndex;
+
 
   @FXML private Button getProjectsButton;
   @FXML private Button addProjectButton;
+  @FXML private Button removeButton;
 
-  @FXML private TreeTableView<Project> TreeTable;
+  @FXML private TreeTableView<Project> treeTable;
 
   private TreeTableColumn<Project, String> titleColumn;
   private TreeTableColumn<Project, String> addressColumn;
@@ -34,6 +40,8 @@ public class OnGoingProjectsController
     this.modelManager = modelManager;
     this.viewHandler = viewHandler;
     this.window = window;
+
+    removeButton.setDisable(true);
 
     residentialNode = new TreeItem<>(new Residential("Residential"));
     residentialNode.setExpanded(true);
@@ -75,26 +83,43 @@ public class OnGoingProjectsController
 
     updateProjects();
 
-    TreeTable.getColumns().addAll(titleColumn, addressColumn, budgetColumn, timelineColumn);
+    treeTable.getColumns().addAll(titleColumn, addressColumn, budgetColumn, timelineColumn);
 
     parentNode = new TreeItem<>(new GUINode("Parent"));
     parentNode.getChildren().addAll(residentialNode, commercialNode, industrialNode, roadNode);
 
-    TreeTable.setShowRoot(false);
-    TreeTable.setRoot(parentNode);
+    treeTable.setShowRoot(false);
+    treeTable.setRoot(parentNode);
+
+    treeTable.setOnMouseClicked(e -> {
+      if (e.getButton().equals(MouseButton.PRIMARY)) {
+        selectedIndex = treeTable.getSelectionModel().getSelectedItem();
+        if(!selectedIndex.equals(roadNode) && !selectedIndex.equals(industrialNode) && !selectedIndex.equals(commercialNode) && !selectedIndex.equals(residentialNode)){
+          removeButton.setDisable(false);
+        }
+        else removeButton.setDisable(true);
+      }
+    });
+
   }
 
-  public void handleActions(ActionEvent e)
-  {
+  public void handleActions(ActionEvent e) {
     if (e.getSource() == getProjectsButton) {
       updateProjects();
     }
+
     else if(e.getSource() == addProjectButton){
       viewHandler.openView("AddProject");
+    }
+
+    else if(e.getSource() == removeButton){
+      modelManager.removeProject(selectedIndex.getValue().getTitle());
+      updateProjects();
     }
   }
 
   public void updateProjects(){
+    removeButton.setDisable(true);
     ProjectList projects = modelManager.getAllProjects();
     residentialNode.getChildren().setAll();
     commercialNode.getChildren().setAll();
@@ -123,4 +148,5 @@ public class OnGoingProjectsController
       }
     }
   }
+
 }
