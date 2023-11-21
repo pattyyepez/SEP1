@@ -16,7 +16,7 @@ public class CompletedProjectsController
   private ProjectModelManager modelManager;
   private ViewHandler viewHandler;
 
-  @FXML private Button getProjectsButton;
+  @FXML private Button refreshButton;
   @FXML private Button addProjectButton;
 
   @FXML private TreeTableView<Project> TreeTable;
@@ -89,7 +89,7 @@ public class CompletedProjectsController
 
   public void handleActions(ActionEvent e)
   {
-    if (e.getSource() == getProjectsButton) {
+    if (e.getSource() == refreshButton) {
       updateProjects();
     }
     else if(e.getSource() == addProjectButton){

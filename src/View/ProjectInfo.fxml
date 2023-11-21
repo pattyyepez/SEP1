@@ -125,7 +125,7 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="310.0" prefWidth="230.0">
+            <VBox fx:id="specificPane" alignment="CENTER" prefHeight="310.0" prefWidth="230.0">
                <children>
                   <Label text="Specific project information">
                      <VBox.margin>

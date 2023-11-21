@@ -10,8 +10,9 @@
       <TreeTableView fx:id="treeTable" prefHeight="310.0" prefWidth="640.0" />
       <HBox alignment="BASELINE_CENTER" prefHeight="20.0" prefWidth="200.0" spacing="8.0">
          <children>
-            <Button fx:id="getProjectsButton" mnemonicParsing="false" onAction="#handleActions" text="Get Projects" />
+            <Button fx:id="refreshButton" mnemonicParsing="false" onAction="#handleActions" text="Refresh" />
             <Button fx:id="addProjectButton" mnemonicParsing="false" onAction="#handleActions" text="Add Project" />
+            <Button fx:id="completeButton" mnemonicParsing="false" onAction="#handleActions" text="Complete" />
             <Button fx:id="removeButton" mnemonicParsing="false" onAction="#handleActions" text="Remove" />
          </children>
       </HBox>

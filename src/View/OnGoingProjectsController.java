@@ -1,14 +1,13 @@
 package View;
 
 import Model.*;
-import com.sun.source.tree.Tree;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.TilePane;
 
 public class OnGoingProjectsController
 {
@@ -19,9 +18,10 @@ public class OnGoingProjectsController
   private TreeItem<Project> selectedIndex;
 
 
-  @FXML private Button getProjectsButton;
+  @FXML private Button completeButton;
   @FXML private Button addProjectButton;
   @FXML private Button removeButton;
+  @FXML private Button refreshButton;
 
   @FXML private TreeTableView<Project> treeTable;
 
@@ -29,6 +29,7 @@ public class OnGoingProjectsController
   private TreeTableColumn<Project, String> addressColumn;
   private TreeTableColumn<Project, String> budgetColumn;
   private TreeTableColumn<Project, String> timelineColumn;
+  private TreeTableColumn<Project, String> otherColumn;
 
   private TreeItem<Project> parentNode;
   private TreeItem<Project> residentialNode;
@@ -42,6 +43,7 @@ public class OnGoingProjectsController
     this.window = window;
 
     removeButton.setDisable(true);
+    completeButton.setDisable(true);
 
     residentialNode = new TreeItem<>(new Residential("Residential"));
     residentialNode.setExpanded(true);
@@ -81,9 +83,22 @@ public class OnGoingProjectsController
     timelineColumn.setReorderable(false);
     timelineColumn.setSortable(false);
 
+    otherColumn = new TreeTableColumn<>("Other");
+    otherColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
+        new ReadOnlyStringWrapper(
+            (p.getValue().getValue().getBudgetMax() == 0 ? ""
+                : ((p.getValue().getValue() instanceof Residential) ? (((Residential) p.getValue().getValue()).isRenovation() ? "New build" : "Renovation")
+                : ((p.getValue().getValue() instanceof Commercial) ? ((Commercial) p.getValue().getValue()).getIntendedUse()
+                : ((p.getValue().getValue() instanceof Industrial) ? ((Industrial) p.getValue().getValue()).getFacilityType()
+                : (((Road) p.getValue().getValue()).getLength() + "km, " + ((Road) p.getValue().getValue()).getWidth() + " lanes"
+            )))))
+        ));
+    otherColumn.setReorderable(false);
+    otherColumn.setSortable(false);
+
     updateProjects();
 
-    treeTable.getColumns().addAll(titleColumn, addressColumn, budgetColumn, timelineColumn);
+    treeTable.getColumns().addAll(titleColumn, addressColumn, budgetColumn, timelineColumn, otherColumn);
 
     parentNode = new TreeItem<>(new GUINode("Parent"));
     parentNode.getChildren().addAll(residentialNode, commercialNode, industrialNode, roadNode);
@@ -96,15 +111,20 @@ public class OnGoingProjectsController
         selectedIndex = treeTable.getSelectionModel().getSelectedItem();
         if(!selectedIndex.equals(roadNode) && !selectedIndex.equals(industrialNode) && !selectedIndex.equals(commercialNode) && !selectedIndex.equals(residentialNode)){
           removeButton.setDisable(false);
+          completeButton.setDisable(false);
         }
-        else removeButton.setDisable(true);
+        else{
+          removeButton.setDisable(true);
+          completeButton.setDisable(true);
+        }
       }
     });
 
   }
 
   public void handleActions(ActionEvent e) {
-    if (e.getSource() == getProjectsButton) {
+
+    if(e.getSource() == refreshButton){
       updateProjects();
     }
 
@@ -112,14 +132,24 @@ public class OnGoingProjectsController
       viewHandler.openView("AddProject");
     }
 
+    else if (e.getSource() == completeButton) {
+//      TilePane completingProject = new TilePane();
+//      TextInputDialog
+      modelManager.completeProject(selectedIndex.getValue().getTitle());
+      updateProjects();
+    }
+
     else if(e.getSource() == removeButton){
       modelManager.removeProject(selectedIndex.getValue().getTitle());
       updateProjects();
     }
+
   }
 
   public void updateProjects(){
     removeButton.setDisable(true);
+    completeButton.setDisable(true);
+
     ProjectList projects = modelManager.getAllProjects();
     residentialNode.getChildren().setAll();
     commercialNode.getChildren().setAll();
@@ -148,5 +178,4 @@ public class OnGoingProjectsController
       }
     }
   }
-
 }

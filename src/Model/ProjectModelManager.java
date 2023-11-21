@@ -77,4 +77,10 @@ public class ProjectModelManager {
     allProjects.removeProject(title);
     saveProjects(allProjects);
   }
+
+  public void completeProject(String title){
+    ProjectList allProjects = getAllProjects();
+    allProjects.getProject(title).setCompleted(true);
+    saveProjects(allProjects);
+  }
 }
