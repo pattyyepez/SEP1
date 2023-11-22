@@ -58,7 +58,7 @@ public class CompletedProjectsController
         new ReadOnlyStringWrapper(p.getValue().getValue().getTitle()));
     titleColumn.setReorderable(false);
     titleColumn.setSortable(false);
-    titleColumn.setMinWidth(100);
+    titleColumn.setMinWidth(150);
 
     addressColumn = new TreeTableColumn<>("Address");
     addressColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
@@ -68,13 +68,15 @@ public class CompletedProjectsController
 
     budgetColumn = new TreeTableColumn<>("Expenses used");
     budgetColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
-        new ReadOnlyStringWrapper(p.getValue().getValue().getExpectedExpenses() + ""));
+        new ReadOnlyStringWrapper((p.getValue().getValue().getExpectedExpenses() == 0 ? "" :
+            p.getValue().getValue().getExpectedExpenses() + "")));
     budgetColumn.setReorderable(false);
     budgetColumn.setSortable(false);
 
     timelineColumn = new TreeTableColumn<>("Total man-hours");
     timelineColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
-        new ReadOnlyStringWrapper(p.getValue().getValue().getTotalHours() + ""));
+        new ReadOnlyStringWrapper((p.getValue().getValue().getTotalHours() == 0 ? "" :
+            p.getValue().getValue().getTotalHours() + "")));
     timelineColumn.setReorderable(false);
     timelineColumn.setSortable(false);
 

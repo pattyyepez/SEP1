@@ -1,5 +1,6 @@
 package View;
 
+import Model.Project;
 import Model.ProjectModelManager;
 import View.CompletedProjectsController;
 import View.MainViewController;
@@ -32,10 +33,10 @@ public class ViewHandler
   public void start()
   {
     loadViewMain();
-    openView("MainView");
+    openView("MainView", null);
   }
 
-  public void openView(String id)
+  public void openView(String id, Project project)
   {
     switch (id)
     {
@@ -47,9 +48,9 @@ public class ViewHandler
         loadAddProject();
         stage.setScene(projectInfoController.getScene());
         break;
-      case "ChangeCountryView":
-//        stage.setScene(changeCountryViewController.getScene());
-//        changeCountryViewController.reset();
+      case "ViewProject":
+        loadViewProject(project);
+        stage.setScene(projectInfoController.getScene());
         break;
     }
 
@@ -74,41 +75,34 @@ public class ViewHandler
         mainViewController = loader.getController();
         mainViewController.initialize(this, new Scene(root), modelManager);
       }
-      catch (IOException e)
-      {
+      catch (IOException e) {
         e.printStackTrace();
       }
   }
 
-  private void loadAddProject()
-  {
-      try
-      {
+  private void loadAddProject() {
+      try {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("ProjectInfo.fxml"));
         Region root = loader.load();
         projectInfoController = loader.getController();
-        projectInfoController.initialize(this, new Scene(root), "ADD", modelManager);
+        projectInfoController.initAdd(this, new Scene(root), modelManager);
       }
-      catch (IOException e)
-      {
+      catch (IOException e) {
         e.printStackTrace();
       }
   }
-//
-//  private void loadViewChangeCountry()
-//  {
-//      try
-//      {
-//        FXMLLoader loader = new FXMLLoader();
-//        loader.setLocation(getClass().getResource("ChangeCountryView.fxml"));
-//        Region root = loader.load();
-//        changeCountryViewController = loader.getController();
-//        changeCountryViewController.init(this, new Scene(root), modelManager);
-//      }
-//      catch (IOException e)
-//      {
-//        e.printStackTrace();
-//      }
-//  }
+
+  private void loadViewProject(Project project) {
+      try {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("ProjectInfo.fxml"));
+        Region root = loader.load();
+        projectInfoController = loader.getController();
+        projectInfoController.initView(this, new Scene(root), modelManager, project);
+      }
+      catch (IOException e) {
+        e.printStackTrace();
+      }
+  }
 }

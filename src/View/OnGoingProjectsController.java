@@ -20,6 +20,7 @@ public class OnGoingProjectsController
   @FXML private Button addProjectButton;
   @FXML private Button removeButton;
   @FXML private Button refreshButton;
+  @FXML private Button viewButton;
 
   @FXML private TreeTableView<Project> treeTable;
 
@@ -42,6 +43,7 @@ public class OnGoingProjectsController
 
     removeButton.setDisable(true);
     completeButton.setDisable(true);
+    viewButton.setDisable(true);
 
     residentialNode = new TreeItem<>(new Residential("Residential"));
     residentialNode.setExpanded(true);
@@ -110,10 +112,12 @@ public class OnGoingProjectsController
         if(selectedIndex != null && !selectedIndex.equals(roadNode) && !selectedIndex.equals(industrialNode) && !selectedIndex.equals(commercialNode) && !selectedIndex.equals(residentialNode)){
           removeButton.setDisable(false);
           completeButton.setDisable(false);
+          viewButton.setDisable(false);
         }
         else{
           removeButton.setDisable(true);
           completeButton.setDisable(true);
+          viewButton.setDisable(true);
         }
       }
     });
@@ -127,7 +131,11 @@ public class OnGoingProjectsController
     }
 
     else if(e.getSource() == addProjectButton){
-      viewHandler.openView("AddProject");
+      viewHandler.openView("AddProject", null);
+    }
+
+    else if(e.getSource() == viewButton){
+      viewHandler.openView("ViewProject", selectedIndex.getValue());
     }
 
     else if (e.getSource() == completeButton) {
@@ -166,6 +174,7 @@ public class OnGoingProjectsController
   public void updateProjects(){
     removeButton.setDisable(true);
     completeButton.setDisable(true);
+    viewButton.setDisable(true);
 
     ProjectList projects = modelManager.getAllProjects();
     residentialNode.getChildren().setAll();

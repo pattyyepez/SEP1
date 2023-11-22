@@ -4,6 +4,7 @@
 <?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 
 <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="640.0" spacing="8.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.OnGoingProjectsController">
    <children>
@@ -11,7 +12,9 @@
       <HBox alignment="BASELINE_CENTER" prefHeight="20.0" prefWidth="200.0" spacing="8.0">
          <children>
             <Button fx:id="refreshButton" mnemonicParsing="false" onAction="#handleActions" text="Refresh" />
-            <Button fx:id="addProjectButton" mnemonicParsing="false" onAction="#handleActions" text="Add Project" />
+            <Button fx:id="addProjectButton" mnemonicParsing="false" onAction="#handleActions" text="Add" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="8.0" stroke="BLACK" strokeType="INSIDE" width="2.0" />
+            <Button fx:id="viewButton" mnemonicParsing="false" onAction="#handleActions" text="View" />
             <Button fx:id="completeButton" mnemonicParsing="false" onAction="#handleActions" text="Complete" />
             <Button fx:id="removeButton" mnemonicParsing="false" onAction="#handleActions" text="Remove" />
          </children>
