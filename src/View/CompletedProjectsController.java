@@ -9,6 +9,9 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
 import javafx.scene.input.MouseButton;
+import parser.ParserException;
+
+import java.io.File;
 
 public class CompletedProjectsController
 {
@@ -19,6 +22,7 @@ public class CompletedProjectsController
 
   @FXML private Button refreshButton;
   @FXML private Button removeButton;
+  @FXML private Button viewButton;
 
   @FXML private TreeTableView<Project> treeTable;
 
@@ -40,6 +44,7 @@ public class CompletedProjectsController
     this.viewHandler = viewHandler;
 
     removeButton.setDisable(true);
+    viewButton.setDisable(true);
 
     residentialNode = new TreeItem<>(new Residential("Residential"));
     residentialNode.setExpanded(true);
@@ -66,17 +71,17 @@ public class CompletedProjectsController
     addressColumn.setReorderable(false);
     addressColumn.setSortable(false);
 
-    budgetColumn = new TreeTableColumn<>("Expenses used");
+    budgetColumn = new TreeTableColumn<>("Total hours");
     budgetColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
-        new ReadOnlyStringWrapper((p.getValue().getValue().getExpectedExpenses() == 0 ? "" :
-            p.getValue().getValue().getExpectedExpenses() + "")));
+        new ReadOnlyStringWrapper((p.getValue().getValue().getBudgetMax() == 0 ? "" :
+            p.getValue().getValue().getTotalHours() + "")));
     budgetColumn.setReorderable(false);
     budgetColumn.setSortable(false);
 
-    timelineColumn = new TreeTableColumn<>("Total man-hours");
+    timelineColumn = new TreeTableColumn<>("Total expenses");
     timelineColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
-        new ReadOnlyStringWrapper((p.getValue().getValue().getTotalHours() == 0 ? "" :
-            p.getValue().getValue().getTotalHours() + "")));
+        new ReadOnlyStringWrapper((p.getValue().getValue().getBudgetMax() == 0 ? "" :
+            p.getValue().getValue().getExpectedExpenses() + "")));
     timelineColumn.setReorderable(false);
     timelineColumn.setSortable(false);
 
@@ -95,9 +100,11 @@ public class CompletedProjectsController
         selectedIndex = treeTable.getSelectionModel().getSelectedItem();
         if(selectedIndex != null && !selectedIndex.equals(roadNode) && !selectedIndex.equals(industrialNode) && !selectedIndex.equals(commercialNode) && !selectedIndex.equals(residentialNode)){
           removeButton.setDisable(false);
+          viewButton.setDisable(false);
         }
         else{
           removeButton.setDisable(true);
+          viewButton.setDisable(true);
         }
       }
     });
@@ -112,11 +119,22 @@ public class CompletedProjectsController
     else if(e.getSource() == removeButton){
       modelManager.removeProject(selectedIndex.getValue().getTitle());
       updateProjects();
+      try{
+        Start.file = Start.parser.toXml(modelManager.getAllProjects(), "projects.xml");
+      }
+      catch (ParserException exception){
+        exception.printStackTrace();
+      }
+    }
+
+    else if(e.getSource() == viewButton){
+      viewHandler.openView("ViewProject", selectedIndex.getValue());
     }
   }
 
   public void updateProjects(){
     removeButton.setDisable(true);
+    viewButton.setDisable(true);
 
     ProjectList projects = modelManager.getAllProjects();
     residentialNode.getChildren().setAll();

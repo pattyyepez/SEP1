@@ -7,12 +7,15 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
+import parser.ParserException;
+
+import java.io.File;
+import java.util.Arrays;
 
 public class OnGoingProjectsController
 {
   private ProjectModelManager modelManager;
   private ViewHandler viewHandler;
-  private Scene window;
 
   private TreeItem<Project> selectedIndex;
 
@@ -36,10 +39,9 @@ public class OnGoingProjectsController
   private TreeItem<Project> industrialNode;
   private TreeItem<Project> roadNode;
 
-  public void initialize(ViewHandler viewHandler, ProjectModelManager modelManager, Scene window){
+  public void initialize(ViewHandler viewHandler, ProjectModelManager modelManager){
     this.modelManager = modelManager;
     this.viewHandler = viewHandler;
-    this.window = window;
 
     removeButton.setDisable(true);
     completeButton.setDisable(true);
@@ -69,17 +71,17 @@ public class OnGoingProjectsController
     addressColumn.setReorderable(false);
     addressColumn.setSortable(false);
 
-    budgetColumn = new TreeTableColumn<>("Budget range");
+    budgetColumn = new TreeTableColumn<>("Total hours");
     budgetColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
         new ReadOnlyStringWrapper((p.getValue().getValue().getBudgetMax() == 0 ? "" :
-            p.getValue().getValue().getBudgetMin() + " - " + p.getValue().getValue().getBudgetMax())));
+            p.getValue().getValue().getTotalHours() + "")));
     budgetColumn.setReorderable(false);
     budgetColumn.setSortable(false);
 
-    timelineColumn = new TreeTableColumn<>("Timeline");
+    timelineColumn = new TreeTableColumn<>("Total expenses");
     timelineColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
-        new ReadOnlyStringWrapper((p.getValue().getValue().getTimeline() == 0 ? "" :
-            p.getValue().getValue().getTimeline() + " months")));
+        new ReadOnlyStringWrapper((p.getValue().getValue().getBudgetMax() == 0 ? "" :
+            p.getValue().getValue().getExpectedExpenses() + "")));
     timelineColumn.setReorderable(false);
     timelineColumn.setSortable(false);
 
@@ -87,7 +89,7 @@ public class OnGoingProjectsController
     otherColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
         new ReadOnlyStringWrapper(
             (p.getValue().getValue().getBudgetMax() == 0 ? ""
-                : ((p.getValue().getValue() instanceof Residential) ? (((Residential) p.getValue().getValue()).isRenovation() ? "New build" : "Renovation")
+                : ((p.getValue().getValue() instanceof Residential) ? (((Residential) p.getValue().getValue()).isRenovation() ? "Renovation" : "New build")
                 : ((p.getValue().getValue() instanceof Commercial) ? ((Commercial) p.getValue().getValue()).getIntendedUse()
                 : ((p.getValue().getValue() instanceof Industrial) ? ((Industrial) p.getValue().getValue()).getFacilityType()
                 : (((Road) p.getValue().getValue()).getLength() + "km, " + ((Road) p.getValue().getValue()).getWidth() + " lanes"
@@ -139,34 +141,47 @@ public class OnGoingProjectsController
     }
 
     else if (e.getSource() == completeButton) {
-      double totalExpenses;
-      int totalHours;
+//      double totalExpenses;
+//      int totalHours;
+//
+//      TextInputDialog hours = new TextInputDialog();
+//      hours.setHeaderText("Enter the amount of man hours used on this project");
+//      hours.showAndWait();
+//
+//      if(!hours.getEditor().getText().isEmpty()){
+//        totalHours = Integer.parseInt(hours.getEditor().getText());
+//      }
+//      else return;
+//
+//      TextInputDialog expenses = new TextInputDialog();
+//      expenses.setHeaderText("Enter the expenses used on this project");
+//      expenses.showAndWait();
+//
+//      if(!expenses.getEditor().getText().isEmpty()){
+//        totalExpenses = Double.parseDouble(expenses.getEditor().getText());
+//      }
+//      else return;
 
-      TextInputDialog hours = new TextInputDialog();
-      hours.setHeaderText("Enter the amount of man hours used on this project");
-      hours.showAndWait();
-
-      if(!hours.getEditor().getText().isEmpty()){
-        totalHours = Integer.parseInt(hours.getEditor().getText());
-      }
-      else return;
-
-      TextInputDialog expenses = new TextInputDialog();
-      expenses.setHeaderText("Enter the expenses used on this project");
-      expenses.showAndWait();
-
-      if(!expenses.getEditor().getText().isEmpty()){
-        totalExpenses = Double.parseDouble(expenses.getEditor().getText());
-      }
-      else return;
-
-      modelManager.completeProject(selectedIndex.getValue().getTitle(), totalExpenses, totalHours);
+      modelManager.completeProject(selectedIndex.getValue().getTitle());
       updateProjects();
+      try{
+        Start.file = Start.parser.toXml(modelManager.getAllProjects(), "projects.xml");
+      }
+      catch (ParserException exception){
+        exception.printStackTrace();
+      }
     }
 
     else if(e.getSource() == removeButton){
       modelManager.removeProject(selectedIndex.getValue().getTitle());
       updateProjects();
+      try{
+        Start.file = Start.parser.toXml(modelManager.getAllProjects(), "projects.xml");
+      }
+      catch (ParserException exception){
+        exception.printStackTrace();
+      }
+
     }
 
   }

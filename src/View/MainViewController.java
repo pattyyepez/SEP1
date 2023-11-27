@@ -7,6 +7,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.layout.VBox;
 
 import javax.swing.text.View;
+import java.io.File;
 
 public class MainViewController {
   @FXML private Tab onGoingTab;
@@ -24,7 +25,8 @@ public class MainViewController {
     this.viewHandler = viewHandler;
     this.window = window;
     this.modelManager = modelManager;
-    onGoingProjectsController.initialize(viewHandler, modelManager, window);
+
+    onGoingProjectsController.initialize(viewHandler, modelManager);
     completedProjectsController.initialize(viewHandler, modelManager);
   }
 

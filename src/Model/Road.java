@@ -47,6 +47,10 @@ public class Road extends Project{
     return challenges;
   }
 
+  public void setChallenges(ArrayList<String> challenges){
+    this.challenges = challenges;
+  }
+
   public void addChallenge(String challenge){
     challenges.add(challenge);
   }

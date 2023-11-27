@@ -12,6 +12,7 @@
          <children>
             <Button fx:id="refreshButton" mnemonicParsing="false" onAction="#handleActions" text="Refresh" />
             <Button fx:id="removeButton" mnemonicParsing="false" onAction="#handleActions" text="Remove" />
+            <Button fx:id="viewButton" mnemonicParsing="false" onAction="#handleActions" text="View" />
          </children>
       </HBox>
    </children>

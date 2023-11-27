@@ -1,5 +1,6 @@
 package Model;
 
+import Exceptions.InvalidTitleException;
 import Utils.MyFileHandler;
 
 import java.io.FileNotFoundException;
@@ -72,6 +73,7 @@ public class ProjectModelManager {
       allProjects.addProject(project);
       saveProjects(allProjects);
     }
+    else throw new InvalidTitleException(project.getTitle());
   }
 
   public void removeProject(String title){
@@ -80,11 +82,9 @@ public class ProjectModelManager {
     saveProjects(allProjects);
   }
 
-  public void completeProject(String title, Double expenses, int hours){
+  public void completeProject(String title){
     ProjectList allProjects = getAllProjects();
     allProjects.getProject(title).setCompleted(true);
-    allProjects.getProject(title).setExpectedExpenses(expenses);
-    allProjects.getProject(title).setTotalHours(hours);
     saveProjects(allProjects);
   }
 }

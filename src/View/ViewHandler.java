@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 
 public class ViewHandler
@@ -22,8 +23,7 @@ public class ViewHandler
 
   private ProjectModelManager modelManager;
 
-  public ViewHandler(Stage stage, ProjectModelManager modelManager)
-  {
+  public ViewHandler(Stage stage, ProjectModelManager modelManager) {
     this.stage = stage;
     this.modelManager = modelManager;
 
