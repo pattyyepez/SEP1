@@ -12,9 +12,10 @@
       <HBox alignment="BASELINE_CENTER" prefHeight="20.0" prefWidth="200.0" spacing="8.0">
          <children>
             <Button fx:id="refreshButton" mnemonicParsing="false" onAction="#handleActions" text="Refresh" />
-            <Button fx:id="addProjectButton" mnemonicParsing="false" onAction="#handleActions" text="Add" />
+            <Button fx:id="addButton" mnemonicParsing="false" onAction="#handleActions" text="Add" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="8.0" stroke="BLACK" strokeType="INSIDE" width="2.0" />
-            <Button fx:id="viewButton" mnemonicParsing="false" onAction="#handleActions" text="View" />
+            <Button fx:id="viewButton" mnemonicParsing="false" onAction="#handleActions" text="View &amp; Edit" />
+            <Button fx:id="updateButton" mnemonicParsing="false" onAction="#handleActions" text="Update" />
             <Button fx:id="completeButton" mnemonicParsing="false" onAction="#handleActions" text="Complete" />
             <Button fx:id="removeButton" mnemonicParsing="false" onAction="#handleActions" text="Remove" />
          </children>

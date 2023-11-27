@@ -38,7 +38,7 @@ public class MainViewController {
     return onGoingProjectsController;
   }
 
-  public CompletedProjectsController completedProjectsController(){
+  public CompletedProjectsController getCompletedProjectsController(){
     return completedProjectsController;
   }
 }

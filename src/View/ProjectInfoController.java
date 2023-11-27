@@ -239,6 +239,8 @@ public class ProjectInfoController {
       project.getCustomer().setName(customerName.getText());
       project.getCustomer().setPhoneNumber(customerPhone.getText());
       project.getCustomer().setEmailAddress(customerEmail.getText());
+      project.setExpectedExpenses(Double.parseDouble(projectExpenses.getText()));
+      project.setTotalHours(Integer.parseInt(projectHours.getText()));
 
       if(project instanceof Residential){
         ((Residential) project).setBuildingSize(Double.parseDouble(residentialSizeField.getText()));

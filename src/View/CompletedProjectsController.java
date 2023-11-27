@@ -116,6 +116,10 @@ public class CompletedProjectsController
       updateProjects();
     }
 
+    else if(e.getSource() == viewButton){
+      viewHandler.openView("ViewProject", selectedIndex.getValue());
+    }
+
     else if(e.getSource() == removeButton){
       modelManager.removeProject(selectedIndex.getValue().getTitle());
       updateProjects();
@@ -125,10 +129,6 @@ public class CompletedProjectsController
       catch (ParserException exception){
         exception.printStackTrace();
       }
-    }
-
-    else if(e.getSource() == viewButton){
-      viewHandler.openView("ViewProject", selectedIndex.getValue());
     }
   }
 

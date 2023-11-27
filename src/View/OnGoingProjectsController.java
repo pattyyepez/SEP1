@@ -20,7 +20,8 @@ public class OnGoingProjectsController
   private TreeItem<Project> selectedIndex;
 
   @FXML private Button completeButton;
-  @FXML private Button addProjectButton;
+  @FXML private Button addButton;
+  @FXML private Button updateButton;
   @FXML private Button removeButton;
   @FXML private Button refreshButton;
   @FXML private Button viewButton;
@@ -46,6 +47,7 @@ public class OnGoingProjectsController
     removeButton.setDisable(true);
     completeButton.setDisable(true);
     viewButton.setDisable(true);
+    updateButton.setDisable(true);
 
     residentialNode = new TreeItem<>(new Residential("Residential"));
     residentialNode.setExpanded(true);
@@ -115,11 +117,13 @@ public class OnGoingProjectsController
           removeButton.setDisable(false);
           completeButton.setDisable(false);
           viewButton.setDisable(false);
+          updateButton.setDisable(false);
         }
         else{
           removeButton.setDisable(true);
           completeButton.setDisable(true);
           viewButton.setDisable(true);
+          updateButton.setDisable(true);
         }
       }
     });
@@ -132,7 +136,7 @@ public class OnGoingProjectsController
       updateProjects();
     }
 
-    else if(e.getSource() == addProjectButton){
+    else if(e.getSource() == addButton){
       viewHandler.openView("AddProject", null);
     }
 
@@ -140,28 +144,19 @@ public class OnGoingProjectsController
       viewHandler.openView("ViewProject", selectedIndex.getValue());
     }
 
-    else if (e.getSource() == completeButton) {
-//      double totalExpenses;
-//      int totalHours;
-//
-//      TextInputDialog hours = new TextInputDialog();
-//      hours.setHeaderText("Enter the amount of man hours used on this project");
-//      hours.showAndWait();
-//
-//      if(!hours.getEditor().getText().isEmpty()){
-//        totalHours = Integer.parseInt(hours.getEditor().getText());
-//      }
-//      else return;
-//
-//      TextInputDialog expenses = new TextInputDialog();
-//      expenses.setHeaderText("Enter the expenses used on this project");
-//      expenses.showAndWait();
-//
-//      if(!expenses.getEditor().getText().isEmpty()){
-//        totalExpenses = Double.parseDouble(expenses.getEditor().getText());
-//      }
-//      else return;
+    else if(e.getSource() == updateButton){
+      viewHandler.openView("UpdateProject", selectedIndex.getValue());
+      updateProjects();
+      try{
+        Start.file = Start.parser.toXml(modelManager.getAllProjects(), "projects.xml");
+      }
+      catch (ParserException exception){
+        exception.printStackTrace();
+      }
+    }
 
+
+    else if (e.getSource() == completeButton) {
       modelManager.completeProject(selectedIndex.getValue().getTitle());
       updateProjects();
       try{
@@ -190,6 +185,7 @@ public class OnGoingProjectsController
     removeButton.setDisable(true);
     completeButton.setDisable(true);
     viewButton.setDisable(true);
+    updateButton.setDisable(true);
 
     ProjectList projects = modelManager.getAllProjects();
     residentialNode.getChildren().setAll();

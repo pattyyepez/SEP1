@@ -20,6 +20,7 @@ public class ViewHandler
   private OnGoingProjectsController onGoingProjectsController;
   private CompletedProjectsController completedProjectsController;
   private ProjectInfoController projectInfoController;
+  private UpdateProjectController updateProjectController;
 
   private ProjectModelManager modelManager;
 
@@ -43,6 +44,7 @@ public class ViewHandler
       case "MainView":
         stage.setScene(mainViewController.getScene());
         mainViewController.getOnGoingProjectsController().updateProjects();
+        mainViewController.getCompletedProjectsController().updateProjects();
         break;
       case "AddProject":
         loadAddProject();
@@ -51,6 +53,10 @@ public class ViewHandler
       case "ViewProject":
         loadViewProject(project);
         stage.setScene(projectInfoController.getScene());
+        break;
+      case "UpdateProject":
+        loadUpdateProject(project);
+        stage.setScene(updateProjectController.getScene());
         break;
     }
 
@@ -104,5 +110,18 @@ public class ViewHandler
       catch (IOException e) {
         e.printStackTrace();
       }
+  }
+
+  private void loadUpdateProject(Project project) {
+    try {
+      FXMLLoader loader = new FXMLLoader();
+      loader.setLocation(getClass().getResource("UpdateProject.fxml"));
+      Region root = loader.load();
+      updateProjectController = loader.getController();
+      updateProjectController.initialize(new Scene(root), this, modelManager, project);
+    }
+    catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 }
