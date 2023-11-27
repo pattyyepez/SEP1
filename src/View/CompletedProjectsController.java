@@ -117,7 +117,7 @@ public class CompletedProjectsController
     }
 
     else if(e.getSource() == viewButton){
-      viewHandler.openView("ViewProject", selectedIndex.getValue());
+      viewHandler.openView("view", selectedIndex.getValue());
     }
 
     else if(e.getSource() == removeButton){

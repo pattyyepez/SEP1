@@ -137,15 +137,15 @@ public class OnGoingProjectsController
     }
 
     else if(e.getSource() == addButton){
-      viewHandler.openView("AddProject", null);
+      viewHandler.openView("add", null);
     }
 
     else if(e.getSource() == viewButton){
-      viewHandler.openView("ViewProject", selectedIndex.getValue());
+      viewHandler.openView("view", selectedIndex.getValue());
     }
 
     else if(e.getSource() == updateButton){
-      viewHandler.openView("UpdateProject", selectedIndex.getValue());
+      viewHandler.openView("update", selectedIndex.getValue());
       updateProjects();
       try{
         Start.file = Start.parser.toXml(modelManager.getAllProjects(), "projects.xml");

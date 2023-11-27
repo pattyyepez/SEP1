@@ -57,43 +57,6 @@
     </customer>
   </projects>
   <projects>
-    <facilitySize>1200.0</facilitySize>
-    <address>horsenses</address>
-    <expectedExpenses>0.0</expectedExpenses>
-    <facilityType>storage</facilityType>
-    <totalHours>0</totalHours>
-    <timeline>9</timeline>
-    <completed>true</completed>
-    <title>Warehouse</title>
-    <budgetMax>500000.0</budgetMax>
-    <budgetMin>100000.0</budgetMin>
-    <customer>
-      <emailAddress>normal@dk</emailAddress>
-      <phoneNumber>33-normal-55</phoneNumber>
-      <name>normal</name>
-    </customer>
-  </projects>
-  <projects>
-    <renovation>true</renovation>
-    <address>kamtjatka 11</address>
-    <buildingSize>21.0</buildingSize>
-    <totalHours>50</totalHours>
-    <otherRoomsWithPlumbing>0</otherRoomsWithPlumbing>
-    <completed>false</completed>
-    <bathrooms>1</bathrooms>
-    <title>fixing K-104</title>
-    <budgetMax>500000.0</budgetMax>
-    <kitchens>1</kitchens>
-    <expectedExpenses>450.0</expectedExpenses>
-    <timeline>12</timeline>
-    <budgetMin>100000.0</budgetMin>
-    <customer>
-      <emailAddress>contact@kamtjatka.dk</emailAddress>
-      <phoneNumber>+45 123123</phoneNumber>
-      <name>Kamtjatka</name>
-    </customer>
-  </projects>
-  <projects>
     <facilitySize>50000.0</facilitySize>
     <address>Vejle, fjord</address>
     <expectedExpenses>14290.0</expectedExpenses>
@@ -108,26 +71,6 @@
       <emailAddress>sludge@com</emailAddress>
       <phoneNumber>23139805</phoneNumber>
       <name>sludg inc.</name>
-    </customer>
-  </projects>
-  <projects>
-    <renovation>false</renovation>
-    <address>kamtjatka 19</address>
-    <buildingSize>2000.0</buildingSize>
-    <totalHours>41</totalHours>
-    <otherRoomsWithPlumbing>2</otherRoomsWithPlumbing>
-    <completed>false</completed>
-    <bathrooms>10</bathrooms>
-    <title>new building</title>
-    <budgetMax>200000.0</budgetMax>
-    <kitchens>20</kitchens>
-    <expectedExpenses>12.0</expectedExpenses>
-    <timeline>23</timeline>
-    <budgetMin>100000.0</budgetMin>
-    <customer>
-      <emailAddress>contact@kamtjatka.ck</emailAddress>
-      <phoneNumber>21412331233</phoneNumber>
-      <name>Kamtjatka</name>
     </customer>
   </projects>
   <projects>
@@ -150,12 +93,88 @@
       <name>churches.com</name>
     </customer>
   </projects>
+  <projects>
+    <floors>1</floors>
+    <address>horsens</address>
+    <expectedExpenses>0.0</expectedExpenses>
+    <buildingSize>123.0</buildingSize>
+    <totalHours>0</totalHours>
+    <intendedUse>supermarket</intendedUse>
+    <timeline>19</timeline>
+    <completed>false</completed>
+    <title>first walmart</title>
+    <budgetMax>500000.0</budgetMax>
+    <budgetMin>100000.0</budgetMin>
+    <customer>
+      <emailAddress>walmart@dk</emailAddress>
+      <phoneNumber>22-walmart-22</phoneNumber>
+      <name>Walmart</name>
+    </customer>
+  </projects>
+  <projects>
+    <facilitySize>1200.0</facilitySize>
+    <address>horsenses</address>
+    <expectedExpenses>1550.0</expectedExpenses>
+    <facilityType>storage</facilityType>
+    <totalHours>2000</totalHours>
+    <timeline>9</timeline>
+    <completed>true</completed>
+    <title>Warehouse</title>
+    <budgetMax>500000.0</budgetMax>
+    <budgetMin>100000.0</budgetMin>
+    <customer>
+      <emailAddress>normal@dk</emailAddress>
+      <phoneNumber>33-normal-55</phoneNumber>
+      <name>normal</name>
+    </customer>
+  </projects>
+  <projects>
+    <renovation>false</renovation>
+    <address>Kamtjatka 15</address>
+    <buildingSize>1322.0</buildingSize>
+    <totalHours>0</totalHours>
+    <otherRoomsWithPlumbing>5</otherRoomsWithPlumbing>
+    <completed>false</completed>
+    <bathrooms>20</bathrooms>
+    <title>new building</title>
+    <budgetMax>500000.0</budgetMax>
+    <kitchens>20</kitchens>
+    <expectedExpenses>0.0</expectedExpenses>
+    <timeline>12</timeline>
+    <budgetMin>100000.0</budgetMin>
+    <customer>
+      <emailAddress>contact@kamtjatka.dk</emailAddress>
+      <phoneNumber>12913289</phoneNumber>
+      <name>Kamtjatka droselbo</name>
+    </customer>
+  </projects>
+  <projects>
+    <renovation>true</renovation>
+    <address>Kamtjatka 13</address>
+    <buildingSize>21.0</buildingSize>
+    <totalHours>0</totalHours>
+    <otherRoomsWithPlumbing>0</otherRoomsWithPlumbing>
+    <completed>false</completed>
+    <bathrooms>1</bathrooms>
+    <title>fixing K-104</title>
+    <budgetMax>500000.0</budgetMax>
+    <kitchens>1</kitchens>
+    <expectedExpenses>0.0</expectedExpenses>
+    <timeline>9</timeline>
+    <budgetMin>100000.0</budgetMin>
+    <customer>
+      <emailAddress>contact@kamtjatka.dk</emailAddress>
+      <phoneNumber>12913289</phoneNumber>
+      <name>Kamtjatka droselbo</name>
+    </customer>
+  </projects>
   <titles>new lovbjerg</titles>
   <titles>Sludge maker</titles>
   <titles>highway</titles>
-  <titles>Warehouse</titles>
-  <titles>fixing K-104</titles>
   <titles>Vejle, Sludge maker</titles>
-  <titles>new building</titles>
   <titles>fixing the church</titles>
+  <titles>first walmart</titles>
+  <titles>Warehouse</titles>
+  <titles>new building</titles>
+  <titles>fixing K-104</titles>
 </ProjectList>

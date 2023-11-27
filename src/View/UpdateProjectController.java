@@ -33,7 +33,7 @@ public class UpdateProjectController {
   public void handleActions(ActionEvent e){
 
     if(e.getSource() == cancelButton){
-      viewHandler.openView("MainView", null);
+      viewHandler.openView("main", null);
     }
 
     else if(e.getSource() == applyButton){
@@ -67,7 +67,7 @@ public class UpdateProjectController {
         }
 
         modelManager.addProject(project);
-        viewHandler.openView("MainView", null);
+        viewHandler.openView("main", null);
       }
       catch(java.lang.NumberFormatException exception)  {
         Alert alert = new Alert(Alert.AlertType.WARNING);

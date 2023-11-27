@@ -4,10 +4,6 @@ import Model.ProjectModelManager;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
-import javafx.scene.layout.VBox;
-
-import javax.swing.text.View;
-import java.io.File;
 
 public class MainViewController {
   @FXML private Tab onGoingTab;
@@ -19,7 +15,7 @@ public class MainViewController {
 
   @FXML private OnGoingProjectsController onGoingProjectsController;
   @FXML private CompletedProjectsController completedProjectsController;
-  @FXML private ProjectInfoController projectInfoController;
+  @FXML private ViewEditProjectController projectInfoController;
 
   public void initialize(ViewHandler viewHandler, Scene window, ProjectModelManager modelManager){
     this.viewHandler = viewHandler;

@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
@@ -11,9 +13,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AddProjectController">
    <children>
-      <StackPane prefHeight="360.0" prefWidth="600.0">
+      <StackPane fx:id="mainPane" prefHeight="360.0" prefWidth="600.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="339.0" prefWidth="600.0">
                <children>
@@ -37,7 +39,7 @@
                                     <Insets bottom="10.0" top="25.0" />
                                  </VBox.margin>
                               </Label>
-                              <ComboBox prefWidth="150.0" />
+                              <ComboBox fx:id="projectType" onAction="#updateFields" prefWidth="150.0" />
                            </children>
                         </VBox>
                         <HBox prefHeight="324.0" prefWidth="400.0">
@@ -147,21 +149,211 @@
                         <Insets bottom="10.0" top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <HBox alignment="CENTER" prefHeight="315.0" prefWidth="600.0">
+                  <StackPane fx:id="specificPane" prefHeight="294.0" prefWidth="600.0">
                      <children>
-                        <VBox fx:id="specificLabelPane" alignment="CENTER_RIGHT" prefHeight="294.0" prefWidth="175.0" spacing="35.0">
-                           <HBox.margin>
-                              <Insets right="15.0" />
-                           </HBox.margin>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="Residential">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <HBox alignment="CENTER" prefHeight="260.0" prefWidth="600.0">
+                                 <children>
+                                    <VBox alignment="BOTTOM_RIGHT" prefHeight="267.0" prefWidth="175.0" spacing="40.0">
+                                       <children>
+                                          <Label text="Building size*" textAlignment="RIGHT" wrapText="true">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Number of kitchens" textAlignment="RIGHT" wrapText="true">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Number of bathrooms" textAlignment="RIGHT" wrapText="true">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Number of other rooms with plumbing" textAlignment="RIGHT" wrapText="true">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                       <padding>
+                                          <Insets bottom="23.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox alignment="BOTTOM_CENTER" prefHeight="267.0" prefWidth="308.0" spacing="35.0">
+                                       <children>
+                                          <TextField fx:id="residentialSize" />
+                                          <TextField fx:id="residentialKitchen" promptText="1" />
+                                          <TextField fx:id="residentialBathroom" promptText="1" />
+                                          <TextField fx:id="residentialRWP" promptText="1" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="40.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="28.0" prefWidth="600.0" spacing="50.0">
+                                 <children>
+                                    <RadioButton fx:id="residentialNewBuild" contentDisplay="CENTER" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" selected="true" text="New build">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </RadioButton>
+                                    <RadioButton fx:id="residentialRenovation" mnemonicParsing="false" text="Renovation">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </RadioButton>
+                                 </children>
+                              </HBox>
+                           </children>
                         </VBox>
-                        <VBox fx:id="specificFieldPane" alignment="CENTER" prefHeight="294.0" prefWidth="189.0" spacing="30.0" />
-                        <VBox fx:id="specificExtraPane" prefHeight="294.0" prefWidth="194.0">
-                           <HBox.margin>
-                              <Insets left="15.0" />
-                           </HBox.margin>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="Commercial">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <HBox alignment="CENTER" prefHeight="207.0" prefWidth="600.0">
+                                 <children>
+                                    <VBox alignment="CENTER_RIGHT" prefHeight="267.0" prefWidth="175.0" spacing="40.0">
+                                       <children>
+                                          <Label text="Building size*" textAlignment="RIGHT" wrapText="true">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Number of floors" textAlignment="RIGHT" wrapText="true">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Intended use*" textAlignment="RIGHT" wrapText="true">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefHeight="267.0" prefWidth="308.0" spacing="35.0">
+                                       <children>
+                                          <TextField fx:id="commercialSize" />
+                                          <TextField fx:id="commercialFloors" promptText="1" />
+                                          <TextField fx:id="commercialUse" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="Industrial">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <HBox alignment="CENTER" prefHeight="124.0" prefWidth="600.0">
+                                 <children>
+                                    <VBox alignment="CENTER_RIGHT" prefHeight="267.0" prefWidth="175.0" spacing="40.0">
+                                       <children>
+                                          <Label text="Facility size*" textAlignment="RIGHT" wrapText="true">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Intended use*" textAlignment="RIGHT" wrapText="true">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefHeight="267.0" prefWidth="308.0" spacing="35.0">
+                                       <children>
+                                          <TextField fx:id="industrialSize" />
+                                          <TextField fx:id="industrialUse" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="Road">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <HBox alignment="CENTER_LEFT" prefHeight="180.0" prefWidth="600.0">
+                                 <children>
+                                    <VBox alignment="CENTER_RIGHT" prefHeight="180.0" prefWidth="219.0" spacing="40.0">
+                                       <children>
+                                          <Label text="Length*" textAlignment="RIGHT" wrapText="true">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Width*" textAlignment="RIGHT" wrapText="true">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label prefHeight="19.0" prefWidth="194.0" text="Number of bridges and tunnels" textAlignment="RIGHT" wrapText="true">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefHeight="267.0" prefWidth="315.0" spacing="35.0">
+                                       <children>
+                                          <TextField fx:id="roadLength" />
+                                          <TextField fx:id="roadWidth" />
+                                          <TextField fx:id="roadBort" promptText="0" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="88.0" prefWidth="600.0" spacing="20.0">
+                                 <children>
+                                    <Label prefHeight="61.0" prefWidth="211.0" text="Environmental and geographical challenges" textAlignment="RIGHT" wrapText="true">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextArea fx:id="roadChallenges" prefHeight="88.0" prefWidth="315.0" promptText="Separate each entry with a comma (,)." />
+                                 </children>
+                                 <padding>
+                                    <Insets right="45.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
                         </VBox>
                      </children>
-                  </HBox>
+                  </StackPane>
                </children>
             </VBox>
          </children>
@@ -175,9 +367,9 @@
             </Label>
             <FlowPane alignment="CENTER" hgap="215.0" prefHeight="43.0" prefWidth="600.0">
                <children>
-                  <Button mnemonicParsing="false" text="Cancel" />
-                  <Button mnemonicParsing="false" text="Back" />
-                  <Button mnemonicParsing="false" text="Next" />
+                  <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#handleActions" text="Cancel" />
+                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleActions" text="Back" />
+                  <Button fx:id="actionButton" mnemonicParsing="false" onAction="#handleActions" text="action" />
                </children>
             </FlowPane>
          </children>
