@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ProjectList>
+  <projects>
+    <renovation>false</renovation>
+    <address>kamtjatka 19</address>
+    <buildingSize>2000.0</buildingSize>
+    <totalHours>0</totalHours>
+    <otherRoomsWithPlumbing>2</otherRoomsWithPlumbing>
+    <completed>false</completed>
+    <bathrooms>10</bathrooms>
+    <title>new building</title>
+    <budgetMax>200000.0</budgetMax>
+    <kitchens>20</kitchens>
+    <expectedExpenses>0.0</expectedExpenses>
+    <timeline>23</timeline>
+    <budgetMin>100000.0</budgetMin>
+    <customer>
+      <emailAddress>contact@kamtjatka.ck</emailAddress>
+      <phoneNumber>21412331233</phoneNumber>
+      <name>Kamtjatka</name>
+    </customer>
+  </projects>
+  <projects>
+    <floors>2</floors>
+    <address>horsens, poop street</address>
+    <expectedExpenses>0.0</expectedExpenses>
+    <buildingSize>140.0</buildingSize>
+    <totalHours>0</totalHours>
+    <intendedUse>shop</intendedUse>
+    <timeline>16</timeline>
+    <completed>false</completed>
+    <title>new lovbjerg</title>
+    <budgetMax>500000.0</budgetMax>
+    <budgetMin>560000.0</budgetMin>
+    <customer>
+      <emailAddress>lovbjerg@com</emailAddress>
+      <phoneNumber>1231231</phoneNumber>
+      <name>lovbjerg</name>
+    </customer>
+  </projects>
+  <projects>
+    <facilitySize>1400.0</facilitySize>
+    <address>horsens, fjord</address>
+    <expectedExpenses>0.0</expectedExpenses>
+    <facilityType>sludge.</facilityType>
+    <totalHours>0</totalHours>
+    <timeline>60</timeline>
+    <completed>false</completed>
+    <title>Sludge maker</title>
+    <budgetMax>500000.0</budgetMax>
+    <budgetMin>100000.0</budgetMin>
+    <customer>
+      <emailAddress>sludge@com</emailAddress>
+      <phoneNumber>5464565</phoneNumber>
+      <name>Sludg inc</name>
+    </customer>
+  </projects>
+  <projects>
+    <bridgesOrTunnels>56</bridgesOrTunnels>
+    <address>vejle</address>
+    <challenges>protesters</challenges>
+    <challenges> rainforest</challenges>
+    <challenges> precious little animals</challenges>
+    <totalHours>0</totalHours>
+    <length>400.0</length>
+    <completed>false</completed>
+    <title>highway</title>
+    <budgetMax>5000000.0</budgetMax>
+    <expectedExpenses>0.0</expectedExpenses>
+    <width>100.0</width>
+    <timeline>14</timeline>
+    <budgetMin>1000000.0</budgetMin>
+    <customer>
+      <emailAddress>highways@com</emailAddress>
+      <phoneNumber>859008325</phoneNumber>
+      <name>High highways</name>
+    </customer>
+  </projects>
+  <projects>
+    <facilitySize>50000.0</facilitySize>
+    <address>Vejle, fjord</address>
+    <expectedExpenses>1.42909912E9</expectedExpenses>
+    <facilityType>sludge</facilityType>
+    <totalHours>123000</totalHours>
+    <timeline>14</timeline>
+    <completed>true</completed>
+    <title>Vejle, Sludge maker</title>
+    <budgetMax>500000.0</budgetMax>
+    <budgetMin>100000.0</budgetMin>
+    <customer>
+      <emailAddress>sludge@com</emailAddress>
+      <phoneNumber>23139805</phoneNumber>
+      <name>sludg inc.</name>
+    </customer>
+  </projects>
+  <projects>
+    <renovation>true</renovation>
+    <address>kamtjatka 11</address>
+    <buildingSize>21.0</buildingSize>
+    <totalHours>0</totalHours>
+    <otherRoomsWithPlumbing>0</otherRoomsWithPlumbing>
+    <completed>false</completed>
+    <bathrooms>1</bathrooms>
+    <title>fixing K-104</title>
+    <budgetMax>500000.0</budgetMax>
+    <kitchens>1</kitchens>
+    <expectedExpenses>0.0</expectedExpenses>
+    <timeline>12</timeline>
+    <budgetMin>100000.0</budgetMin>
+    <customer>
+      <emailAddress>contact@kamtjatka.dk</emailAddress>
+      <phoneNumber>+45 123123</phoneNumber>
+      <name>Kamtjatka</name>
+    </customer>
+  </projects>
+  <projects>
+    <facilitySize>1200.0</facilitySize>
+    <address>horsenses</address>
+    <expectedExpenses>0.0</expectedExpenses>
+    <facilityType>storage</facilityType>
+    <totalHours>0</totalHours>
+    <timeline>9</timeline>
+    <completed>true</completed>
+    <title>Warehouse</title>
+    <budgetMax>500000.0</budgetMax>
+    <budgetMin>100000.0</budgetMin>
+    <customer>
+      <emailAddress>normal@dk</emailAddress>
+      <phoneNumber>33-normal-55</phoneNumber>
+      <name>normal</name>
+    </customer>
+  </projects>
+  <projects>
+    <renovation>true</renovation>
+    <address>horsens, church</address>
+    <buildingSize>510.0</buildingSize>
+    <totalHours>14000</totalHours>
+    <otherRoomsWithPlumbing>1</otherRoomsWithPlumbing>
+    <completed>true</completed>
+    <bathrooms>5</bathrooms>
+    <title>fixing the church</title>
+    <budgetMax>500000.0</budgetMax>
+    <kitchens>0</kitchens>
+    <expectedExpenses>2000000.0</expectedExpenses>
+    <timeline>12</timeline>
+    <budgetMin>100000.0</budgetMin>
+    <customer>
+      <emailAddress>churches@com</emailAddress>
+      <phoneNumber>124-church-666</phoneNumber>
+      <name>churches.com</name>
+    </customer>
+  </projects>
+  <titles>new building</titles>
+  <titles>new lovbjerg</titles>
+  <titles>Sludge maker</titles>
+  <titles>highway</titles>
+  <titles>Vejle, Sludge maker</titles>
+  <titles>fixing K-104</titles>
+  <titles>Warehouse</titles>
+  <titles>fixing the church</titles>
+</ProjectList>
