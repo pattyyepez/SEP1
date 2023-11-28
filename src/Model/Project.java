@@ -93,6 +93,10 @@ public abstract class Project implements Serializable {
     return customer;
   }
 
+  public void setCustomer(Customer customer){
+    this.customer = customer;
+  }
+
   public String toString(){
     return "title: " + title + "\naddress: " + address + "\nbudget range: " + budgetMin + " - " + budgetMax +
         "\ntimeline: " + timeline + " months\n" +

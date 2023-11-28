@@ -132,58 +132,59 @@ public class ViewEditProjectController
     }
 
     else if(e.getSource() == actionButton && actionButton.getText().equals("Update")){
-      actionButton.setText("Edit");
-      modelManager.removeProject(project.getTitle());
+      String oldTitle = project.getTitle();
 
       try{
-        project.setTitle(projectTitle.getText());
-        project.setAddress(projectAddress.getText());
-        project.setBudgetMin(Double.parseDouble(projectBudgetMin.getText()));
-        project.setBudgetMax(Double.parseDouble(projectBudgetMax.getText()));
-        project.setTimeline(Integer.parseInt(projectTimeline.getText()));
-        project.getCustomer().setName(customerName.getText());
-        project.getCustomer().setPhoneNumber(customerPhone.getText());
-        project.getCustomer().setEmailAddress(customerEmail.getText());
-        project.setExpectedExpenses(Double.parseDouble(projectExpenses.getText()));
-        project.setTotalHours(Integer.parseInt(projectHours.getText()));
+        String title = projectTitle.getText();
+        String address = projectAddress.getText();
+        double budgetMin = Double.parseDouble(projectBudgetMin.getText());
+        double budgetMax = Double.parseDouble(projectBudgetMax.getText());
+        int timeline = Integer.parseInt(projectTimeline.getText());
+        String custName = customerName.getText();
+        String custPhone = customerPhone.getText();
+        String custEmail = customerEmail.getText();
+        double expenses = Double.parseDouble(projectExpenses.getText());
+        int hours = Integer.parseInt(projectHours.getText());
 
         if(project instanceof Residential){
-          ((Residential) project).setBuildingSize(Double.parseDouble(residentialSize.getText()));
-          ((Residential) project).setKitchens(Integer.parseInt(residentialKitchen.getText()));
-          ((Residential) project).setBathrooms(Integer.parseInt(residentialBathroom.getText()));
-          ((Residential) project).setOtherRoomsWithPlumbing(Integer.parseInt(residentialRWP.getText()));
-          ((Residential) project).setRenovation(residentialRenovation.isSelected());
+          modelManager.editProject(oldTitle, title, address, budgetMin, budgetMax, timeline,
+              new Customer(custName, custPhone, custEmail), expenses, hours,
+              Double.parseDouble(residentialSize.getText()), Integer.parseInt(residentialKitchen.getText()),
+              Integer.parseInt(residentialBathroom.getText()), Integer.parseInt(residentialRWP.getText()),
+              residentialRenovation.isSelected());
 
           residentialNewBuild.setDisable(true);
           residentialRenovation.setDisable(true);
         }
 
         else if(project instanceof Commercial){
-          ((Commercial) project).setBuildingSize(Double.parseDouble(commercialSize.getText()));
-          ((Commercial) project).setFloors(Integer.parseInt(commercialFloors.getText()));
-          ((Commercial) project).setIntendedUse(commercialUse.getText());
+          modelManager.editProject(oldTitle, title, address, budgetMin, budgetMax, timeline,
+              new Customer(custName, custPhone, custEmail), expenses, hours,
+              Double.parseDouble(commercialSize.getText()), Integer.parseInt(commercialFloors.getText()),
+              commercialUse.getText());
         }
 
         else if(project instanceof Industrial){
-          ((Industrial) project).setFacilitySize(Double.parseDouble(industrialSize.getText()));
-          ((Industrial) project).setFacilityType(industrialUse.getText());
+          modelManager.editProject(oldTitle, title, address, budgetMin, budgetMax, timeline,
+              new Customer(custName, custPhone, custEmail), expenses, hours,
+              Double.parseDouble(industrialSize.getText()), industrialUse.getText());
         }
 
         else if(project instanceof Road){
-          ((Road) project).setLength(Double.parseDouble(roadLength.getText()));
-          ((Road) project).setWidth(Double.parseDouble(roadWidth.getText()));
-          ((Road) project).setBridgesOrTunnels(Integer.parseInt(roadBort.getText()));
           ArrayList<String> challenges = new ArrayList<>(Arrays.asList(
-              roadChallenges.getText().split(",", 0)));
-          ((Road) project).setChallenges(challenges);
+              roadChallenges.getText().split(", ", 0)));
+
+          modelManager.editProject(oldTitle, title, address, budgetMin, budgetMax, timeline,
+              new Customer(custName, custPhone, custEmail), expenses, hours,
+              Double.parseDouble(roadLength.getText()), Double.parseDouble(roadWidth.getText()),
+              Integer.parseInt(roadBort.getText()), challenges);
         }
 
         customerInformationFieldPane.setDisable(true);
         projectGeneralFieldPane.setDisable(true);
         disableSpecificPane();
         expensesAndHoursPane.setDisable(true);
-
-        modelManager.addProject(project);
+        actionButton.setText("Edit");
 
         Start.file = Start.parser.toXml(modelManager.getAllProjects(), "projects.xml");
       }

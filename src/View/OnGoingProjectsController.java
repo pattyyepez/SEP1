@@ -94,7 +94,7 @@ public class OnGoingProjectsController
                 : ((p.getValue().getValue() instanceof Residential) ? (((Residential) p.getValue().getValue()).isRenovation() ? "Renovation" : "New build")
                 : ((p.getValue().getValue() instanceof Commercial) ? ((Commercial) p.getValue().getValue()).getIntendedUse()
                 : ((p.getValue().getValue() instanceof Industrial) ? ((Industrial) p.getValue().getValue()).getFacilityType()
-                : (((Road) p.getValue().getValue()).getLength() + "km, " + ((Road) p.getValue().getValue()).getWidth() + " lanes"
+                : (((Road) p.getValue().getValue()).getLength() + " km, " + ((Road) p.getValue().getValue()).getWidth() + " m"
             )))))
         ));
     otherColumn.setReorderable(false);

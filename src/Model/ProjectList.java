@@ -36,6 +36,17 @@ public class ProjectList implements Serializable {
     titles.add(project.getTitle());
   }
 
+  public void editTitle(int index, String newTitle){
+    titles.set(index, newTitle);
+  }
+
+  public int getProjectIndex(String title){
+    for(int x = 0; x < projects.size(); x++){
+      if(projects.get(x).getTitle().equals(title)) return x;
+    }
+    return -1;
+  }
+
   public void removeProject(String title){
     for(int x = 0; x < projects.size(); x++){
       if(projects.get(x).getTitle().equals(title)){

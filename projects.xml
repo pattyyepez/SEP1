@@ -1,180 +1,85 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <ProjectList>
   <projects>
-    <floors>2</floors>
-    <address>horsens, poop street</address>
-    <expectedExpenses>0.0</expectedExpenses>
-    <buildingSize>140.0</buildingSize>
-    <totalHours>0</totalHours>
-    <intendedUse>shop</intendedUse>
-    <timeline>16</timeline>
-    <completed>false</completed>
-    <title>new lovbjerg</title>
-    <budgetMax>500000.0</budgetMax>
-    <budgetMin>560000.0</budgetMin>
-    <customer>
-      <emailAddress>lovbjerg@com</emailAddress>
-      <phoneNumber>1231231</phoneNumber>
-      <name>lovbjerg</name>
-    </customer>
-  </projects>
-  <projects>
-    <facilitySize>1400.0</facilitySize>
-    <address>horsens, fjord</address>
-    <expectedExpenses>0.0</expectedExpenses>
-    <facilityType>sludge.</facilityType>
-    <totalHours>0</totalHours>
-    <timeline>60</timeline>
-    <completed>false</completed>
-    <title>Sludge maker</title>
-    <budgetMax>500000.0</budgetMax>
-    <budgetMin>100000.0</budgetMin>
-    <customer>
-      <emailAddress>sludge@com</emailAddress>
-      <phoneNumber>5464565</phoneNumber>
-      <name>Sludg inc</name>
-    </customer>
-  </projects>
-  <projects>
-    <bridgesOrTunnels>56</bridgesOrTunnels>
-    <address>vejle</address>
-    <challenges>protesters</challenges>
-    <challenges> rainforest</challenges>
-    <challenges> precious little animals</challenges>
-    <totalHours>0</totalHours>
-    <length>400.0</length>
-    <completed>false</completed>
-    <title>highway</title>
-    <budgetMax>5000000.0</budgetMax>
-    <expectedExpenses>0.0</expectedExpenses>
-    <width>100.0</width>
-    <timeline>14</timeline>
-    <budgetMin>1000000.0</budgetMin>
-    <customer>
-      <emailAddress>highways@com</emailAddress>
-      <phoneNumber>859008325</phoneNumber>
-      <name>High highways</name>
-    </customer>
-  </projects>
-  <projects>
-    <facilitySize>50000.0</facilitySize>
-    <address>Vejle, fjord</address>
-    <expectedExpenses>14290.0</expectedExpenses>
-    <facilityType>sludge</facilityType>
-    <totalHours>12305</totalHours>
-    <timeline>14</timeline>
-    <completed>true</completed>
-    <title>Vejle, Sludge maker</title>
-    <budgetMax>500000.0</budgetMax>
-    <budgetMin>100000.0</budgetMin>
-    <customer>
-      <emailAddress>sludge@com</emailAddress>
-      <phoneNumber>23139805</phoneNumber>
-      <name>sludg inc.</name>
-    </customer>
-  </projects>
-  <projects>
     <renovation>true</renovation>
-    <address>horsens, church</address>
-    <buildingSize>510.0</buildingSize>
-    <totalHours>14000</totalHours>
-    <otherRoomsWithPlumbing>1</otherRoomsWithPlumbing>
-    <completed>true</completed>
-    <bathrooms>5</bathrooms>
-    <title>fixing the church</title>
-    <budgetMax>500000.0</budgetMax>
-    <kitchens>0</kitchens>
-    <expectedExpenses>25.0</expectedExpenses>
-    <timeline>12</timeline>
-    <budgetMin>100000.0</budgetMin>
-    <customer>
-      <emailAddress>churches@com</emailAddress>
-      <phoneNumber>124-church-666</phoneNumber>
-      <name>churches.com</name>
-    </customer>
-  </projects>
-  <projects>
-    <floors>1</floors>
-    <address>horsens</address>
-    <expectedExpenses>0.0</expectedExpenses>
-    <buildingSize>123.0</buildingSize>
+    <address>kamtjatka 13</address>
+    <buildingSize>24.0</buildingSize>
     <totalHours>0</totalHours>
-    <intendedUse>supermarket</intendedUse>
-    <timeline>19</timeline>
+    <otherRoomsWithPlumbing>0</otherRoomsWithPlumbing>
     <completed>false</completed>
-    <title>first walmart</title>
-    <budgetMax>500000.0</budgetMax>
-    <budgetMin>100000.0</budgetMin>
+    <bathrooms>2</bathrooms>
+    <title>house1</title>
+    <budgetMax>10000.0</budgetMax>
+    <kitchens>1</kitchens>
+    <expectedExpenses>0.0</expectedExpenses>
+    <timeline>6</timeline>
+    <budgetMin>5000.0</budgetMin>
     <customer>
-      <emailAddress>walmart@dk</emailAddress>
-      <phoneNumber>22-walmart-22</phoneNumber>
-      <name>Walmart</name>
-    </customer>
-  </projects>
-  <projects>
-    <facilitySize>1200.0</facilitySize>
-    <address>horsenses</address>
-    <expectedExpenses>1550.0</expectedExpenses>
-    <facilityType>storage</facilityType>
-    <totalHours>2000</totalHours>
-    <timeline>9</timeline>
-    <completed>true</completed>
-    <title>Warehouse</title>
-    <budgetMax>500000.0</budgetMax>
-    <budgetMin>100000.0</budgetMin>
-    <customer>
-      <emailAddress>normal@dk</emailAddress>
-      <phoneNumber>33-normal-55</phoneNumber>
-      <name>normal</name>
+      <emailAddress>bozo@gmail.com</emailAddress>
+      <phoneNumber>+4512345678</phoneNumber>
+      <name>bozo</name>
     </customer>
   </projects>
   <projects>
     <renovation>false</renovation>
-    <address>Kamtjatka 15</address>
-    <buildingSize>1322.0</buildingSize>
-    <totalHours>0</totalHours>
-    <otherRoomsWithPlumbing>5</otherRoomsWithPlumbing>
-    <completed>false</completed>
-    <bathrooms>20</bathrooms>
-    <title>new building</title>
-    <budgetMax>500000.0</budgetMax>
-    <kitchens>20</kitchens>
-    <expectedExpenses>0.0</expectedExpenses>
-    <timeline>12</timeline>
-    <budgetMin>100000.0</budgetMin>
-    <customer>
-      <emailAddress>contact@kamtjatka.dk</emailAddress>
-      <phoneNumber>12913289</phoneNumber>
-      <name>Kamtjatka droselbo</name>
-    </customer>
-  </projects>
-  <projects>
-    <renovation>true</renovation>
-    <address>Kamtjatka 13</address>
-    <buildingSize>21.0</buildingSize>
+    <address>kamtjatka 14</address>
+    <buildingSize>24.0</buildingSize>
     <totalHours>0</totalHours>
     <otherRoomsWithPlumbing>0</otherRoomsWithPlumbing>
     <completed>false</completed>
-    <bathrooms>1</bathrooms>
-    <title>fixing K-104</title>
-    <budgetMax>500000.0</budgetMax>
+    <bathrooms>2</bathrooms>
+    <title>house2</title>
+    <budgetMax>10000.0</budgetMax>
     <kitchens>1</kitchens>
     <expectedExpenses>0.0</expectedExpenses>
-    <timeline>9</timeline>
-    <budgetMin>100000.0</budgetMin>
+    <timeline>6</timeline>
+    <budgetMin>5000.0</budgetMin>
     <customer>
-      <emailAddress>contact@kamtjatka.dk</emailAddress>
-      <phoneNumber>12913289</phoneNumber>
-      <name>Kamtjatka droselbo</name>
+      <emailAddress>bozo@gmail.com</emailAddress>
+      <phoneNumber>+4512345678</phoneNumber>
+      <name>bozo</name>
     </customer>
   </projects>
-  <titles>new lovbjerg</titles>
-  <titles>Sludge maker</titles>
-  <titles>highway</titles>
-  <titles>Vejle, Sludge maker</titles>
-  <titles>fixing the church</titles>
-  <titles>first walmart</titles>
-  <titles>Warehouse</titles>
-  <titles>new building</titles>
-  <titles>fixing K-104</titles>
+  <projects>
+    <renovation>false</renovation>
+    <address>horsens</address>
+    <buildingSize>24.0</buildingSize>
+    <totalHours>0</totalHours>
+    <otherRoomsWithPlumbing>0</otherRoomsWithPlumbing>
+    <completed>true</completed>
+    <bathrooms>2</bathrooms>
+    <title>parkway</title>
+    <budgetMax>10000.0</budgetMax>
+    <kitchens>1</kitchens>
+    <expectedExpenses>0.0</expectedExpenses>
+    <timeline>6</timeline>
+    <budgetMin>5000.0</budgetMin>
+    <customer>
+      <emailAddress>bozo@gmail.com</emailAddress>
+      <phoneNumber>+4512345678</phoneNumber>
+      <name>bozo</name>
+    </customer>
+  </projects>
+  <projects>
+    <floors>2</floors>
+    <address>aarhus</address>
+    <expectedExpenses>0.0</expectedExpenses>
+    <buildingSize>2000.0</buildingSize>
+    <totalHours>0</totalHours>
+    <intendedUse>big ahh store</intendedUse>
+    <timeline>3</timeline>
+    <completed>false</completed>
+    <title>new bilka</title>
+    <budgetMax>5.0</budgetMax>
+    <budgetMin>1.0</budgetMin>
+    <customer>
+      <emailAddress>bilka@bilka.com</emailAddress>
+      <phoneNumber>-450987654</phoneNumber>
+      <name>bilka</name>
+    </customer>
+  </projects>
+  <titles>house1</titles>
+  <titles>house2</titles>
+  <titles>parkway</titles>
+  <titles>new bilka</titles>
 </ProjectList>
