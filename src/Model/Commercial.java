@@ -41,7 +41,7 @@ public class Commercial extends Project{
   }
 
   public String toString(){
-    return "COMMERCIAL\n" + super.toString() + "\nbuilding size: " + buildingSize +
-        "\nfloors: " + floors + "\nintended use: " + intendedUse;
+    return "COMMERCIAL\n" + super.toString() + "\nBUILDING SIZE -> " + buildingSize +
+        " meters squared\nFLOORS -> " + floors + "\nINTENDED USE -> " + intendedUse;
   }
 }

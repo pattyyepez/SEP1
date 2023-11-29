@@ -31,6 +31,6 @@ public class Industrial extends Project{
   }
 
   public String toString(){
-    return "INDUSTRIAL\n" + super.toString() + "\nfacility size: " + facilitySize + "\nfacility type: " + facilityType;
+    return "INDUSTRIAL\n" + super.toString() + "\nFACILITY SIZE -> " + facilitySize + "\nFACILITY TYPE -> " + facilityType;
   }
 }

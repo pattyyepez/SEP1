@@ -8,6 +8,7 @@ public abstract class Project implements Serializable {
   private int timeline, totalHours;
   private boolean completed;
   private Customer customer;
+  private MyDate startDate, endDate;
 
   public Project(String t, String a, double bMin, double bMax, int tl, Customer cust){
     title = t;
@@ -19,6 +20,8 @@ public abstract class Project implements Serializable {
     completed = false;
     totalHours = 0;
     expectedExpenses = 0;
+    startDate = new MyDate();
+    endDate = startDate.getEndYear(timeline);
   }
 
   public Project(String t){
@@ -98,8 +101,8 @@ public abstract class Project implements Serializable {
   }
 
   public String toString(){
-    return "title: " + title + "\naddress: " + address + "\nbudget range: " + budgetMin + " - " + budgetMax +
-        "\ntimeline: " + timeline + " months\n" +
+    return "TITLE -> " + title + "\nADDRESS -> " + address + "\nBUDGET RANGE -> " + budgetMin + " - " + budgetMax +
+        "\nTIME -> timeline: " + timeline + " months | start date: " + startDate + " | end date: " + endDate + "\n" +
         (completed ? "COMPLETED -> total hours: " + totalHours + " | expected expenses: " + expectedExpenses: "NOT COMPLETED") +
         "\n" + customer.toString();
   }

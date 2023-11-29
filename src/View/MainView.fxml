@@ -13,20 +13,20 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-                  <MenuItem mnemonicParsing="false" text="Export as .txt file" />
+                  <MenuItem fx:id="menuTxt" mnemonicParsing="false" onAction="#handleActions" text="Export as .txt file" />
                   <Menu mnemonicParsing="false" text="Themes">
                     <items>
-                        <MenuItem disable="true" mnemonicParsing="false" text="Light" />
-                      <MenuItem mnemonicParsing="false" text="Dark" />
+                        <MenuItem fx:id="menuThemeLight" disable="true" mnemonicParsing="false" onAction="#handleActions" text="Light" />
+                      <MenuItem fx:id="menuThemeDark" mnemonicParsing="false" onAction="#handleActions" text="Dark" />
                     </items>
                   </Menu>
-              <MenuItem mnemonicParsing="false" text="Exit" />
+              <MenuItem fx:id="menuExit" mnemonicParsing="false" onAction="#handleActions" text="Exit" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="User manual" />
-                  <MenuItem mnemonicParsing="false" text="Contact developers" />
+              <MenuItem fx:id="menuUserManual" mnemonicParsing="false" onAction="#handleActions" text="User manual" />
+                <MenuItem fx:id="menuContact" mnemonicParsing="false" onAction="#handleActions" text="Contact developers" />
             </items>
           </Menu>
         </menus>

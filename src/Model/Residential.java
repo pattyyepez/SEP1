@@ -59,8 +59,8 @@ public class Residential extends Project{
   }
 
   public String toString(){
-    return "RESIDENTIAL\n" +super.toString() + "\nbuilding size: " + buildingSize + "\nkitchens: " + kitchens +
-        "\nbathrooms: " + bathrooms + "\nother rooms with plumbing: " + otherRoomsWithPlumbing + "\n" +
+    return "RESIDENTIAL\n" +super.toString() + "\nBUILDING SIZE -> " + buildingSize + "\nROOMS WITH PLUMBING -> kitchens: " + kitchens +
+        " | bathrooms: " + bathrooms + " | other rooms with plumbing: " + otherRoomsWithPlumbing + "\n" +
         (renovation ? "RENOVATION" : "NEW BUILD");
   }
 }

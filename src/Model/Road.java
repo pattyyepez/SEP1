@@ -65,7 +65,7 @@ public class Road extends Project{
       challenge += (i+1) + ". " + challenges.get(i) + "\n";
     }
     challenge = challenge.substring(0, challenge.length()-1);
-    return "ROAD\n" + super.toString() + "\nlength: " + length + "\nwidth: " + width +
-        "\nnumber of bridges or tunnels: " + bridgesOrTunnels + "\ngeographical or environmental challenges: \n" + challenge;
+    return "ROAD\n" + super.toString() + "\nDIMENSIONS -> length: " + length + "km | width: " + width +
+        " meters\nNUMBER OF BRIDGES AND TUNNELS -> " + bridgesOrTunnels + "\nGEOGRAPHICAL / ENVIRONMENTAL CHALLENGES: \n" + challenge;
   }
 }
