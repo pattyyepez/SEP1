@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" prefHeight="350.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.UpdateProjectController">
+<VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.UpdateProjectController">
    <children>
       <Label text="Project expenses and hours">
          <font>
@@ -18,7 +18,7 @@
             <Insets bottom="10.0" top="10.0" />
          </VBox.margin>
       </Label>
-      <VBox alignment="CENTER" prefHeight="125.0" prefWidth="300.0" spacing="20.0">
+      <VBox alignment="BOTTOM_CENTER" prefHeight="150.0" prefWidth="300.0" spacing="20.0">
          <children>
             <Label text="How many man hours have you spent on the project today?" textAlignment="CENTER" wrapText="true">
                <font>
@@ -28,10 +28,10 @@
             <TextField fx:id="hoursField" prefHeight="25.0" prefWidth="280.0" />
          </children>
          <padding>
-            <Insets left="20.0" right="20.0" />
+            <Insets bottom="25.0" left="20.0" right="20.0" />
          </padding>
       </VBox>
-      <VBox alignment="CENTER" prefHeight="125.0" prefWidth="300.0" spacing="20.0">
+      <VBox alignment="TOP_CENTER" prefHeight="150.0" prefWidth="300.0" spacing="20.0">
          <children>
             <Label text="How many expenses have you spent on the project today?" textAlignment="CENTER" wrapText="true">
                <font>
@@ -41,7 +41,7 @@
             <TextField fx:id="expensesField" />
          </children>
          <padding>
-            <Insets left="20.0" right="20.0" />
+            <Insets left="20.0" right="20.0" top="25.0" />
          </padding>
       </VBox>
       <HBox alignment="CENTER" prefHeight="44.0" prefWidth="300.0" spacing="25.0">

@@ -15,7 +15,6 @@ public class MainViewController {
 
   @FXML private OnGoingProjectsController onGoingProjectsController;
   @FXML private CompletedProjectsController completedProjectsController;
-  @FXML private ViewEditProjectController projectInfoController;
 
   public void initialize(ViewHandler viewHandler, Scene window, ProjectModelManager modelManager){
     this.viewHandler = viewHandler;
