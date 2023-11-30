@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.ArrayList;
+
 public class Residential extends Project{
   private double buildingSize;
   private int kitchens, bathrooms, otherRoomsWithPlumbing;
@@ -58,9 +60,79 @@ public class Residential extends Project{
     this.renovation = renovation;
   }
 
+  public int getAllRoomsWithPlumbing()
+  {
+    return bathrooms + kitchens + otherRoomsWithPlumbing;
+  }
+
   public String toString(){
     return "RESIDENTIAL\n" +super.toString() + "\nbuilding size: " + buildingSize + "\nkitchens: " + kitchens +
         "\nbathrooms: " + bathrooms + "\nother rooms with plumbing: " + otherRoomsWithPlumbing + "\n" +
         (renovation ? "RENOVATION" : "NEW BUILD");
+  }
+
+  public double calculateExpenses(ProjectList temp)
+  {
+    ArrayList<Project> projects = temp.getProjects();
+    double count = 0;
+    double expensesPerMSum = 0;
+    double expectedExpenses = 0;
+
+    for (Project project : projects)
+    {
+      if (project instanceof Residential && project.isCompleted())
+      {
+        expensesPerMSum += project.getTotalExpenses()/((Residential) project).getBuildingSize();
+        count++;
+      }
+    }
+
+    expectedExpenses = (expensesPerMSum/count) * getBuildingSize();
+
+    for (int i = 0; i < getAllRoomsWithPlumbing(); i++)
+    {
+      expectedExpenses += 100;
+    }
+
+    if (isRenovation())
+    {
+      expectedExpenses += 100;
+    }
+
+    expectedExpenses = Math.round(expectedExpenses) * 100.0 / 100.0;
+    return expectedExpenses;
+  }
+
+  public double calculateHours(ProjectList temp)
+  {
+    ArrayList<Project> projects = temp.getProjects();
+    double count = 0;
+    double hoursPerMSum = 0;
+    double expectedHours = 0;
+
+    for (Project project : projects)
+    {
+      if (project instanceof Residential && project.isCompleted())
+      {
+        double hours =  project.getTotalHours();
+        hoursPerMSum += hours/((Residential) project).getBuildingSize();
+        count++;
+      }
+    }
+
+    expectedHours = (hoursPerMSum/count) * getBuildingSize();
+
+    for (int i = 0; i < getAllRoomsWithPlumbing(); i++)
+    {
+      expectedHours += 10;
+    }
+
+    if (isRenovation())
+    {
+      expectedHours += 10;
+    }
+
+    expectedHours = Math.round(expectedHours) * 100.0 / 100.0;
+    return expectedHours;
   }
 }

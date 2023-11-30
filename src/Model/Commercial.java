@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.ArrayList;
+
 public class Commercial extends Project{
   private double buildingSize;
   private int floors;
@@ -43,5 +45,60 @@ public class Commercial extends Project{
   public String toString(){
     return "COMMERCIAL\n" + super.toString() + "\nbuilding size: " + buildingSize +
         "\nfloors: " + floors + "\nintended use: " + intendedUse;
+  }
+
+  public double calculateExpenses(ProjectList temp)
+  {
+    ArrayList<Project> projects = temp.getProjects();
+    double count = 0;
+    double expensesPerMSum = 0;
+    double expectedExpenses = 0;
+
+    for (Project project : projects)
+    {
+      if (project instanceof Commercial && project.isCompleted())
+      {
+        expensesPerMSum += project.getTotalExpenses()/((Commercial) project).getBuildingSize();
+        count++;
+      }
+    }
+
+    expectedExpenses = (expensesPerMSum/count) * getBuildingSize();
+
+    for (int i = 0; i < getFloors(); i++)
+    {
+      expectedExpenses += 100;
+    }
+
+    expectedExpenses = Math.round(expectedExpenses) * 100.0 / 100.0;
+    return expectedExpenses;
+  }
+
+  public double calculateHours(ProjectList temp)
+  {
+    ArrayList<Project> projects = temp.getProjects();
+    double count = 0;
+    double hoursPerMSum = 0;
+    double expectedHours = 0;
+
+    for (Project project : projects)
+    {
+      if (project instanceof Commercial && project.isCompleted())
+      {
+        double hours = project.getTotalHours();
+        hoursPerMSum += hours/((Commercial) project).getBuildingSize();
+        count++;
+      }
+    }
+
+    expectedHours = (hoursPerMSum/count) * getBuildingSize();
+
+    for (int i = 0; i < getFloors(); i++)
+    {
+      expectedHours += 100;
+    }
+
+    expectedHours = Math.round(expectedHours) * 100.0 / 100.0;
+    return expectedHours;
   }
 }

@@ -116,34 +116,50 @@ public class AddProjectController {
           try{
             project = null;
             switch (projectType.getSelectionModel().getSelectedItem()) {
+
               case "Residential" ->
-                  project = new Residential(projectTitle.getText(), projectAddress.getText(),
-                      (projectBudgetMin.getText().isEmpty() ? 100000 : Double.parseDouble(projectBudgetMin.getText())),
-                      (projectBudgetMax.getText().isEmpty() ? 500000 : Double.parseDouble(projectBudgetMax.getText())),
-                      (projectTimeline.getText().isEmpty() ? 9 : Integer.parseInt(projectTimeline.getText())),
-                      new Customer(customerName.getText(), customerPhone.getText(),
-                          customerEmail.getText()), Double.parseDouble(residentialSize.getText()),
-                      (residentialKitchen.getText().isEmpty() ? 1 : Integer.parseInt(residentialKitchen.getText())),
-                      (residentialBathroom.getText().isEmpty() ? 1 : Integer.parseInt(residentialBathroom.getText())),
-                      (residentialRWP.getText().isEmpty() ? 1 : Integer.parseInt(residentialRWP.getText())),
-                      residentialRenovation.isSelected());
+              {
+                project = new Residential(projectTitle.getText(), projectAddress.getText(),
+                    (projectBudgetMin.getText().isEmpty() ? 100000 : Double.parseDouble(projectBudgetMin.getText())),
+                    (projectBudgetMax.getText().isEmpty() ? 500000 : Double.parseDouble(projectBudgetMax.getText())),
+                    (projectTimeline.getText().isEmpty() ? 9 : Integer.parseInt(projectTimeline.getText())),
+                    new Customer(customerName.getText(), customerPhone.getText(),
+                        customerEmail.getText()), Double.parseDouble(residentialSize.getText()),
+                    (residentialKitchen.getText().isEmpty() ? 1 : Integer.parseInt(residentialKitchen.getText())),
+                    (residentialBathroom.getText().isEmpty() ? 1 : Integer.parseInt(residentialBathroom.getText())),
+                    (residentialRWP.getText().isEmpty() ? 1 : Integer.parseInt(residentialRWP.getText())),
+                    residentialRenovation.isSelected());
+                project.setExpectedExpenses(((Residential)project).calculateExpenses(modelManager.getAllProjects()));
+                project.setExpectedHours(((Residential)project).calculateHours(modelManager.getAllProjects()));
+              }
+
               case "Commercial" ->
-                  project = new Commercial(projectTitle.getText(), projectAddress.getText(),
-                      (projectBudgetMin.getText().isEmpty() ? 100000 : Double.parseDouble(projectBudgetMin.getText())),
-                      (projectBudgetMax.getText().isEmpty() ? 500000 : Double.parseDouble(projectBudgetMax.getText())),
-                      (projectTimeline.getText().isEmpty() ? 9 : Integer.parseInt(projectTimeline.getText())),
-                      new Customer(customerName.getText(), customerPhone.getText(),
-                          customerEmail.getText()), Double.parseDouble(commercialSize.getText()),
-                      (commercialFloors.getText().isEmpty() ? 1 : Integer.parseInt(commercialFloors.getText())),
-                      commercialUse.getText());
+              {
+                project = new Commercial(projectTitle.getText(), projectAddress.getText(),
+                    (projectBudgetMin.getText().isEmpty() ? 100000 : Double.parseDouble(projectBudgetMin.getText())),
+                    (projectBudgetMax.getText().isEmpty() ? 500000 : Double.parseDouble(projectBudgetMax.getText())),
+                    (projectTimeline.getText().isEmpty() ? 9 : Integer.parseInt(projectTimeline.getText())),
+                    new Customer(customerName.getText(), customerPhone.getText(),
+                        customerEmail.getText()), Double.parseDouble(commercialSize.getText()),
+                    (commercialFloors.getText().isEmpty() ? 1 : Integer.parseInt(commercialFloors.getText())),
+                    commercialUse.getText());
+                project.setExpectedExpenses(((Commercial)project).calculateExpenses(modelManager.getAllProjects()));
+                project.setExpectedHours(((Commercial)project).calculateHours(modelManager.getAllProjects()));
+              }
+
               case "Industrial" ->
-                  project = new Industrial(projectTitle.getText(), projectAddress.getText(),
-                      (projectBudgetMin.getText().isEmpty() ? 100000 : Double.parseDouble(projectBudgetMin.getText())),
-                      (projectBudgetMax.getText().isEmpty() ? 500000 : Double.parseDouble(projectBudgetMax.getText())),
-                      (projectTimeline.getText().isEmpty() ? 9 : Integer.parseInt(projectTimeline.getText())),
-                      new Customer(customerName.getText(), customerPhone.getText(),
-                          customerEmail.getText()), Double.parseDouble(industrialSize.getText()),
-                      industrialUse.getText());
+              {
+                project = new Industrial(projectTitle.getText(), projectAddress.getText(),
+                    (projectBudgetMin.getText().isEmpty() ? 100000 : Double.parseDouble(projectBudgetMin.getText())),
+                    (projectBudgetMax.getText().isEmpty() ? 500000 : Double.parseDouble(projectBudgetMax.getText())),
+                    (projectTimeline.getText().isEmpty() ? 9 : Integer.parseInt(projectTimeline.getText())),
+                    new Customer(customerName.getText(), customerPhone.getText(),
+                        customerEmail.getText()), Double.parseDouble(industrialSize.getText()),
+                    industrialUse.getText());
+                project.setExpectedExpenses(((Industrial)project).calculateExpenses(modelManager.getAllProjects()));
+                project.setExpectedHours(((Industrial)project).calculateHours(modelManager.getAllProjects()));
+              }
+
               case "Road" -> {
                 project = new Road(projectTitle.getText(), projectAddress.getText(),
                     (projectBudgetMin.getText().isEmpty() ? 1000000 :
@@ -162,6 +178,8 @@ public class AddProjectController {
                     ((Road) project).addChallenge(temp);
                   }
                 }
+                project.setExpectedExpenses(((Road)project).calculateExpenses(modelManager.getAllProjects()));
+                project.setExpectedHours(((Road)project).calculateHours(modelManager.getAllProjects()));
               }
             }
             if(project!=null) {

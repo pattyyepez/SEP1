@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public abstract class Project implements Serializable {
   private String title, address;
-  private double budgetMin, budgetMax, expectedExpenses;
+  private double budgetMin, budgetMax, totalExpenses, expectedExpenses, expectedHours;
   private int timeline, totalHours;
   private boolean completed;
   private Customer customer;
@@ -18,7 +18,7 @@ public abstract class Project implements Serializable {
     customer = cust;
     completed = false;
     totalHours = 0;
-    expectedExpenses = 0;
+    totalExpenses = 0;
   }
 
   public Project(String t){
@@ -57,6 +57,16 @@ public abstract class Project implements Serializable {
     this.budgetMax = budgetMax;
   }
 
+  public double getExpectedHours()
+  {
+    return expectedHours;
+  }
+
+  public void setExpectedHours(double expectedHours)
+  {
+    this.expectedHours = expectedHours;
+  }
+
   public double getExpectedExpenses() {
     return expectedExpenses;
   }
@@ -79,6 +89,16 @@ public abstract class Project implements Serializable {
 
   public void setTotalHours(int totalHours) {
     this.totalHours = totalHours;
+  }
+
+  public double getTotalExpenses()
+  {
+    return totalExpenses;
+  }
+
+  public void setTotalExpenses(double totalExpenses)
+  {
+    this.totalExpenses = totalExpenses;
   }
 
   public boolean isCompleted() {

@@ -93,4 +93,9 @@ public class ProjectList implements Serializable {
     }
     return  -1;
   }
+
+  public ArrayList<Project> getProjects()
+  {
+    return projects;
+  }
 }

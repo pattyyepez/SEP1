@@ -59,6 +59,11 @@ public class Road extends Project{
     challenges.remove(challenge);
   }
 
+  public double getSize()
+  {
+    return width*length;
+  }
+
   public String toString(){
     String challenge = "";
     for(int i = 0; i < challenges.size(); i++){
@@ -67,5 +72,70 @@ public class Road extends Project{
     challenge = challenge.substring(0, challenge.length()-1);
     return "ROAD\n" + super.toString() + "\nlength: " + length + "\nwidth: " + width +
         "\nnumber of bridges or tunnels: " + bridgesOrTunnels + "\ngeographical or environmental challenges: \n" + challenge;
+  }
+
+  public double calculateExpenses(ProjectList temp)
+  {
+    ArrayList<Project> projects = temp.getProjects();
+    double count = 0;
+    double expensesPerMSum = 0;
+    double expectedExpenses = 0;
+
+    for (Project project : projects)
+    {
+      if (project instanceof Road && project.isCompleted())
+      {
+        expensesPerMSum += project.getTotalExpenses()/((Road) project).getSize();
+        count++;
+      }
+    }
+
+    expectedExpenses = (expensesPerMSum/count) * getSize();
+
+    for (int i = 0; i < bridgesOrTunnels; i++)
+    {
+      expectedExpenses += 100;
+    }
+
+    for (int i = 0; i < challenges.size(); i++)
+    {
+      expectedExpenses += 100;
+    }
+
+    expectedExpenses = Math.round(expectedExpenses) * 100.0 / 100.0;
+    return expectedExpenses;
+  }
+
+  public double calculateHours(ProjectList temp)
+  {
+    ArrayList<Project> projects = temp.getProjects();
+    double count = 0;
+    double hoursPerMSum = 0;
+    double expectedHours = 0;
+
+    for (Project project : projects)
+    {
+      if (project instanceof Road && project.isCompleted())
+      {
+        double hours = project.getTotalHours();
+        hoursPerMSum += hours/((Road) project).getSize();
+        count++;
+      }
+    }
+
+    expectedHours = (hoursPerMSum/count) * getSize();
+
+    for (int i = 0; i < bridgesOrTunnels; i++)
+    {
+      expectedHours += 10;
+    }
+
+    for (int i = 0; i < challenges.size(); i++)
+    {
+      expectedHours += 10;
+    }
+
+    expectedHours = Math.round(expectedHours) * 100.0 / 100.0;
+    return expectedHours;
   }
 }

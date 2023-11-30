@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.ArrayList;
+
 public class Industrial extends Project{
   public double facilitySize;
   public String facilityType;
@@ -32,5 +34,50 @@ public class Industrial extends Project{
 
   public String toString(){
     return "INDUSTRIAL\n" + super.toString() + "\nfacility size: " + facilitySize + "\nfacility type: " + facilityType;
+  }
+
+  public double calculateExpenses(ProjectList temp)
+  {
+    ArrayList<Project> projects = temp.getProjects();
+    double count = 0;
+    double expensesPerMSum = 0;
+    double expectedExpenses = 0;
+
+    for (Project project : projects)
+    {
+      if (project instanceof Industrial && project.isCompleted())
+      {
+        expensesPerMSum += project.getTotalExpenses()/((Industrial) project).getFacilitySize();
+        count++;
+      }
+    }
+
+    expectedExpenses = (expensesPerMSum/count) * getFacilitySize();
+
+    expectedExpenses = Math.round(expectedExpenses) * 100.0 / 100.0;
+    return expectedExpenses;
+  }
+
+  public double calculateHours(ProjectList temp)
+  {
+    ArrayList<Project> projects = temp.getProjects();
+    double count = 0;
+    double hoursPerMSum = 0;
+    double expectedHours = 0;
+
+    for (Project project : projects)
+    {
+      if (project instanceof Industrial && project.isCompleted())
+      {
+        double hours = project.getTotalHours();
+        hoursPerMSum += hours/((Industrial) project).getFacilitySize();
+        count++;
+      }
+    }
+
+    expectedHours = (hoursPerMSum/count) * getFacilitySize();
+
+    expectedHours = Math.round(expectedHours) * 100.0 / 100.0;
+    return expectedHours;
   }
 }

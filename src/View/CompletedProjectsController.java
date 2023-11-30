@@ -81,7 +81,7 @@ public class CompletedProjectsController
     timelineColumn = new TreeTableColumn<>("Total expenses");
     timelineColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
         new ReadOnlyStringWrapper((p.getValue().getValue().getBudgetMax() == 0 ? "" :
-            p.getValue().getValue().getExpectedExpenses() + "")));
+            p.getValue().getValue().getTotalExpenses() + "")));
     timelineColumn.setReorderable(false);
     timelineColumn.setSortable(false);
 

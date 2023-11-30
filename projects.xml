@@ -1,85 +1,45 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <ProjectList>
   <projects>
-    <renovation>true</renovation>
-    <address>kamtjatka 13</address>
-    <buildingSize>24.0</buildingSize>
+    <bridgesOrTunnels>2</bridgesOrTunnels>
+    <address>Kamchancha</address>
     <totalHours>0</totalHours>
-    <otherRoomsWithPlumbing>0</otherRoomsWithPlumbing>
-    <completed>false</completed>
-    <bathrooms>2</bathrooms>
-    <title>house1</title>
-    <budgetMax>10000.0</budgetMax>
-    <kitchens>1</kitchens>
-    <expectedExpenses>0.0</expectedExpenses>
-    <timeline>6</timeline>
-    <budgetMin>5000.0</budgetMin>
-    <customer>
-      <emailAddress>bozo@gmail.com</emailAddress>
-      <phoneNumber>+4512345678</phoneNumber>
-      <name>bozo</name>
-    </customer>
-  </projects>
-  <projects>
-    <renovation>false</renovation>
-    <address>kamtjatka 14</address>
-    <buildingSize>24.0</buildingSize>
-    <totalHours>0</totalHours>
-    <otherRoomsWithPlumbing>0</otherRoomsWithPlumbing>
-    <completed>false</completed>
-    <bathrooms>2</bathrooms>
-    <title>house2</title>
-    <budgetMax>10000.0</budgetMax>
-    <kitchens>1</kitchens>
-    <expectedExpenses>0.0</expectedExpenses>
-    <timeline>6</timeline>
-    <budgetMin>5000.0</budgetMin>
-    <customer>
-      <emailAddress>bozo@gmail.com</emailAddress>
-      <phoneNumber>+4512345678</phoneNumber>
-      <name>bozo</name>
-    </customer>
-  </projects>
-  <projects>
-    <renovation>false</renovation>
-    <address>horsens</address>
-    <buildingSize>24.0</buildingSize>
-    <totalHours>0</totalHours>
-    <otherRoomsWithPlumbing>0</otherRoomsWithPlumbing>
+    <length>2000.0</length>
+    <totalExpenses>4000.0</totalExpenses>
     <completed>true</completed>
-    <bathrooms>2</bathrooms>
-    <title>parkway</title>
-    <budgetMax>10000.0</budgetMax>
-    <kitchens>1</kitchens>
+    <title>ACR</title>
+    <budgetMax>4000.0</budgetMax>
     <expectedExpenses>0.0</expectedExpenses>
-    <timeline>6</timeline>
-    <budgetMin>5000.0</budgetMin>
+    <expectedHours>0</expectedHours>
+    <width>30.0</width>
+    <timeline>10</timeline>
+    <budgetMin>2000.0</budgetMin>
     <customer>
-      <emailAddress>bozo@gmail.com</emailAddress>
-      <phoneNumber>+4512345678</phoneNumber>
-      <name>bozo</name>
+      <emailAddress>angela@gmail.com</emailAddress>
+      <phoneNumber>738 192 253</phoneNumber>
+      <name>Angela Cebrian</name>
     </customer>
   </projects>
   <projects>
-    <floors>2</floors>
-    <address>aarhus</address>
-    <expectedExpenses>0.0</expectedExpenses>
-    <buildingSize>2000.0</buildingSize>
+    <bridgesOrTunnels>0</bridgesOrTunnels>
+    <address>teknisk</address>
     <totalHours>0</totalHours>
-    <intendedUse>big ahh store</intendedUse>
-    <timeline>3</timeline>
+    <length>200.0</length>
+    <totalExpenses>0.0</totalExpenses>
     <completed>false</completed>
-    <title>new bilka</title>
-    <budgetMax>5.0</budgetMax>
-    <budgetMin>1.0</budgetMin>
+    <title>JHC</title>
+    <budgetMax>5000000.0</budgetMax>
+    <expectedExpenses>2667.0</expectedExpenses>
+    <expectedHours>0</expectedHours>
+    <width>200.0</width>
+    <timeline>9</timeline>
+    <budgetMin>1000000.0</budgetMin>
     <customer>
-      <emailAddress>bilka@bilka.com</emailAddress>
-      <phoneNumber>-450987654</phoneNumber>
-      <name>bilka</name>
+      <emailAddress>joangmail</emailAddress>
+      <phoneNumber>640834189</phoneNumber>
+      <name>Joan</name>
     </customer>
   </projects>
-  <titles>house1</titles>
-  <titles>house2</titles>
-  <titles>parkway</titles>
-  <titles>new bilka</titles>
+  <titles>ACR</titles>
+  <titles>JHC</titles>
 </ProjectList>
