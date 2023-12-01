@@ -6,23 +6,25 @@
     <buildingSize>24.0</buildingSize>
     <totalHours>0</totalHours>
     <endDate>
-      <month>5</month>
+      <month>6</month>
       <year>2024</year>
-      <day>29</day>
+      <day>1</day>
     </endDate>
     <otherRoomsWithPlumbing>0</otherRoomsWithPlumbing>
+    <totalExpenses>0.0</totalExpenses>
     <completed>false</completed>
     <bathrooms>2</bathrooms>
     <title>house1</title>
     <budgetMax>10000.0</budgetMax>
     <kitchens>1</kitchens>
     <expectedExpenses>0.0</expectedExpenses>
+    <expectedHours>0</expectedHours>
     <timeline>6</timeline>
     <budgetMin>5000.0</budgetMin>
     <startDate>
-      <month>11</month>
+      <month>12</month>
       <year>2023</year>
-      <day>29</day>
+      <day>1</day>
     </startDate>
     <customer>
       <emailAddress>bozo@gmail.com</emailAddress>
@@ -36,23 +38,25 @@
     <buildingSize>24.0</buildingSize>
     <totalHours>0</totalHours>
     <endDate>
-      <month>5</month>
+      <month>6</month>
       <year>2024</year>
-      <day>29</day>
+      <day>1</day>
     </endDate>
     <otherRoomsWithPlumbing>0</otherRoomsWithPlumbing>
+    <totalExpenses>0.0</totalExpenses>
     <completed>false</completed>
     <bathrooms>2</bathrooms>
     <title>house2</title>
     <budgetMax>10000.0</budgetMax>
     <kitchens>1</kitchens>
     <expectedExpenses>0.0</expectedExpenses>
+    <expectedHours>0</expectedHours>
     <timeline>6</timeline>
     <budgetMin>5000.0</budgetMin>
     <startDate>
-      <month>11</month>
+      <month>12</month>
       <year>2023</year>
-      <day>29</day>
+      <day>1</day>
     </startDate>
     <customer>
       <emailAddress>bozo@gmail.com</emailAddress>
@@ -66,23 +70,25 @@
     <buildingSize>24.0</buildingSize>
     <totalHours>0</totalHours>
     <endDate>
-      <month>5</month>
+      <month>6</month>
       <year>2024</year>
-      <day>29</day>
+      <day>1</day>
     </endDate>
     <otherRoomsWithPlumbing>0</otherRoomsWithPlumbing>
+    <totalExpenses>0.0</totalExpenses>
     <completed>true</completed>
     <bathrooms>2</bathrooms>
     <title>parkway</title>
     <budgetMax>10000.0</budgetMax>
     <kitchens>1</kitchens>
     <expectedExpenses>0.0</expectedExpenses>
+    <expectedHours>0</expectedHours>
     <timeline>6</timeline>
     <budgetMin>5000.0</budgetMin>
     <startDate>
-      <month>11</month>
+      <month>12</month>
       <year>2023</year>
-      <day>29</day>
+      <day>1</day>
     </startDate>
     <customer>
       <emailAddress>bozo@gmail.com</emailAddress>
@@ -95,22 +101,24 @@
     <buildingSize>2000.0</buildingSize>
     <totalHours>0</totalHours>
     <endDate>
-      <month>2</month>
+      <month>3</month>
       <year>2024</year>
-      <day>29</day>
+      <day>1</day>
     </endDate>
+    <totalExpenses>0.0</totalExpenses>
     <completed>false</completed>
     <title>new bilka</title>
     <budgetMax>5.0</budgetMax>
     <floors>2</floors>
     <expectedExpenses>0.0</expectedExpenses>
+    <expectedHours>0</expectedHours>
     <intendedUse>big ahh store</intendedUse>
     <timeline>3</timeline>
     <budgetMin>1.0</budgetMin>
     <startDate>
-      <month>11</month>
+      <month>12</month>
       <year>2023</year>
-      <day>29</day>
+      <day>1</day>
     </startDate>
     <customer>
       <emailAddress>bilka@bilka.com</emailAddress>
@@ -118,8 +126,196 @@
       <name>bilka</name>
     </customer>
   </projects>
+  <projects>
+    <bridgesOrTunnels>2</bridgesOrTunnels>
+    <address>Kamchancha</address>
+    <totalHours>0</totalHours>
+    <endDate>
+      <month>10</month>
+      <year>2024</year>
+      <day>1</day>
+    </endDate>
+    <length>2000.0</length>
+    <totalExpenses>4000.0</totalExpenses>
+    <completed>true</completed>
+    <title>ACR</title>
+    <budgetMax>4000.0</budgetMax>
+    <expectedExpenses>0.0</expectedExpenses>
+    <expectedHours>0</expectedHours>
+    <width>30.0</width>
+    <timeline>10</timeline>
+    <budgetMin>2000.0</budgetMin>
+    <startDate>
+      <month>12</month>
+      <year>2023</year>
+      <day>1</day>
+    </startDate>
+    <customer>
+      <emailAddress>angela@gmail.com</emailAddress>
+      <phoneNumber>738 192 253</phoneNumber>
+      <name>Angela Cebrian</name>
+    </customer>
+  </projects>
+  <projects>
+    <renovation>true</renovation>
+    <address>123 Main St</address>
+    <buildingSize>1500.0</buildingSize>
+    <totalHours>0</totalHours>
+    <endDate>
+      <month>12</month>
+      <year>2024</year>
+      <day>1</day>
+    </endDate>
+    <otherRoomsWithPlumbing>3</otherRoomsWithPlumbing>
+    <totalExpenses>0.0</totalExpenses>
+    <completed>false</completed>
+    <bathrooms>2</bathrooms>
+    <title>House</title>
+    <budgetMax>200000.0</budgetMax>
+    <kitchens>2</kitchens>
+    <expectedExpenses>0.0</expectedExpenses>
+    <expectedHours>0</expectedHours>
+    <timeline>12</timeline>
+    <budgetMin>100000.0</budgetMin>
+    <startDate>
+      <month>12</month>
+      <year>2023</year>
+      <day>1</day>
+    </startDate>
+    <customer>
+      <emailAddress>john.doe@email.com</emailAddress>
+      <phoneNumber>123-456-7890</phoneNumber>
+      <name>John Doe</name>
+    </customer>
+  </projects>
+  <projects>
+    <renovation>false</renovation>
+    <address>456 Oak St</address>
+    <buildingSize>1000.0</buildingSize>
+    <totalHours>0</totalHours>
+    <endDate>
+      <month>10</month>
+      <year>2024</year>
+      <day>1</day>
+    </endDate>
+    <otherRoomsWithPlumbing>2</otherRoomsWithPlumbing>
+    <totalExpenses>0.0</totalExpenses>
+    <completed>false</completed>
+    <bathrooms>1</bathrooms>
+    <title>Apartment</title>
+    <budgetMax>150000.0</budgetMax>
+    <kitchens>1</kitchens>
+    <expectedExpenses>0.0</expectedExpenses>
+    <expectedHours>0</expectedHours>
+    <timeline>10</timeline>
+    <budgetMin>80000.0</budgetMin>
+    <startDate>
+      <month>12</month>
+      <year>2023</year>
+      <day>1</day>
+    </startDate>
+    <customer>
+      <emailAddress>jane.smith@email.com</emailAddress>
+      <phoneNumber>987-654-3210</phoneNumber>
+      <name>Jane Smith</name>
+    </customer>
+  </projects>
+  <projects>
+    <address>789 Industrial Blvd</address>
+    <facilityType>Manufacturing</facilityType>
+    <totalHours>0</totalHours>
+    <endDate>
+      <month>6</month>
+      <year>2025</year>
+      <day>1</day>
+    </endDate>
+    <totalExpenses>0.0</totalExpenses>
+    <completed>false</completed>
+    <title>Factory</title>
+    <budgetMax>1000000.0</budgetMax>
+    <facilitySize>2500.0</facilitySize>
+    <expectedExpenses>0.0</expectedExpenses>
+    <expectedHours>0</expectedHours>
+    <timeline>18</timeline>
+    <budgetMin>500000.0</budgetMin>
+    <startDate>
+      <month>12</month>
+      <year>2023</year>
+      <day>1</day>
+    </startDate>
+    <customer>
+      <emailAddress>michael.johnson@email.com</emailAddress>
+      <phoneNumber>555-1234</phoneNumber>
+      <name>Michael Johnson</name>
+    </customer>
+  </projects>
+  <projects>
+    <address>101 Logistics St</address>
+    <facilityType>Storage</facilityType>
+    <totalHours>0</totalHours>
+    <endDate>
+      <month>3</month>
+      <year>2025</year>
+      <day>1</day>
+    </endDate>
+    <totalExpenses>0.0</totalExpenses>
+    <completed>false</completed>
+    <title>Warehouse</title>
+    <budgetMax>800000.0</budgetMax>
+    <facilitySize>1200.0</facilitySize>
+    <expectedExpenses>0.0</expectedExpenses>
+    <expectedHours>0</expectedHours>
+    <timeline>15</timeline>
+    <budgetMin>300000.0</budgetMin>
+    <startDate>
+      <month>12</month>
+      <year>2023</year>
+      <day>1</day>
+    </startDate>
+    <customer>
+      <emailAddress>emily.davis@email.com</emailAddress>
+      <phoneNumber>555-5678</phoneNumber>
+      <name>Emily Davis</name>
+    </customer>
+  </projects>
+  <projects>
+    <bridgesOrTunnels>0</bridgesOrTunnels>
+    <address>aarhus</address>
+    <totalHours>0</totalHours>
+    <endDate>
+      <month>6</month>
+      <year>2025</year>
+      <day>1</day>
+    </endDate>
+    <length>200.0</length>
+    <totalExpenses>0.0</totalExpenses>
+    <completed>false</completed>
+    <title>highway to hell</title>
+    <budgetMax>5000000.0</budgetMax>
+    <expectedExpenses>2667.0</expectedExpenses>
+    <expectedHours>0</expectedHours>
+    <width>200.0</width>
+    <timeline>18</timeline>
+    <budgetMin>1000000.0</budgetMin>
+    <startDate>
+      <month>12</month>
+      <year>2023</year>
+      <day>1</day>
+    </startDate>
+    <customer>
+      <emailAddress>hell@hotmail.com</emailAddress>
+      <phoneNumber>666-666-666</phoneNumber>
+      <name>satan inc</name>
+    </customer>
+  </projects>
   <titles>house1</titles>
   <titles>house2</titles>
   <titles>parkway</titles>
   <titles>new bilka</titles>
+  <titles>ACR</titles>
+  <titles>House</titles>
+  <titles>Apartment</titles>
+  <titles>Factory</titles>
+  <titles>Warehouse</titles>
+  <titles>highway to hell</titles>
 </ProjectList>

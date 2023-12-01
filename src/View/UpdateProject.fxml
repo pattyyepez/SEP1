@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.UpdateProjectController">
+<VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="640.0" stylesheets="@../Resources/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.UpdateProjectController">
    <children>
       <Label text="Project expenses and hours">
          <font>
@@ -25,7 +25,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="hoursField" prefHeight="25.0" prefWidth="280.0" />
+            <TextField fx:id="hoursField" prefHeight="25.0" prefWidth="377.0" />
          </children>
          <padding>
             <Insets bottom="25.0" left="20.0" right="20.0" />

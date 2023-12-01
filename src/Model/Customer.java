@@ -36,7 +36,7 @@ public class Customer implements Serializable {
   }
 
   public String toString(){
-    return "Customer information -> name: " + name + " | phone number: " + phoneNumber + " | email address: " + emailAddress;
+    return "CUSTOMER INFORMATION -> name: " + name + " | phone number: " + phoneNumber + " | email address: " + emailAddress;
   }
 
   public boolean equals(Object obj){

@@ -41,7 +41,7 @@ public class UpdateProjectController {
         modelManager.removeProject(project.getTitle());
 
         if(Double.parseDouble(expensesField.getText()) >= 0 && Integer.parseInt(hoursField.getText()) >= 0){
-          project.setExpectedExpenses(project.getExpectedExpenses() + Double.parseDouble(expensesField.getText()));
+          project.setTotalExpenses(project.getTotalExpenses() + Double.parseDouble(expensesField.getText()));
           project.setTotalHours(project.getTotalHours() + Integer.parseInt(hoursField.getText()));
         }
 

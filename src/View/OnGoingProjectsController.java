@@ -30,8 +30,10 @@ public class OnGoingProjectsController
 
   private TreeTableColumn<Project, String> titleColumn;
   private TreeTableColumn<Project, String> addressColumn;
-  private TreeTableColumn<Project, String> budgetColumn;
-  private TreeTableColumn<Project, String> timelineColumn;
+  private TreeTableColumn<Project, String> expectedHoursColumn;
+  private TreeTableColumn<Project, String> expectedExpensesColumn;
+  private TreeTableColumn<Project, String> totalHoursColumn;
+  private TreeTableColumn<Project, String> totalExpensesColumn;
   private TreeTableColumn<Project, String> otherColumn;
 
   private TreeItem<Project> parentNode;
@@ -73,19 +75,33 @@ public class OnGoingProjectsController
     addressColumn.setReorderable(false);
     addressColumn.setSortable(false);
 
-    budgetColumn = new TreeTableColumn<>("Total hours");
-    budgetColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
+    expectedHoursColumn = new TreeTableColumn<>("Expected hours");
+    expectedHoursColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
         new ReadOnlyStringWrapper((p.getValue().getValue().getBudgetMax() == 0 ? "" :
-            p.getValue().getValue().getTotalHours() + "")));
-    budgetColumn.setReorderable(false);
-    budgetColumn.setSortable(false);
+            p.getValue().getValue().getExpectedHours() + "")));
+    expectedHoursColumn.setReorderable(false);
+    expectedHoursColumn.setSortable(false);
 
-    timelineColumn = new TreeTableColumn<>("Total expenses");
-    timelineColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
+    expectedExpensesColumn = new TreeTableColumn<>("Expected expenses");
+    expectedExpensesColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
         new ReadOnlyStringWrapper((p.getValue().getValue().getBudgetMax() == 0 ? "" :
             p.getValue().getValue().getExpectedExpenses() + "")));
-    timelineColumn.setReorderable(false);
-    timelineColumn.setSortable(false);
+    expectedExpensesColumn.setReorderable(false);
+    expectedExpensesColumn.setSortable(false);
+
+    totalHoursColumn = new TreeTableColumn<>("Total hours");
+    totalHoursColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
+        new ReadOnlyStringWrapper((p.getValue().getValue().getBudgetMax() == 0 ? "" :
+            p.getValue().getValue().getTotalHours() + "")));
+    totalHoursColumn.setReorderable(false);
+    totalHoursColumn.setSortable(false);
+
+    totalExpensesColumn = new TreeTableColumn<>("Total expenses");
+    totalExpensesColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
+        new ReadOnlyStringWrapper((p.getValue().getValue().getBudgetMax() == 0 ? "" :
+            p.getValue().getValue().getTotalExpenses() + "")));
+    totalExpensesColumn.setReorderable(false);
+    totalExpensesColumn.setSortable(false);
 
     otherColumn = new TreeTableColumn<>("Other");
     otherColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
@@ -102,7 +118,7 @@ public class OnGoingProjectsController
 
     updateProjects();
 
-    treeTable.getColumns().addAll(titleColumn, addressColumn, budgetColumn, timelineColumn, otherColumn);
+    treeTable.getColumns().addAll(titleColumn, addressColumn, expectedHoursColumn, expectedExpensesColumn, totalHoursColumn, totalExpensesColumn, otherColumn);
 
     parentNode = new TreeItem<>(new GUINode("Parent"));
     parentNode.getChildren().addAll(residentialNode, commercialNode, industrialNode, roadNode);

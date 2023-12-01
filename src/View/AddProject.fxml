@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AddProjectController">
+<VBox alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../Resources/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AddProjectController">
    <children>
       <StackPane fx:id="mainPane" prefHeight="360.0" prefWidth="600.0">
          <children>
@@ -49,27 +49,27 @@
                            <children>
                               <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="120.0" spacing="35.0">
                                  <children>
-                                    <Label text="Title*">
+                                    <Label stylesheets="@../Resources/styles.css" text="Title*">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Address*">
+                                    <Label stylesheets="@../Resources/styles.css" text="Address*">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Budget minimum" textAlignment="RIGHT" wrapText="true">
+                                    <Label stylesheets="@../Resources/styles.css" text="Budget minimum" textAlignment="RIGHT" wrapText="true">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Budget maximum" textAlignment="RIGHT" wrapText="true">
+                                    <Label stylesheets="@../Resources/styles.css" text="Budget maximum" textAlignment="RIGHT" wrapText="true">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Timeline">
+                                    <Label stylesheets="@../Resources/styles.css" text="Timeline">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -306,19 +306,19 @@
                               </Label>
                               <HBox alignment="CENTER_LEFT" prefHeight="180.0" prefWidth="600.0">
                                  <children>
-                                    <VBox alignment="CENTER_RIGHT" prefHeight="180.0" prefWidth="219.0" spacing="40.0">
+                                    <VBox alignment="CENTER_RIGHT" prefHeight="180.0" prefWidth="219.0" spacing="40.0" stylesheets="@../Resources/styles.css">
                                        <children>
-                                          <Label text="Length*" textAlignment="RIGHT" wrapText="true">
+                                          <Label stylesheets="@../Resources/styles.css" text="Length*" textAlignment="RIGHT" wrapText="true">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label text="Width*" textAlignment="RIGHT" wrapText="true">
+                                          <Label stylesheets="@../Resources/styles.css" text="Width*" textAlignment="RIGHT" wrapText="true">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label prefHeight="19.0" prefWidth="194.0" text="Number of bridges and tunnels" textAlignment="RIGHT" wrapText="true">
+                                          <Label prefHeight="19.0" prefWidth="194.0" stylesheets="@../Resources/styles.css" text="Number of bridges and tunnels" textAlignment="RIGHT" wrapText="true">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
@@ -360,15 +360,15 @@
       </StackPane>
       <VBox alignment="BOTTOM_LEFT" prefHeight="79.0" prefWidth="600.0">
          <children>
-            <Label text="*Must be filled out!" textFill="RED">
+            <Label style="-fx-text-fill: red;" text="*Must be filled out!" textFill="RED">
                <VBox.margin>
                   <Insets left="15.0" />
                </VBox.margin>
             </Label>
             <FlowPane alignment="CENTER" hgap="215.0" prefHeight="43.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#handleActions" text="Cancel" />
                   <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleActions" text="Back" />
+                  <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#handleActions" text="Cancel" />
                   <Button fx:id="actionButton" mnemonicParsing="false" onAction="#handleActions" text="action" />
                </children>
             </FlowPane>

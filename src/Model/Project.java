@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 public abstract class Project implements Serializable {
   private String title, address;
-  private double budgetMin, budgetMax, expectedExpenses;
-  private int timeline, totalHours;
+  private double budgetMin, budgetMax, totalExpenses, expectedExpenses;
+  private int timeline, totalHours, expectedHours;
   private boolean completed;
   private Customer customer;
   private MyDate startDate, endDate;
@@ -19,7 +19,7 @@ public abstract class Project implements Serializable {
     customer = cust;
     completed = false;
     totalHours = 0;
-    expectedExpenses = 0;
+    totalExpenses = 0;
     startDate = new MyDate();
     endDate = startDate.getEndYear(timeline);
   }
@@ -60,12 +60,28 @@ public abstract class Project implements Serializable {
     this.budgetMax = budgetMax;
   }
 
+  public double getTotalExpenses() {
+    return totalExpenses;
+  }
+
   public double getExpectedExpenses() {
     return expectedExpenses;
   }
 
   public void setExpectedExpenses(double expectedExpenses) {
     this.expectedExpenses = expectedExpenses;
+  }
+
+  public int getExpectedHours() {
+    return expectedHours;
+  }
+
+  public void setExpectedHours(int expectedHours) {
+    this.expectedHours = expectedHours;
+  }
+
+  public void setTotalExpenses(double totalExpenses) {
+    this.totalExpenses = totalExpenses;
   }
 
   public int getTimeline() {
@@ -102,8 +118,9 @@ public abstract class Project implements Serializable {
 
   public String toString(){
     return "TITLE -> " + title + "\nADDRESS -> " + address + "\nBUDGET RANGE -> " + budgetMin + " - " + budgetMax +
-        "\nTIME -> timeline: " + timeline + " months | start date: " + startDate + " | end date: " + endDate + "\n" +
-        (completed ? "COMPLETED -> total hours: " + totalHours + " | expected expenses: " + expectedExpenses: "NOT COMPLETED") +
+        "\nTIME -> timeline: " + timeline + " months | start date: " + startDate.toStringLong() + " | end date: " + endDate.toStringLong() + "\n" +
+        (completed ? "COMPLETED -> total hours: " + totalHours + " | total expenses: " + totalExpenses:
+            "NOT COMPLETED: expected hours: " + expectedHours + " | expected expenses : " + expectedExpenses) +
         "\n" + customer.toString();
   }
 }

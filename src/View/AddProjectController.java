@@ -129,18 +129,18 @@ public class AddProjectController {
                       residentialRenovation.isSelected());
               case "Commercial" ->
                   project = new Commercial(projectTitle.getText(), projectAddress.getText(),
-                      (projectBudgetMin.getText().isEmpty() ? 100000 : Double.parseDouble(projectBudgetMin.getText())),
-                      (projectBudgetMax.getText().isEmpty() ? 500000 : Double.parseDouble(projectBudgetMax.getText())),
-                      (projectTimeline.getText().isEmpty() ? 9 : Integer.parseInt(projectTimeline.getText())),
+                      (projectBudgetMin.getText().isEmpty() ? 500000 : Double.parseDouble(projectBudgetMin.getText())),
+                      (projectBudgetMax.getText().isEmpty() ? 2000000 : Double.parseDouble(projectBudgetMax.getText())),
+                      (projectTimeline.getText().isEmpty() ? 18 : Integer.parseInt(projectTimeline.getText())),
                       new Customer(customerName.getText(), customerPhone.getText(),
                           customerEmail.getText()), Double.parseDouble(commercialSize.getText()),
                       (commercialFloors.getText().isEmpty() ? 1 : Integer.parseInt(commercialFloors.getText())),
                       commercialUse.getText());
               case "Industrial" ->
                   project = new Industrial(projectTitle.getText(), projectAddress.getText(),
-                      (projectBudgetMin.getText().isEmpty() ? 100000 : Double.parseDouble(projectBudgetMin.getText())),
-                      (projectBudgetMax.getText().isEmpty() ? 500000 : Double.parseDouble(projectBudgetMax.getText())),
-                      (projectTimeline.getText().isEmpty() ? 9 : Integer.parseInt(projectTimeline.getText())),
+                      (projectBudgetMin.getText().isEmpty() ? 2000000 : Double.parseDouble(projectBudgetMin.getText())),
+                      (projectBudgetMax.getText().isEmpty() ? 10000000 : Double.parseDouble(projectBudgetMax.getText())),
+                      (projectTimeline.getText().isEmpty() ? 30 : Integer.parseInt(projectTimeline.getText())),
                       new Customer(customerName.getText(), customerPhone.getText(),
                           customerEmail.getText()), Double.parseDouble(industrialSize.getText()),
                       industrialUse.getText());
@@ -150,13 +150,13 @@ public class AddProjectController {
                         Double.parseDouble(projectBudgetMin.getText())),
                     (projectBudgetMax.getText().isEmpty() ? 5000000 :
                         Double.parseDouble(projectBudgetMax.getText())),
-                    (projectTimeline.getText().isEmpty() ? 9 :
+                    (projectTimeline.getText().isEmpty() ? 18 :
                         Integer.parseInt(projectTimeline.getText())),
                     new Customer(customerName.getText(), customerPhone.getText(),
                         customerEmail.getText()),
                     Double.parseDouble(roadLength.getText()),
                     Double.parseDouble(roadWidth.getText()),
-                    Integer.parseInt(roadBort.getText()));
+                    (roadBort.getText()).isEmpty() ? 0 : Integer.parseInt(roadBort.getText())) ;
                 if (!roadChallenges.getText().isEmpty()) {
                   for (String temp : roadChallenges.getText().split(", ", 0)) {
                     ((Road) project).addChallenge(temp);

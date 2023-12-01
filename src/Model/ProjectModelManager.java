@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class ProjectModelManager {
-  private String fileName;
+  final private String fileName;
 
   public ProjectModelManager(String fileName){
     this.fileName = fileName;
@@ -72,6 +72,7 @@ public class ProjectModelManager {
     ProjectList allProjects = getAllProjects();
     if(!allProjects.containsTitle(project.getTitle())){
       allProjects.addProject(project);
+      calculateExpected(project);
       saveProjects(allProjects);
     }
     else throw new InvalidTitleException(project.getTitle());
@@ -96,6 +97,7 @@ public class ProjectModelManager {
       project.setBathrooms(bath);
       project.setOtherRoomsWithPlumbing(roomsWp);
       project.setRenovation(r);
+      calculateExpected(project);
       saveProjects(allProjects);
     }
   }
@@ -117,6 +119,8 @@ public class ProjectModelManager {
       project.setBuildingSize(buildS);
       project.setFloors(f);
       project.setIntendedUse(iu);
+      calculateExpected(project);
+      saveProjects(allProjects);
     }
   }
 
@@ -136,6 +140,8 @@ public class ProjectModelManager {
       project.setExpectedExpenses(e);
       project.setFacilitySize(fSize);
       project.setFacilityType(fType);
+      calculateExpected(project);
+      saveProjects(allProjects);
     }
   }
 
@@ -157,6 +163,8 @@ public class ProjectModelManager {
       project.setWidth(w);
       project.setBridgesOrTunnels(bort);
       project.setChallenges(challenges);
+      calculateExpected(project);
+      saveProjects(allProjects);
     }
   }
 
@@ -170,5 +178,99 @@ public class ProjectModelManager {
     ProjectList allProjects = getAllProjects();
     allProjects.getProject(title).setCompleted(true);
     saveProjects(allProjects);
+  }
+
+  public void calculateExpected(Project project)
+  {
+    ProjectList allProjects;
+    double count = 0;
+    double expensesPerMSum = 0;
+    double expectedExpenses = 0;
+    double hoursPerMSum = 0;
+    double expectedHours = 0;
+
+    if(project instanceof Residential){
+      allProjects = getProjectsOfType("residential");
+      for (int x = 0; x < allProjects.getSize(); x++) {
+        Residential temp = (Residential) allProjects.getProject(x);
+        if (temp.isCompleted()) {
+          expensesPerMSum += temp.getTotalExpenses() / temp.getBuildingSize();
+          hoursPerMSum += temp.getTotalHours() / temp.getBuildingSize();
+          count++;
+        }
+      }
+
+      expectedExpenses = (expensesPerMSum/count) * ((Residential) project).getBuildingSize() +
+          100 * (
+              ((Residential) project).getKitchens() +
+                  ((Residential) project).getBathrooms() +
+                  ((Residential) project).getOtherRoomsWithPlumbing()
+          );
+      expectedHours = (hoursPerMSum/count) * ((Residential) project).getBuildingSize() +
+          10 * (
+              ((Residential) project).getKitchens() +
+                  ((Residential) project).getBathrooms() +
+                  ((Residential) project).getOtherRoomsWithPlumbing()
+          );
+
+      if (((Residential) project).isRenovation()) {
+        expectedExpenses += 100;
+        expectedHours += 10;
+      }
+    }
+
+    else if(project instanceof Commercial){
+      allProjects = getProjectsOfType("commercial");
+      for (int x = 0; x < allProjects.getSize(); x++) {
+        Commercial temp = (Commercial) allProjects.getProject(x);
+        if (temp.isCompleted()) {
+          expensesPerMSum += temp.getTotalExpenses() / temp.getBuildingSize();
+          hoursPerMSum += temp.getTotalHours() / temp.getBuildingSize();
+          count++;
+        }
+      }
+
+      expectedExpenses = (expensesPerMSum/count) * ((Commercial) project).getBuildingSize()
+          + 100 * ((Commercial) project).getFloors();
+      expectedHours = (hoursPerMSum/count) * ((Commercial) project).getBuildingSize()
+          + 10 * ((Commercial) project).getFloors();
+    }
+
+    else if(project instanceof Industrial){
+      allProjects = getProjectsOfType("industrial");
+      for (int x = 0; x < allProjects.getSize(); x++) {
+        Industrial temp = (Industrial) allProjects.getProject(x);
+        if (temp.isCompleted()) {
+          expensesPerMSum += temp.getTotalExpenses() / temp.getFacilitySize();
+          hoursPerMSum += temp.getTotalHours() / temp.getFacilitySize();
+          count++;
+        }
+      }
+
+      expectedExpenses = (expensesPerMSum/count) * ((Industrial) project).getFacilitySize();
+      expectedHours = (hoursPerMSum/count) * ((Industrial) project).getFacilitySize();
+    }
+
+    else if(project instanceof Road){
+      allProjects = getProjectsOfType("road");
+      for (int x = 0; x < allProjects.getSize(); x++) {
+        Road temp = (Road) allProjects.getProject(x);
+        if (temp.isCompleted()) {
+          expensesPerMSum += temp.getTotalExpenses() / (temp.getLength() * temp.getWidth());
+          hoursPerMSum += temp.getTotalHours() / (temp.getLength() * temp.getWidth());
+          count++;
+        }
+      }
+
+      expectedExpenses = (expensesPerMSum/count) * (((Road) project).getLength() * ((Road) project).getWidth()) +
+          100 * ((Road) project).getBridgesOrTunnels() + 100 * (((Road) project).getChallenges().size());
+
+      expectedHours = (hoursPerMSum/count) * (((Road) project).getLength() * ((Road) project).getWidth()) +
+          10 * ((Road) project).getBridgesOrTunnels() + 10 * (((Road) project).getChallenges().size());
+
+    }
+
+    project.setExpectedExpenses(Math.round(expectedExpenses));
+    project.setExpectedHours((int) Math.round(expectedHours));
   }
 }

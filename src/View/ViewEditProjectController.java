@@ -212,7 +212,7 @@ public class ViewEditProjectController
 
   public void updateFieldsViewing(Project project){
 
-    projectExpenses.setText(project.getExpectedExpenses() + "");
+    projectExpenses.setText(project.getTotalExpenses() + "");
     projectHours.setText(project.getTotalHours() + "");
 
     projectTitle.setText(project.getTitle());
@@ -257,13 +257,17 @@ public class ViewEditProjectController
       roadWidth.setText(((Road) project).getWidth() + "");
       roadBort.setText(((Road) project).getBridgesOrTunnels() + "");
 
-      String challenges = "";
-      for(String temp : ((Road) project).getChallenges()){
-        challenges += temp + ",\n";
-      }
-      challenges = challenges.substring(0, challenges.length()-2);
+      if(!roadChallenges.getText().isEmpty())
+      {
+        String challenges = "";
+        for (String temp : ((Road) project).getChallenges())
+        {
+          challenges += temp + ",\n";
+        }
+        challenges = challenges.substring(0, challenges.length() - 2);
 
-      roadChallenges.setText(challenges);
+        roadChallenges.setText(challenges);
+      }
     }
 
     customerInformationFieldPane.setDisable(true);

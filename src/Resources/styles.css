@@ -1,0 +1,129 @@
+.root{
+    -fx-background-color: rgb(29, 29, 29);
+}
+
+.label, .radio-button, .text-field, .text-area{
+    -fx-text-fill: rgb(239, 239, 239);
+}
+
+.radio-button .dot {
+    -fx-mark-highlight-color: rgb(86, 94, 94);
+    -fx-mark-color: rgb(86, 94, 94);
+}
+
+.radio-button .radio{
+    -fx-border-width: 1;
+    -fx-border-color: rgb(86, 94, 94);
+    -fx-border-radius: 15;
+    -fx-background-insets: 1;
+}
+
+.text-field {
+    -fx-background-color: rgb(45, 45, 45), rgb(45, 45, 45);
+ }
+
+.text-field:hover {
+    -fx-background-color: rgb(74, 247, 175), rgb(45, 45, 45);
+}
+
+.text-field:focused, .text-field:focused:hover  {
+    -fx-background-color: rgb(74, 207, 247), rgb(45, 45, 45);
+}
+
+.text-area{
+    -fx-background-color: rgb(45, 45, 45), rgb(45, 45, 45);
+    -fx-background-insets: 0,2;
+}
+
+.text-area .content{
+    -fx-background-color: rgb(45, 45, 45), rgb(45, 45, 45);
+}
+
+.text-area: hover {
+    -fx-background-color: rgb(74, 247, 175), rgb(45, 45, 45);
+}
+
+.text-area:focused, .text-area:focused :hover  {
+    -fx-background-color: rgb(74, 207, 247), rgb(45, 45, 45);
+}
+
+.combo-box, .combo-box .list-cell, .combo-box .combo-box-popup .list-view .list-cell{
+    -fx-text-fill: rgb(239, 239, 239);
+    -fx-background-color: rgb(45, 45, 45);
+}
+
+.combo-box .combo-box-popup .list-view .list-cell: hover{
+    -fx-background-color: rgb(60, 60, 60);
+}
+
+.button{
+    -fx-text-fill: rgb(255,255,255);
+    -fx-background-color: rgb(45, 45, 45);
+}
+
+.button: hover{
+    -fx-background-color: rgb(60, 60, 60);
+}
+
+.menu-bar, .menu-bar > .menu {
+    -fx-background-color: rgb(20, 20, 20);
+}
+
+.menu-item, .context-menu{
+    -fx-background-color: rgb(30, 30, 30);
+}
+
+.menu-item: hover{
+    -fx-background-color: rgb(40, 40, 40);
+}
+
+.tab-pane .tab-header-area .tab-header-background{
+    -fx-background-color: rgb(20, 20, 20);
+}
+
+.tab-pane .tab-header-area .tab{
+    -fx-background-color: rgb(30, 30, 30);
+    -fx-background-insets: -1;
+    -fx-focus-color: rgb(74, 207, 45);
+}
+
+.tab-pane .tab-header-area .tab: hover, .tab-pane .tab-header-area .tab: selected{
+    -fx-background-color: rgb(40, 40, 40);
+}
+
+.tab-pane .tab-header-area .tab .tab-label{
+    -fx-text-fill: rgb(255, 255, 255);
+}
+
+.tree-table-view {
+    -fx-base: rgb(29, 29, 29);
+    -fx-background-color: rgb(29, 29, 29);
+    -fx-control-inner-background: rgb(29, 29, 29);
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+    -fx-padding: 5;
+}
+
+.tree-table-view .column-header-background {
+    -fx-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.tree-table-view .column-header, .-treetable-view .filler {
+    -fx-border-width: 0 0 1 0;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent white transparent;
+    -fx-border-insets: 0 10 1 0;
+}
+
+.tree-table-view .column-header .label {
+    -fx-font-size: 12;
+    -fx-text-fill: white;
+    -fx-alignment: center-left;
+}
+
+.tree-table-view:focused .tree-table-row-cell:focused, .tree-table-view:focused .tree-table-row-cell:selected {
+    -fx-table-cell-border-color: transparent;
+    -fx-background-color: rgb(40, 40, 40);
+    -fx-font-weight: bold;
+}

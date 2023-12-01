@@ -61,11 +61,15 @@ public class Road extends Project{
 
   public String toString(){
     String challenge = "";
-    for(int i = 0; i < challenges.size(); i++){
-      challenge += (i+1) + ". " + challenges.get(i) + "\n";
+    if(!challenges.isEmpty()){
+      for(int i = 0; i < challenges.size(); i++){
+        challenge += (i+1) + ". " + challenges.get(i) + "\n";
+      }
+      challenge = challenge.substring(0, challenge.length()-1);
     }
-    challenge = challenge.substring(0, challenge.length()-1);
+
     return "ROAD\n" + super.toString() + "\nDIMENSIONS -> length: " + length + "km | width: " + width +
-        " meters\nNUMBER OF BRIDGES AND TUNNELS -> " + bridgesOrTunnels + "\nGEOGRAPHICAL / ENVIRONMENTAL CHALLENGES: \n" + challenge;
+        " meters\nNUMBER OF BRIDGES AND TUNNELS -> " + bridgesOrTunnels + "\n"
+        + (!challenges.isEmpty() ? "GEOGRAPHICAL / ENVIRONMENTAL CHALLENGES: \n" + challenge : "NO CHALLENGES");
   }
 }

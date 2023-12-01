@@ -102,8 +102,14 @@ public class MyDate implements Serializable {
     if(changed) update();
   }
 
-  public String toString(){
+  public String toStringLong(){
     String day = String.format("%02d", this.day);
     return day + " " + getMonthName() + " " + year;
+  }
+
+  public String toStringShort(){
+    String day = String.format("%02d", this.day);
+    String month = String.format("%02d", this.month);
+    return day + "/" + month + "/" + year;
   }
 }
