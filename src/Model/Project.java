@@ -3,7 +3,7 @@ package Model;
 import java.io.Serializable;
 
 public abstract class Project implements Serializable {
-  private String title, address;
+  private String title, address, type;
   private double budgetMin, budgetMax, totalExpenses, expectedExpenses;
   private int timeline, totalHours, expectedHours;
   private boolean completed;
@@ -22,6 +22,11 @@ public abstract class Project implements Serializable {
     totalExpenses = 0;
     startDate = new MyDate();
     endDate = startDate.getEndYear(timeline);
+    if(this instanceof Residential) type = "Residential building";
+    else if(this instanceof Commercial) type = "Commercial building";
+    else if(this instanceof Industrial) type = "Industrial facility";
+    else if(this instanceof Road) type = "Road construction";
+    else type = "null";
   }
 
   public Project(String t){
