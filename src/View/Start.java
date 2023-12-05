@@ -4,6 +4,7 @@ import Model.ProjectModelManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import parser.ParserException;
 import parser.XmlJsonParser;
@@ -13,8 +14,8 @@ import java.io.File;
 
 public class Start extends Application
 {
-  static File file;
-  static XmlJsonParser parser;
+  public static File file;
+  public static XmlJsonParser parser;
   public void start(Stage window) throws ParserException
   {
     parser = new XmlJsonParser();

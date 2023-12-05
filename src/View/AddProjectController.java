@@ -2,6 +2,8 @@ package View;
 
 import Exceptions.InvalidTitleException;
 import Model.*;
+import View.Start;
+import View.ViewHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -18,7 +20,7 @@ public class AddProjectController {
   private Project project;
   private int page;
 
-  @FXML private StackPane mainPane;
+  @FXML private StackPane stackPane;
   @FXML private Button actionButton;
   @FXML private Button cancelButton;
   @FXML private Button backButton;
@@ -76,8 +78,8 @@ public class AddProjectController {
     this.window = window;
     this.modelManager = modelManager;
 
-    mainPane.getChildren().get(1).setVisible(false);
-    mainPane.getChildren().get(2).setVisible(false);
+    stackPane.getChildren().get(1).setVisible(false);
+    stackPane.getChildren().get(2).setVisible(false);
 
     projectType.getItems().addAll("Residential", "Commercial", "Industrial", "Road");
     projectType.getSelectionModel().selectFirst();
@@ -100,15 +102,15 @@ public class AddProjectController {
 
         case 0 -> {
           page ++;
-          mainPane.getChildren().get(0).setVisible(false);
-          mainPane.getChildren().get(1).setVisible(true);
+          stackPane.getChildren().get(0).setVisible(false);
+          stackPane.getChildren().get(1).setVisible(true);
           backButton.setDisable(false);
         }
 
         case 1 -> {
           page ++;
-          mainPane.getChildren().get(1).setVisible(false);
-          mainPane.getChildren().get(2).setVisible(true);
+          stackPane.getChildren().get(1).setVisible(false);
+          stackPane.getChildren().get(2).setVisible(true);
           actionButton.setText("Create");
         }
 
@@ -195,15 +197,15 @@ public class AddProjectController {
       switch(page){
         case 1 -> {
           page --;
-          mainPane.getChildren().get(0).setVisible(true);
-          mainPane.getChildren().get(1).setVisible(false);
+          stackPane.getChildren().get(0).setVisible(true);
+          stackPane.getChildren().get(1).setVisible(false);
           backButton.setDisable(true);
         }
 
         case 2 -> {
           page --;
-          mainPane.getChildren().get(1).setVisible(true);
-          mainPane.getChildren().get(2).setVisible(false);
+          stackPane.getChildren().get(1).setVisible(true);
+          stackPane.getChildren().get(2).setVisible(false);
           actionButton.setText("Next");
         }
       }

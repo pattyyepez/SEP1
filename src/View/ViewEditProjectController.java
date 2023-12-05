@@ -2,6 +2,8 @@ package View;
 
 import Exceptions.InvalidTitleException;
 import Model.*;
+import View.Start;
+import View.ViewHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;

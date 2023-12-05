@@ -1,0 +1,145 @@
+.root{
+    -fx-background-color: rgb(255, 255, 255);
+    -fx-background-radius: 10;
+}
+
+
+.label, .radio-button, .text-field, .text-area{
+    -fx-text-fill: rgb(30, 30, 30);
+}
+
+.radio-button .dot {
+    -fx-mark-highlight-color: rgb(86, 94, 94);
+    -fx-mark-color: rgb(86, 94, 94);
+}
+
+.radio-button .radio{
+    -fx-border-width: 1;
+    -fx-border-color: rgb(86, 94, 94);
+    -fx-border-radius: 15;
+    -fx-background-insets: 15;
+}
+
+.text-field {
+    -fx-background-color: rgb(235, 235, 235), rgb(235, 235, 235);
+ }
+
+.text-field:hover {
+    -fx-background-color: rgb(74, 247, 175), rgb(235, 235, 235);
+}
+
+.text-field:focused, .text-field:focused:hover  {
+    -fx-background-color: rgb(74, 207, 247), rgb(235, 235, 235);
+}
+
+.text-area{
+    -fx-background-color: rgb(235, 235, 235), rgb(235, 235, 235);
+    -fx-background-insets: 0,2;
+}
+
+.text-area .content{
+    -fx-background-color: rgb(235, 235, 235), rgb(235, 235, 235);
+}
+
+.text-area: hover {
+    -fx-background-color: rgb(74, 247, 175), rgb(235, 235, 235);
+}
+
+.text-area:focused, .text-area:focused :hover  {
+    -fx-background-color: rgb(74, 207, 247), rgb(235, 235, 235);
+}
+
+.combo-box, .combo-box .list-cell, .combo-box .combo-box-popup .list-view .list-cell{
+    -fx-text-fill: rgb(30, 30, 30);
+    -fx-background-color: rgb(235, 235, 235);
+}
+
+.combo-box .combo-box-popup .list-view .list-cell: hover{
+    -fx-background-color: rgb(210, 210, 210);
+}
+
+.button{
+    -fx-text-fill: rgb(30,30,30);
+    -fx-background-color: rgb(235, 235, 235);
+}
+
+.button: hover{
+    -fx-background-color: rgb(210, 210, 210);
+}
+
+.menu-bar, .menu-bar .menu  {
+    -fx-background-color: rgb(235, 235, 235);
+    -fx-background-radius: 10 10 0 0;
+}
+
+.menu .menu{
+    -fx-background-color: rgb(230, 230, 230);
+    -fx-background-radius: 0;
+}
+
+.menu-item, .context-menu{
+    -fx-background-color: rgb(230, 230, 230);
+}
+
+.menu-item: hover, .menu-bar .menu:hover, .menu .menu:hover {
+    -fx-background-radius: 0;
+    -fx-background-color: rgb(220, 220, 220);
+}
+
+.menu-item: disabled{
+    -fx-background-color: rgb(200, 200, 200);
+}
+
+.tab-pane .tab-header-area .tab-header-background{
+    -fx-background-color: rgb(235, 235, 235);
+}
+
+.tab-pane .tab-header-area .tab{
+    -fx-background-color: rgb(225, 225, 225);
+    -fx-focus-color: rgb(74, 207, 45);
+}
+
+.tab-pane .tab-header-area .tab: hover, .tab-pane .tab-header-area .tab: selected{
+    -fx-background-color: rgb(210, 210, 210);
+}
+
+.tab-pane .tab-header-area .tab .tab-label{
+    -fx-text-fill: rgb(30, 30, 30);
+}
+
+.tree-table-view {
+    -fx-base: rgb(255, 255, 255);
+    -fx-background-color: rgb(255, 255, 255);
+    -fx-control-inner-background: rgb(255, 255, 255);
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+    -fx-padding: 5;
+}
+
+.tree-table-view .column-header-background {
+    -fx-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.tree-table-view .column-header, .tree-table-view .filler {
+    -fx-border-width: 0 0 1 0;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent darkgray transparent;
+    -fx-border-insets: 0 10 1 0;
+}
+
+.tree-table-row-cell{
+    -fx-text-fill: rgb(30, 30, 30);
+}
+
+.tree-table-view .column-header .label {
+    -fx-font-size: 12;
+    -fx-text-fill: rgb(30, 30, 30);
+    -fx-alignment: center-left;
+}
+
+.tree-table-row-cell: selected {
+    -fx-table-cell-border-color: transparent;
+    -fx-background-color: rgb(0, 180, 240);
+    -fx-font-weight: bold;
+}

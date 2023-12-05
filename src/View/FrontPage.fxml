@@ -7,13 +7,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="640.0" stylesheets="@../Resources/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.FrontPageController">
    <children>
       <VBox alignment="CENTER" prefHeight="400.0" prefWidth="640.0">
          <children>
-            <ImageView fitHeight="198.0" fitWidth="267.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="image" fitHeight="198.0" fitWidth="267.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Resources/logoDark.png" />
+                  <Image  url="@images/logoLight.png" />
                </image>
             </ImageView>
             <Label text="Bob's Building Contractor Company">

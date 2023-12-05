@@ -2,12 +2,14 @@ package View;
 
 import Model.Project;
 import Model.ProjectModelManager;
+import View.ViewHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 
 public class UpdateProjectController {
   private Scene window;
@@ -21,7 +23,7 @@ public class UpdateProjectController {
   @FXML private Button cancelButton;
   @FXML private Button applyButton;
 
-  public void initialize(Scene window, ViewHandler viewHandler, ProjectModelManager modelManager, Project project){
+  public void initialize(ViewHandler viewHandler, Scene window, ProjectModelManager modelManager, Project project){
     this.window = window;
     this.viewHandler = viewHandler;
     this.modelManager = modelManager;

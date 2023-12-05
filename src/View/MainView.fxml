@@ -7,17 +7,22 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="640.0" stylesheets="@../Resources/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainViewController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainViewController">
    <children>
       <MenuBar>
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-                  <MenuItem fx:id="menuTxt" mnemonicParsing="false" onAction="#handleActions" text="Export as .txt file" />
+                  <Menu mnemonicParsing="false" text="Export as...">
+                    <items>
+                        <MenuItem fx:id="menuTxt" mnemonicParsing="false" onAction="#handleActions" text="Text file" />
+                        <MenuItem fx:id="menuExcel" mnemonicParsing="false" text="Excel file" />
+                    </items>
+                  </Menu>
                   <Menu mnemonicParsing="false" text="Themes">
                     <items>
-                        <MenuItem fx:id="menuThemeLight" disable="true" mnemonicParsing="false" onAction="#handleActions" text="Light" />
-                      <MenuItem fx:id="menuThemeDark" mnemonicParsing="false" onAction="#handleActions" text="Dark" />
+                        <MenuItem fx:id="menuThemeLight" disable="true" mnemonicParsing="false" onAction="#changeThemeToLight" text="Light" />
+                      <MenuItem fx:id="menuThemeDark" mnemonicParsing="false" onAction="#changeThemeToDark" text="Dark" />
                     </items>
                   </Menu>
               <MenuItem fx:id="menuExit" mnemonicParsing="false" onAction="#handleActions" text="Exit" />
@@ -31,12 +36,12 @@
           </Menu>
         </menus>
       </MenuBar>
-      <TabPane prefHeight="376.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="400.0" prefWidth="640.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-            <Tab fx:id="frontpageTab" text="Welcome">
-                <fx:include fx:id="frontpage" prefHeight="340.0" source="FrontPage.fxml" />
+            <Tab text="Welcome">
+                <fx:include fx:id="frontPage" prefHeight="340.0" source="FrontPage.fxml" />
             </Tab>
-            <Tab fx:id="onGoingTab" text="On-going Projects">
+            <Tab text="On-going Projects">
                 <fx:include fx:id="onGoingProjects" prefHeight="340.0" source="OnGoingProjects.fxml" />
             </Tab>
             <Tab text="Completed Projects">

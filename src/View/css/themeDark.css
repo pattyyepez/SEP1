@@ -1,5 +1,6 @@
 .root{
     -fx-background-color: rgb(29, 29, 29);
+    -fx-background-radius: 10;
 }
 
 .label, .radio-button, .text-field, .text-area{
@@ -7,15 +8,15 @@
 }
 
 .radio-button .dot {
-    -fx-mark-highlight-color: rgb(86, 94, 94);
-    -fx-mark-color: rgb(86, 94, 94);
+    -fx-mark-highlight-color: rgb(74, 207, 247);
+    -fx-mark-color: rgb(74, 207, 247);
 }
 
 .radio-button .radio{
     -fx-border-width: 1;
-    -fx-border-color: rgb(86, 94, 94);
+    -fx-border-color: rgb(255, 255, 255);
     -fx-border-radius: 15;
-    -fx-background-insets: 1;
+    -fx-background-insets: 15;
 }
 
 .text-field {
@@ -65,16 +66,27 @@
     -fx-background-color: rgb(60, 60, 60);
 }
 
-.menu-bar, .menu-bar > .menu {
+.menu-bar, .menu-bar .menu {
     -fx-background-color: rgb(20, 20, 20);
+    -fx-background-radius: 10 10 0 0;
+}
+
+.menu .menu {
+    -fx-background-color: rgb(40, 40, 40);
+    -fx-background-radius: 0;
 }
 
 .menu-item, .context-menu{
-    -fx-background-color: rgb(30, 30, 30);
+    -fx-background-color: rgb(40, 40, 40);
 }
 
-.menu-item: hover{
-    -fx-background-color: rgb(40, 40, 40);
+.menu-item: hover, .menu-bar .menu: hover, .menu .menu:hover {
+    -fx-background-radius: 0;
+    -fx-background-color: rgb(50, 50, 50);
+}
+
+.menu-item: disabled{
+    -fx-background-color: rgb(10, 10, 10);
 }
 
 .tab-pane .tab-header-area .tab-header-background{
@@ -83,7 +95,6 @@
 
 .tab-pane .tab-header-area .tab{
     -fx-background-color: rgb(30, 30, 30);
-    -fx-background-insets: -1;
     -fx-focus-color: rgb(74, 207, 45);
 }
 
@@ -109,7 +120,7 @@
     -fx-background-color: transparent;
 }
 
-.tree-table-view .column-header, .-treetable-view .filler {
+.tree-table-view .column-header, .tree-table-view .filler {
     -fx-border-width: 0 0 1 0;
     -fx-background-color: transparent;
     -fx-border-color: transparent transparent white transparent;
