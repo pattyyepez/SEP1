@@ -30,7 +30,6 @@ public class MainViewController {
   @FXML private CompletedProjectsController completedProjectsController;
   @FXML private FrontPageController frontPageController;
 
-  @FXML private MenuBar menuBar;
   @FXML private MenuItem menuTxt;
   @FXML private MenuItem menuThemeLight;
   @FXML private MenuItem menuThemeDark;
@@ -61,7 +60,9 @@ public class MainViewController {
         saveAsTxt();
       }
       catch(IOException exception){
-        exception.printStackTrace();
+        Alert alert = new Alert(Alert.AlertType.WARNING, "Program couldn't save project information as a text file.");
+        alert.setTitle("Text error");
+        alert.setHeaderText(null);
       }
     }
 
