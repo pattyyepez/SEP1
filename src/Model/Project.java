@@ -113,12 +113,20 @@ public abstract class Project implements Serializable {
     this.completed = completed;
   }
 
+  public MyDate getEndDate() {
+    return endDate;
+  }
+
   public Customer getCustomer() {
     return customer;
   }
 
   public void setCustomer(Customer customer){
     this.customer = customer;
+  }
+
+  public void endToday(){
+    endDate = new MyDate();
   }
 
   public String toString(){

@@ -176,7 +176,9 @@ public class ProjectModelManager {
 
   public void completeProject(String title){
     ProjectList allProjects = getAllProjects();
-    allProjects.getProject(title).setCompleted(true);
+    Project temp = allProjects.getProject(title);
+    temp.setCompleted(true);
+    temp.endToday();
     saveProjects(allProjects);
   }
 

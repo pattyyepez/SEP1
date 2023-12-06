@@ -32,6 +32,7 @@ public class CompletedProjectsController
   private TreeTableColumn<Project, String> addressColumn;
   private TreeTableColumn<Project, String> totalHoursColumn;
   private TreeTableColumn<Project, String> totalExpensesColumn;
+  private TreeTableColumn<Project, String> endDateColumn;
 
   private TreeItem<Project> parentNode;
   private TreeItem<Project> residentialNode;
@@ -89,9 +90,17 @@ public class CompletedProjectsController
     totalExpensesColumn.setReorderable(false);
     totalExpensesColumn.setSortable(false);
 
+    endDateColumn = new TreeTableColumn<>("End date");
+    endDateColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
+        new ReadOnlyStringWrapper((p.getValue().getValue().getBudgetMax() == 0 ? "" :
+            p.getValue().getValue().getEndDate().toStringShort())));
+    endDateColumn.setPrefWidth(80);
+    endDateColumn.setReorderable(false);
+    endDateColumn.setSortable(false);
+
     updateProjects();
 
-    treeTable.getColumns().addAll(titleColumn, addressColumn, totalHoursColumn, totalExpensesColumn);
+    treeTable.getColumns().addAll(titleColumn, addressColumn, totalHoursColumn, totalExpensesColumn, endDateColumn);
 
     parentNode = new TreeItem<>(new GUINode("Parent"));
     parentNode.getChildren().addAll(residentialNode, commercialNode, industrialNode, roadNode);

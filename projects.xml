@@ -8,7 +8,7 @@
     <endDate>
       <month>6</month>
       <year>2024</year>
-      <day>3</day>
+      <day>6</day>
     </endDate>
     <otherRoomsWithPlumbing>0</otherRoomsWithPlumbing>
     <totalExpenses>400000.0</totalExpenses>
@@ -25,7 +25,7 @@
     <startDate>
       <month>12</month>
       <year>2023</year>
-      <day>3</day>
+      <day>6</day>
     </startDate>
     <customer>
       <emailAddress>bozo@gmail.com</emailAddress>
@@ -41,7 +41,7 @@
     <endDate>
       <month>6</month>
       <year>2024</year>
-      <day>3</day>
+      <day>6</day>
     </endDate>
     <otherRoomsWithPlumbing>0</otherRoomsWithPlumbing>
     <totalExpenses>0.0</totalExpenses>
@@ -58,7 +58,7 @@
     <startDate>
       <month>12</month>
       <year>2023</year>
-      <day>3</day>
+      <day>6</day>
     </startDate>
     <customer>
       <emailAddress>bozo@gmail.com</emailAddress>
@@ -74,7 +74,7 @@
     <endDate>
       <month>6</month>
       <year>2024</year>
-      <day>3</day>
+      <day>6</day>
     </endDate>
     <otherRoomsWithPlumbing>0</otherRoomsWithPlumbing>
     <totalExpenses>250000.0</totalExpenses>
@@ -91,7 +91,7 @@
     <startDate>
       <month>12</month>
       <year>2023</year>
-      <day>3</day>
+      <day>6</day>
     </startDate>
     <customer>
       <emailAddress>bozo@gmail.com</emailAddress>
@@ -106,7 +106,7 @@
     <endDate>
       <month>3</month>
       <year>2024</year>
-      <day>3</day>
+      <day>6</day>
     </endDate>
     <totalExpenses>0.0</totalExpenses>
     <completed>false</completed>
@@ -122,7 +122,7 @@
     <startDate>
       <month>12</month>
       <year>2023</year>
-      <day>3</day>
+      <day>6</day>
     </startDate>
     <customer>
       <emailAddress>bilka@bilka.com</emailAddress>
@@ -138,7 +138,7 @@
     <endDate>
       <month>12</month>
       <year>2024</year>
-      <day>3</day>
+      <day>6</day>
     </endDate>
     <otherRoomsWithPlumbing>3</otherRoomsWithPlumbing>
     <totalExpenses>12000.0</totalExpenses>
@@ -155,7 +155,7 @@
     <startDate>
       <month>12</month>
       <year>2023</year>
-      <day>3</day>
+      <day>6</day>
     </startDate>
     <customer>
       <emailAddress>john.doe@email.com</emailAddress>
@@ -171,7 +171,7 @@
     <endDate>
       <month>10</month>
       <year>2024</year>
-      <day>3</day>
+      <day>6</day>
     </endDate>
     <otherRoomsWithPlumbing>2</otherRoomsWithPlumbing>
     <totalExpenses>12400.0</totalExpenses>
@@ -188,7 +188,7 @@
     <startDate>
       <month>12</month>
       <year>2023</year>
-      <day>3</day>
+      <day>6</day>
     </startDate>
     <customer>
       <emailAddress>jane.smith@email.com</emailAddress>
@@ -203,7 +203,7 @@
     <endDate>
       <month>6</month>
       <year>2025</year>
-      <day>3</day>
+      <day>6</day>
     </endDate>
     <totalExpenses>0.0</totalExpenses>
     <completed>false</completed>
@@ -218,7 +218,7 @@
     <startDate>
       <month>12</month>
       <year>2023</year>
-      <day>3</day>
+      <day>6</day>
     </startDate>
     <customer>
       <emailAddress>michael.johnson@email.com</emailAddress>
@@ -233,7 +233,7 @@
     <endDate>
       <month>3</month>
       <year>2025</year>
-      <day>3</day>
+      <day>6</day>
     </endDate>
     <totalExpenses>0.0</totalExpenses>
     <completed>false</completed>
@@ -248,7 +248,7 @@
     <startDate>
       <month>12</month>
       <year>2023</year>
-      <day>3</day>
+      <day>6</day>
     </startDate>
     <customer>
       <emailAddress>emily.davis@email.com</emailAddress>
@@ -263,7 +263,7 @@
     <endDate>
       <month>10</month>
       <year>2024</year>
-      <day>3</day>
+      <day>6</day>
     </endDate>
     <length>2000.0</length>
     <totalExpenses>450000.0</totalExpenses>
@@ -279,7 +279,7 @@
     <startDate>
       <month>12</month>
       <year>2023</year>
-      <day>3</day>
+      <day>6</day>
     </startDate>
     <customer>
       <emailAddress>angela@gmail.com</emailAddress>
@@ -294,7 +294,7 @@
     <endDate>
       <month>12</month>
       <year>2024</year>
-      <day>3</day>
+      <day>6</day>
     </endDate>
     <length>100.0</length>
     <totalExpenses>0.0</totalExpenses>
@@ -310,7 +310,7 @@
     <startDate>
       <month>12</month>
       <year>2023</year>
-      <day>3</day>
+      <day>6</day>
     </startDate>
     <customer>
       <emailAddress>joan@gmail.com</emailAddress>
