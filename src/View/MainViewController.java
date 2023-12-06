@@ -57,7 +57,17 @@ public class MainViewController {
 
     if(e.getSource() == menuTxt){
       try{
-        saveAsTxt();
+        String desktopPath = FileSystemView.getFileSystemView().getHomeDirectory().getAbsolutePath();
+        File textFile = new File(desktopPath, "projects.txt");
+        ProjectList allProjects = modelManager.getAllProjects();
+        FileWriter writer = new FileWriter(textFile);
+
+        for(int x = 0; x < allProjects.getSize(); x++){
+          writer.write(allProjects.getProject(x).toString());
+          writer.write("\n~~~~~~~~~~~~~~~~~~~~\n");
+        }
+
+        writer.close();
       }
       catch(IOException exception){
         Alert alert = new Alert(Alert.AlertType.WARNING, "Program couldn't save project information as a text file.");
@@ -108,31 +118,6 @@ public class MainViewController {
 
   public FrontPageController getFrontPageController(){
     return frontPageController;
-  }
-
-  public void saveAsTxt() throws IOException
-  {
-    String desktopPath = FileSystemView.getFileSystemView().getHomeDirectory().getAbsolutePath();
-    File textFile = new File(desktopPath, "projects.txt");
-    ProjectList allProjects = modelManager.getAllProjects();
-    FileWriter writer = null;
-
-    try{
-      writer = new FileWriter(textFile);
-      for(int x = 0; x < allProjects.getSize(); x++){
-        writer.write(allProjects.getProject(x).toString());
-        writer.write("\n~~~~~~~~~~~~~~~~~~~~\n");
-      }
-    }
-    catch (IOException exception){
-      exception.printStackTrace();
-    }
-    finally {
-      if(writer != null){
-        System.out.println(textFile.getAbsolutePath());
-        writer.close();
-      }
-    }
   }
 
   public void changeThemeToLight() {
