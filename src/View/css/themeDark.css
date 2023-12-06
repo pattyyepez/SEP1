@@ -1,10 +1,30 @@
 .root{
     -fx-background-color: rgb(29, 29, 29);
     -fx-background-radius: 10;
+    -fx-font-family: "century gothic";
 }
 
 .label, .radio-button, .text-field, .text-area{
     -fx-text-fill: rgb(239, 239, 239);
+    -fx-font-family: "century gothic";
+}
+
+#mainTop {
+    -fx-background-color: rgb(20, 20, 20);
+    -fx-background-radius: 10 10 0 0;
+}
+
+#minimizeButton, #closeButton {
+    -fx-background-color: rgb(20, 20, 20);
+    -fx-background-radius: 5;
+}
+
+#minimizeButton: hover{
+    -fx-background-color: rgb(50, 50, 50);
+}
+
+#closeButton: hover {
+    -fx-background-color: rgb(240, 0, 0);
 }
 
 .radio-button .dot {
@@ -100,6 +120,7 @@
 
 .tab-pane .tab-header-area .tab: hover, .tab-pane .tab-header-area .tab: selected{
     -fx-background-color: rgb(40, 40, 40);
+    -fx-focus-color: rgb(74, 207, 45);
 }
 
 .tab-pane .tab-header-area .tab .tab-label{
@@ -130,7 +151,7 @@
 .tree-table-view .column-header .label {
     -fx-font-size: 12;
     -fx-text-fill: white;
-    -fx-alignment: center-left;
+    -fx-alignment: center;
 }
 
 .tree-table-view:focused .tree-table-row-cell:focused, .tree-table-view:focused .tree-table-row-cell:selected {

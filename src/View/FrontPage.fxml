@@ -13,10 +13,10 @@
          <children>
             <ImageView fx:id="image" fitHeight="198.0" fitWidth="267.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image  url="@images/logoLight.png" />
+                  <Image url="@images/logoLight.png" />
                </image>
             </ImageView>
-            <Label text="Bob's Building Contractor Company">
+            <Label style="-fx-font-size: 18;" text="Bob's Building Contractor Company">
                <font>
                   <Font size="18.0" />
                </font>

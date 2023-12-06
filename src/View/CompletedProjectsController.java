@@ -30,8 +30,8 @@ public class CompletedProjectsController
 
   private TreeTableColumn<Project, String> titleColumn;
   private TreeTableColumn<Project, String> addressColumn;
-  private TreeTableColumn<Project, String> budgetColumn;
-  private TreeTableColumn<Project, String> timelineColumn;
+  private TreeTableColumn<Project, String> totalHoursColumn;
+  private TreeTableColumn<Project, String> totalExpensesColumn;
 
   private TreeItem<Project> parentNode;
   private TreeItem<Project> residentialNode;
@@ -73,23 +73,25 @@ public class CompletedProjectsController
     addressColumn.setReorderable(false);
     addressColumn.setSortable(false);
 
-    budgetColumn = new TreeTableColumn<>("Total hours");
-    budgetColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
+    totalHoursColumn = new TreeTableColumn<>("Total\nhours");
+    totalHoursColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
         new ReadOnlyStringWrapper((p.getValue().getValue().getBudgetMax() == 0 ? "" :
             p.getValue().getValue().getTotalHours() + "")));
-    budgetColumn.setReorderable(false);
-    budgetColumn.setSortable(false);
+    totalHoursColumn.setMinWidth(40);
+    totalHoursColumn.setReorderable(false);
+    totalHoursColumn.setSortable(false);
 
-    timelineColumn = new TreeTableColumn<>("Total expenses");
-    timelineColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
+    totalExpensesColumn = new TreeTableColumn<>("Total\nexpenses");
+    totalExpensesColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
         new ReadOnlyStringWrapper((p.getValue().getValue().getBudgetMax() == 0 ? "" :
             p.getValue().getValue().getTotalExpenses() + "")));
-    timelineColumn.setReorderable(false);
-    timelineColumn.setSortable(false);
+    totalExpensesColumn.setPrefWidth(100);
+    totalExpensesColumn.setReorderable(false);
+    totalExpensesColumn.setSortable(false);
 
     updateProjects();
 
-    treeTable.getColumns().addAll(titleColumn, addressColumn, budgetColumn, timelineColumn);
+    treeTable.getColumns().addAll(titleColumn, addressColumn, totalHoursColumn, totalExpensesColumn);
 
     parentNode = new TreeItem<>(new GUINode("Parent"));
     parentNode.getChildren().addAll(residentialNode, commercialNode, industrialNode, roadNode);

@@ -6,11 +6,20 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 
 import javax.swing.filechooser.FileSystemView;
+import java.awt.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class MainViewController {
   private ViewHandler viewHandler;
@@ -23,13 +32,15 @@ public class MainViewController {
 
   @FXML private MenuBar menuBar;
   @FXML private MenuItem menuTxt;
-  @FXML private MenuItem menuExcel;
   @FXML private MenuItem menuThemeLight;
   @FXML private MenuItem menuThemeDark;
   @FXML private MenuItem menuExit;
   @FXML private MenuItem menuUserManual;
   @FXML private MenuItem menuContact;
 
+  @FXML private BorderPane mainTop;
+  @FXML private Button closeButton;
+  @FXML private Button minimizeButton;
 
   public void initialize(ViewHandler viewHandler, Scene window, ProjectModelManager modelManager){
     this.viewHandler = viewHandler;
@@ -54,12 +65,6 @@ public class MainViewController {
       }
     }
 
-    else if(e.getSource() == menuExcel){
-
-
-
-    }
-
     else if(e.getSource() == menuExit){
       Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to exit?", ButtonType.YES, ButtonType.NO);
       alert.setTitle("Exit");
@@ -68,6 +73,21 @@ public class MainViewController {
 
       if (alert.getResult() == ButtonType.YES) {
         System.exit(0);
+      }
+    }
+
+    else if(e.getSource() == menuContact){
+      try{
+        Desktop.getDesktop().mail(new URI("mailto:344353@viauc.dk;343873@viauc.dk;345784@viauc.dk;344688@viauc.dk"));
+      }
+      catch(IOException exception){
+        Alert alert = new Alert(Alert.AlertType.WARNING, "Program couldn't find a default e-mail application.");
+        alert.setTitle("Email error");
+        alert.setHeaderText(null);
+      }
+      catch (URISyntaxException exception)
+      {
+        exception.printStackTrace();
       }
     }
 
@@ -128,6 +148,14 @@ public class MainViewController {
 
     menuThemeLight.setDisable(false);
     menuThemeDark.setDisable(true);
+  }
+
+  public void minimize(){
+    viewHandler.getStage().setIconified(true);
+  }
+
+  public void exit(){
+    System.exit(0);
   }
 
 }

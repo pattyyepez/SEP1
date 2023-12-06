@@ -75,31 +75,35 @@ public class OnGoingProjectsController
     addressColumn.setReorderable(false);
     addressColumn.setSortable(false);
 
-    expectedHoursColumn = new TreeTableColumn<>("Expected hours");
+    expectedHoursColumn = new TreeTableColumn<>("Expected\nhours");
     expectedHoursColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
         new ReadOnlyStringWrapper((p.getValue().getValue().getBudgetMax() == 0 ? "" :
             p.getValue().getValue().getExpectedHours() + "")));
+    expectedHoursColumn.setPrefWidth(100);
     expectedHoursColumn.setReorderable(false);
     expectedHoursColumn.setSortable(false);
 
-    expectedExpensesColumn = new TreeTableColumn<>("Expected expenses");
+    expectedExpensesColumn = new TreeTableColumn<>("Expected\nexpenses");
     expectedExpensesColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
         new ReadOnlyStringWrapper((p.getValue().getValue().getBudgetMax() == 0 ? "" :
             p.getValue().getValue().getExpectedExpenses() + "")));
+    expectedExpensesColumn.setPrefWidth(100);
     expectedExpensesColumn.setReorderable(false);
     expectedExpensesColumn.setSortable(false);
 
-    totalHoursColumn = new TreeTableColumn<>("Total hours");
+    totalHoursColumn = new TreeTableColumn<>("Total\nhours");
     totalHoursColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
         new ReadOnlyStringWrapper((p.getValue().getValue().getBudgetMax() == 0 ? "" :
             p.getValue().getValue().getTotalHours() + "")));
+    totalHoursColumn.setMinWidth(40);
     totalHoursColumn.setReorderable(false);
     totalHoursColumn.setSortable(false);
 
-    totalExpensesColumn = new TreeTableColumn<>("Total expenses");
+    totalExpensesColumn = new TreeTableColumn<>("Total\nexpenses");
     totalExpensesColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<Project, String> p) ->
         new ReadOnlyStringWrapper((p.getValue().getValue().getBudgetMax() == 0 ? "" :
             p.getValue().getValue().getTotalExpenses() + "")));
+    totalExpensesColumn.setPrefWidth(100);
     totalExpensesColumn.setReorderable(false);
     totalExpensesColumn.setSortable(false);
 

@@ -157,4 +157,8 @@ public class ViewHandler
       e.printStackTrace();
     }
   }
+
+  public Stage getStage(){
+    return stage;
+  }
 }

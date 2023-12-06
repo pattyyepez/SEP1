@@ -1,41 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainViewController">
    <children>
-      <MenuBar>
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-                  <Menu mnemonicParsing="false" text="Export as...">
-                    <items>
-                        <MenuItem fx:id="menuTxt" mnemonicParsing="false" onAction="#handleActions" text="Text file" />
-                        <MenuItem fx:id="menuExcel" mnemonicParsing="false" text="Excel file" />
-                    </items>
-                  </Menu>
-                  <Menu mnemonicParsing="false" text="Themes">
-                    <items>
-                        <MenuItem fx:id="menuThemeLight" disable="true" mnemonicParsing="false" onAction="#changeThemeToLight" text="Light" />
-                      <MenuItem fx:id="menuThemeDark" mnemonicParsing="false" onAction="#changeThemeToDark" text="Dark" />
-                    </items>
-                  </Menu>
-              <MenuItem fx:id="menuExit" mnemonicParsing="false" onAction="#handleActions" text="Exit" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem fx:id="menuUserManual" mnemonicParsing="false" onAction="#handleActions" text="User manual" />
-                <MenuItem fx:id="menuContact" mnemonicParsing="false" onAction="#handleActions" text="Contact developers" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
+      <BorderPane fx:id="mainTop" prefHeight="51.0" prefWidth="640.0">
+         <center>
+            <Label prefHeight="20.0" prefWidth="78.0" text="Bobby's Co" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets right="20.0" />
+               </BorderPane.margin>
+            </Label>
+         </center>
+         <right>
+            <HBox prefHeight="25.0" prefWidth="80.0" BorderPane.alignment="CENTER_RIGHT">
+               <children>
+                  <Button fx:id="minimizeButton" mnemonicParsing="false" onAction="#minimize" prefHeight="0.0" prefWidth="40.0" text="-">
+                     <font>
+                        <Font name="Courier New" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button id="closeButton" fx:id="closeButton" mnemonicParsing="false" onAction="#exit" prefHeight="25.0" prefWidth="40.0" text="x">
+                     <font>
+                        <Font name="Segoe Fluent Icons" size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="6.0" />
+                     </padding>
+                  </Button>
+               </children>
+            </HBox>
+         </right>
+         <left>
+            <MenuBar prefHeight="25.0" prefWidth="99.0" BorderPane.alignment="CENTER">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                        <MenuItem fx:id="menuTxt" mnemonicParsing="false" onAction="#handleActions" text="Export as .txt file" />
+                        <Menu mnemonicParsing="false" text="Themes">
+                          <items>
+                              <MenuItem fx:id="menuThemeLight" disable="true" mnemonicParsing="false" onAction="#changeThemeToLight" text="Light" />
+                            <MenuItem fx:id="menuThemeDark" mnemonicParsing="false" onAction="#changeThemeToDark" text="Dark" />
+                          </items>
+                        </Menu>
+                    <MenuItem fx:id="menuExit" mnemonicParsing="false" onAction="#handleActions" text="Exit" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem fx:id="menuUserManual" mnemonicParsing="false" onAction="#handleActions" text="User manual" />
+                      <MenuItem fx:id="menuContact" mnemonicParsing="false" onAction="#handleActions" text="Contact developers" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </left>
+      </BorderPane>
       <TabPane prefHeight="400.0" prefWidth="640.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
             <Tab text="Welcome">
