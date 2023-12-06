@@ -37,10 +37,6 @@ public class MainViewController {
   @FXML private MenuItem menuUserManual;
   @FXML private MenuItem menuContact;
 
-  @FXML private BorderPane mainTop;
-  @FXML private Button closeButton;
-  @FXML private Button minimizeButton;
-
   public void initialize(ViewHandler viewHandler, Scene window, ProjectModelManager modelManager){
     this.viewHandler = viewHandler;
     this.window = window;
@@ -114,10 +110,6 @@ public class MainViewController {
 
   public CompletedProjectsController getCompletedProjectsController(){
     return completedProjectsController;
-  }
-
-  public FrontPageController getFrontPageController(){
-    return frontPageController;
   }
 
   public void changeThemeToLight() {

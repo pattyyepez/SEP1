@@ -160,8 +160,13 @@
     -fx-alignment: CENTER;
 }
 
-.tree-table-row-cell: selected {
+.tree-table-view:focused .tree-table-row-cell:focused, .tree-table-view:focused .tree-table-row-cell:selected, .tree-table-row-cell:selected {
     -fx-table-cell-border-color: transparent;
     -fx-background-color: rgb(0, 180, 240);
     -fx-font-weight: bold;
+}
+
+.tree-table-row-cell: hover {
+    -fx-table-cell-border-color: transparent;
+    -fx-background-color: rgb(235, 235, 235);
 }

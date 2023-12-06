@@ -154,8 +154,13 @@
     -fx-alignment: center;
 }
 
-.tree-table-view:focused .tree-table-row-cell:focused, .tree-table-view:focused .tree-table-row-cell:selected {
+.tree-table-view:focused .tree-table-row-cell:focused, .tree-table-view:focused .tree-table-row-cell:selected, .tree-table-row-cell:selected {
+    -fx-table-cell-border-color: transparent;
+    -fx-background-color: rgb(50, 50, 50);
+    -fx-font-weight: bold;
+}
+
+.tree-table-row-cell: hover {
     -fx-table-cell-border-color: transparent;
     -fx-background-color: rgb(40, 40, 40);
-    -fx-font-weight: bold;
 }
