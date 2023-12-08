@@ -97,6 +97,25 @@ public class MainViewController {
       }
     }
 
+    else if(e.getSource() == menuUserManual){
+      try{
+        String path = getClass().getResource("documents/user-manual.pdf").toExternalForm();
+        path = path.substring(6);
+        Desktop.getDesktop().open(new File(path));
+      }
+      catch (IllegalArgumentException exception){
+        Alert alert = new Alert(Alert.AlertType.WARNING, "Program couldn't find the user manual.");
+        alert.setTitle("Program error");
+        alert.setHeaderText(null);
+        alert.showAndWait();
+      }
+      catch (IOException exception){
+        Alert alert = new Alert(Alert.AlertType.WARNING, "Unidentified error");
+        alert.setTitle("The program couldn't open the pdf file.");
+        alert.setHeaderText(null);
+        alert.showAndWait();
+      }
+    }
   }
 
   public Scene getScene(){
