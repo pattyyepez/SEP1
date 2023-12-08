@@ -44,7 +44,6 @@ public class MainViewController {
 
     changeThemeToLight();
 
-    frontPageController.initialize(viewHandler, modelManager);
     onGoingProjectsController.initialize(viewHandler, modelManager);
     completedProjectsController.initialize(viewHandler, modelManager);
   }

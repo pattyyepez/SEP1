@@ -47,29 +47,29 @@
                               <Insets left="20.0" />
                            </HBox.margin>
                            <children>
-                              <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="120.0" spacing="35.0">
+                              <VBox alignment="CENTER_RIGHT" prefHeight="294.0" prefWidth="133.0" spacing="35.0">
                                  <children>
                                     <Label text="Title*">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label  text="Address*">
+                                    <Label text="Address*">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label  text="Budget minimum" textAlignment="RIGHT" wrapText="true">
+                                    <Label text="Budget minimum" textAlignment="RIGHT" wrapText="true">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label  text="Budget maximum" textAlignment="RIGHT" wrapText="true">
+                                    <Label text="Budget maximum" textAlignment="RIGHT" wrapText="true">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label  text="Timeline">
+                                    <Label text="Timeline">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -79,7 +79,7 @@
                                     <Insets right="15.0" />
                                  </HBox.margin>
                               </VBox>
-                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="280.0" spacing="30.0">
+                              <VBox alignment="CENTER" prefHeight="294.0" prefWidth="243.0" spacing="30.0">
                                  <children>
                                     <TextField fx:id="projectTitle" />
                                     <TextField fx:id="projectAddress" />
@@ -108,17 +108,17 @@
                      <children>
                         <VBox alignment="CENTER_RIGHT" prefHeight="294.0" prefWidth="175.0" spacing="35.0">
                            <children>
-                              <Label text="Customer name*">
+                              <Label text="Customer's name*">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label text="Customer phone number*">
+                              <Label text="Phone number*">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label text="Customer email address*" textAlignment="RIGHT" wrapText="true">
+                              <Label text="Email address*" textAlignment="RIGHT" wrapText="true">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -190,7 +190,7 @@
                                           <Insets bottom="23.0" />
                                        </padding>
                                     </VBox>
-                                    <VBox alignment="BOTTOM_CENTER" prefHeight="267.0" prefWidth="308.0" spacing="35.0">
+                                    <VBox alignment="BOTTOM_CENTER" prefHeight="267.0" prefWidth="308.0" spacing="36.0">
                                        <children>
                                           <TextField fx:id="residentialSize" />
                                           <TextField fx:id="residentialKitchen" promptText="1" />
@@ -198,19 +198,19 @@
                                           <TextField fx:id="residentialRWP" promptText="1" />
                                        </children>
                                        <padding>
-                                          <Insets bottom="40.0" />
+                                          <Insets bottom="38.0" />
                                        </padding>
                                     </VBox>
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="28.0" prefWidth="600.0" spacing="50.0">
                                  <children>
-                                    <RadioButton fx:id="residentialNewBuild" contentDisplay="CENTER" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" selected="true" text="New build">
+                                    <RadioButton fx:id="residentialNewBuild" contentDisplay="CENTER" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" selected="true" style="-fx-font-size: 14;" text="New build">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </RadioButton>
-                                    <RadioButton fx:id="residentialRenovation" mnemonicParsing="false" text="Renovation">
+                                    <RadioButton fx:id="residentialRenovation" mnemonicParsing="false" style="-fx-font-size: 14;" text="Renovation">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -306,19 +306,19 @@
                               </Label>
                               <HBox alignment="CENTER_LEFT" prefHeight="180.0" prefWidth="600.0">
                                  <children>
-                                    <VBox alignment="CENTER_RIGHT" prefHeight="180.0" prefWidth="219.0" spacing="40.0" >
+                                    <VBox alignment="CENTER_RIGHT" prefHeight="180.0" prefWidth="245.0" spacing="40.0">
                                        <children>
-                                          <Label  text="Length*" textAlignment="RIGHT" wrapText="true">
+                                          <Label text="Length*" textAlignment="RIGHT" wrapText="true">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label  text="Width*" textAlignment="RIGHT" wrapText="true">
+                                          <Label text="Width*" textAlignment="RIGHT" wrapText="true">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label prefHeight="19.0" prefWidth="194.0"  text="Number of bridges and tunnels" textAlignment="RIGHT" wrapText="true">
+                                          <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="20.0" prefWidth="300.0" text="Number of bridges and tunnels" textAlignment="RIGHT" wrapText="true">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
@@ -328,7 +328,7 @@
                                           <Insets right="20.0" />
                                        </HBox.margin>
                                     </VBox>
-                                    <VBox alignment="CENTER" prefHeight="267.0" prefWidth="315.0" spacing="35.0">
+                                    <VBox alignment="CENTER" prefHeight="180.0" prefWidth="290.0" spacing="35.0">
                                        <children>
                                           <TextField fx:id="roadLength" />
                                           <TextField fx:id="roadWidth" />
@@ -344,7 +344,10 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextArea fx:id="roadChallenges" prefHeight="88.0" prefWidth="315.0" promptText="Separate each entry with a comma (,)." />
+                                    <TextArea fx:id="roadChallenges" prefHeight="88.0" prefWidth="290.0" promptText="Separate each entry with a comma (,).">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin></TextArea>
                                  </children>
                                  <padding>
                                     <Insets right="45.0" />

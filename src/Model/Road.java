@@ -55,10 +55,6 @@ public class Road extends Project{
     challenges.add(challenge);
   }
 
-  public void removeChallenge(String challenge){
-    challenges.remove(challenge);
-  }
-
   public String toString(){
     String challenge = "";
     if(!challenges.isEmpty()){

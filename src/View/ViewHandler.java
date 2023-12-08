@@ -19,14 +19,9 @@ public class ViewHandler
   double xOffset, yOffset;
 
   private MainViewController mainViewController;
-  private OnGoingProjectsController onGoingProjectsController;
-  private CompletedProjectsController completedProjectsController;
-  private FrontPageController frontPageController;
-  private ViewEditProjectController projectInfoController;
+  private ViewEditProjectController viewEditProjectController;
   private AddProjectController addProjectController;
   private UpdateProjectController updateProjectController;
-
-
 
   public ViewHandler(Stage stage, ProjectModelManager modelManager) {
     this.stage = stage;
@@ -58,7 +53,7 @@ public class ViewHandler
         break;
       case "view":
         loadViewProject(project);
-        window = projectInfoController.getScene();
+        window = viewEditProjectController.getScene();
         break;
       case "update":
         loadUpdateProject(project);
@@ -134,8 +129,8 @@ public class ViewHandler
         Scene window = new Scene(root);
         window.setFill(Color.TRANSPARENT);
         window.getStylesheets().setAll(mainViewController.getScene().getStylesheets());
-        projectInfoController = loader.getController();
-        projectInfoController.initialize(this, window, modelManager, project);
+        viewEditProjectController = loader.getController();
+        viewEditProjectController.initialize(this, window, modelManager, project);
       }
       catch (IOException e) {
         e.printStackTrace();

@@ -182,8 +182,7 @@ public class ProjectModelManager {
     saveProjects(allProjects);
   }
 
-  public void calculateExpected(Project project)
-  {
+  public void calculateExpected(Project project) {
     ProjectList allProjects;
     double count = 0;
     double expensesPerMSum = 0;

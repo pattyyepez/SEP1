@@ -56,41 +56,4 @@ public class ProjectList implements Serializable {
       }
     }
   }
-
-  public int getTypeHours(String type){
-    int totalHours = 0;
-    for(Project temp : projects){
-      if(temp instanceof Residential && type.equalsIgnoreCase("residential")) totalHours += temp.getTotalHours();
-      else if(temp instanceof Commercial && type.equalsIgnoreCase("commercial")) totalHours += temp.getTotalHours();
-      else if(temp instanceof Industrial && type.equalsIgnoreCase("industrial")) totalHours += temp.getTotalHours();
-      else if(temp instanceof Road && type.equalsIgnoreCase("road")) totalHours += temp.getTotalHours();
-    }
-    return totalHours;
-  }
-
-  public double getTypeExpenses(String type){
-    type = type.toLowerCase();
-    double totalExpenses = 0;
-    for(Project temp : projects){
-      if(temp instanceof Residential && type.equals("residential")) totalExpenses += temp.getExpectedExpenses();
-      else if(temp instanceof Commercial && type.equals("commercial")) totalExpenses += temp.getExpectedExpenses();
-      else if(temp instanceof Industrial && type.equals("industrial")) totalExpenses += temp.getExpectedExpenses();
-      else if(temp instanceof Road && type.equals("road")) totalExpenses += temp.getExpectedExpenses();
-    }
-    return totalExpenses;
-  }
-
-  public int getProjectHours(String title){
-    for(Project temp : projects){
-      if(temp.getTitle().equals(title)) return temp.getTotalHours();
-    }
-    return  -1;
-  }
-
-  public double getProjectExpenses(String title){
-    for(Project temp : projects){
-      if(temp.getTitle().equals(title)) return temp.getExpectedExpenses();
-    }
-    return  -1;
-  }
 }
