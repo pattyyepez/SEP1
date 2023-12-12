@@ -113,99 +113,96 @@ public class AddProjectController {
    */
   public void handleActions(ActionEvent e){
 
-    if(e.getSource() == cancelButton){
-      viewHandler.openView("main", null);
+    if(e.getSource() == cancelButton){                                          // T = 2 = O(1)
+      viewHandler.openView("main", null);                            // T = n = O(n)
     }
 
-    else if(e.getSource() == actionButton){
-      switch(page){
+    else if(e.getSource() == actionButton){                                     // T = 2 = O(1)
+      switch(page){                                                             // T = 1 = O(1)
 
         case 0 -> {
-          page ++;
-          stackPane.getChildren().get(0).setVisible(false);
-          stackPane.getChildren().get(1).setVisible(true);
-          backButton.setDisable(false);
+          page ++;                                                              // T = 1 = O(1)
+          stackPane.getChildren().get(0).setVisible(false);                     // T = 3 = O(1)
+          stackPane.getChildren().get(1).setVisible(true);                      // T = 3 = O(1)
+          backButton.setDisable(false);                                         // T = 1 = O(1)
         }
 
         case 1 -> {
-          page ++;
-          stackPane.getChildren().get(1).setVisible(false);
-          stackPane.getChildren().get(2).setVisible(true);
-          actionButton.setText("Create");
+          page ++;                                                              // T = 1 = O(1)
+          stackPane.getChildren().get(1).setVisible(false);                     // T = 3 = O(1)
+          stackPane.getChildren().get(2).setVisible(true);                      // T = 3 = O(1)
+          actionButton.setText("Create");                                       // T = 1 = O(1)
         }
 
         case 2 -> {
-          try{
-            project = null;
-            switch (projectType.getSelectionModel().getSelectedItem()) {
+          try{                                                                  // T = 1 = O(1)
+            project = null;                                                     // T = 1 = O(1)
+            switch (projectType.getSelectionModel().getSelectedItem()) {        // T = 3 = O(1)
               case "Residential" ->
-                  project = new Residential(projectTitle.getText(), projectAddress.getText(),
-                      (projectBudgetMin.getText().isEmpty() ? 100000 : Double.parseDouble(projectBudgetMin.getText())),
-                      (projectBudgetMax.getText().isEmpty() ? 500000 : Double.parseDouble(projectBudgetMax.getText())),
-                      (projectTimeline.getText().isEmpty() ? 9 : Integer.parseInt(projectTimeline.getText())),
-                      new Customer(customerName.getText(), customerPhone.getText(),
-                          customerEmail.getText()), Double.parseDouble(residentialSize.getText()),
-                      (residentialKitchen.getText().isEmpty() ? 1 : Integer.parseInt(residentialKitchen.getText())),
-                      (residentialBathroom.getText().isEmpty() ? 1 : Integer.parseInt(residentialBathroom.getText())),
-                      (residentialRWP.getText().isEmpty() ? 1 : Integer.parseInt(residentialRWP.getText())),
-                      residentialRenovation.isSelected());
+                  project = new Residential(projectTitle.getText(), projectAddress.getText(),                               // T = 4 = O(1)
+                      (projectBudgetMin.getText().isEmpty() ? 100000 : Double.parseDouble(projectBudgetMin.getText())),     // T = 5 = O(1)
+                      (projectBudgetMax.getText().isEmpty() ? 500000 : Double.parseDouble(projectBudgetMax.getText())),     // T = 5 = O(1)
+                      (projectTimeline.getText().isEmpty() ? 9 : Integer.parseInt(projectTimeline.getText())),              // T = 5 = O(1)
+                      new Customer(customerName.getText(), customerPhone.getText(),                                         // T = 3 = O(1)
+                          customerEmail.getText()), Double.parseDouble(residentialSize.getText()),                          // T = 3 = O(1)
+                      (residentialKitchen.getText().isEmpty() ? 1 : Integer.parseInt(residentialKitchen.getText())),        // T = 5 = O(1)
+                      (residentialBathroom.getText().isEmpty() ? 1 : Integer.parseInt(residentialBathroom.getText())),      // T = 5 = O(1)
+                      (residentialRWP.getText().isEmpty() ? 1 : Integer.parseInt(residentialRWP.getText())),                // T = 5 = O(1)
+                      residentialRenovation.isSelected());                                                                  // T = 1 = O(1)
               case "Commercial" ->
-                  project = new Commercial(projectTitle.getText(), projectAddress.getText(),
-                      (projectBudgetMin.getText().isEmpty() ? 500000 : Double.parseDouble(projectBudgetMin.getText())),
-                      (projectBudgetMax.getText().isEmpty() ? 2000000 : Double.parseDouble(projectBudgetMax.getText())),
-                      (projectTimeline.getText().isEmpty() ? 18 : Integer.parseInt(projectTimeline.getText())),
-                      new Customer(customerName.getText(), customerPhone.getText(),
-                          customerEmail.getText()), Double.parseDouble(commercialSize.getText()),
-                      (commercialFloors.getText().isEmpty() ? 1 : Integer.parseInt(commercialFloors.getText())),
-                      commercialUse.getText());
+                  project = new Commercial(projectTitle.getText(), projectAddress.getText(),                                // T = 4 = O(1)
+                      (projectBudgetMin.getText().isEmpty() ? 500000 : Double.parseDouble(projectBudgetMin.getText())),     // T = 5 = O(1)
+                      (projectBudgetMax.getText().isEmpty() ? 2000000 : Double.parseDouble(projectBudgetMax.getText())),    // T = 5 = O(1)
+                      (projectTimeline.getText().isEmpty() ? 18 : Integer.parseInt(projectTimeline.getText())),             // T = 5 = O(1)
+                      new Customer(customerName.getText(), customerPhone.getText(),                                         // T = 3 = O(1)
+                          customerEmail.getText()), Double.parseDouble(commercialSize.getText()),                           // T = 3 = O(1)
+                      (commercialFloors.getText().isEmpty() ? 1 : Integer.parseInt(commercialFloors.getText())),            // T = 5 = O(1)
+                      commercialUse.getText());                                                                             // T = 1 = O(1)
               case "Industrial" ->
-                  project = new Industrial(projectTitle.getText(), projectAddress.getText(),
-                      (projectBudgetMin.getText().isEmpty() ? 2000000 : Double.parseDouble(projectBudgetMin.getText())),
-                      (projectBudgetMax.getText().isEmpty() ? 10000000 : Double.parseDouble(projectBudgetMax.getText())),
-                      (projectTimeline.getText().isEmpty() ? 30 : Integer.parseInt(projectTimeline.getText())),
-                      new Customer(customerName.getText(), customerPhone.getText(),
-                          customerEmail.getText()), Double.parseDouble(industrialSize.getText()),
-                      industrialUse.getText());
+                  project = new Industrial(projectTitle.getText(), projectAddress.getText(),                                // T = 4 = O(1)
+                      (projectBudgetMin.getText().isEmpty() ? 2000000 : Double.parseDouble(projectBudgetMin.getText())),    // T = 5 = O(1)
+                      (projectBudgetMax.getText().isEmpty() ? 10000000 : Double.parseDouble(projectBudgetMax.getText())),   // T = 5 = O(1)
+                      (projectTimeline.getText().isEmpty() ? 30 : Integer.parseInt(projectTimeline.getText())),             // T = 5 = O(1)
+                      new Customer(customerName.getText(), customerPhone.getText(),                                         // T = 3 = O(1)
+                          customerEmail.getText()), Double.parseDouble(industrialSize.getText()),                           // T = 3 = O(1)
+                      industrialUse.getText());                                                                             // T = 1 = O(1)
               case "Road" -> {
-                project = new Road(projectTitle.getText(), projectAddress.getText(),
-                    (projectBudgetMin.getText().isEmpty() ? 1000000 :
-                        Double.parseDouble(projectBudgetMin.getText())),
-                    (projectBudgetMax.getText().isEmpty() ? 5000000 :
-                        Double.parseDouble(projectBudgetMax.getText())),
-                    (projectTimeline.getText().isEmpty() ? 18 :
-                        Integer.parseInt(projectTimeline.getText())),
-                    new Customer(customerName.getText(), customerPhone.getText(),
-                        customerEmail.getText()),
-                    Double.parseDouble(roadLength.getText()),
-                    Double.parseDouble(roadWidth.getText()),
-                    (roadBort.getText()).isEmpty() ? 0 : Integer.parseInt(roadBort.getText())) ;
-                if (!roadChallenges.getText().isEmpty()) {
-                  for (String temp : roadChallenges.getText().split(", ", 0)) {
-                    ((Road) project).addChallenge(temp);
+                project = new Road(projectTitle.getText(), projectAddress.getText(),                                        // T = 4 = O(1)
+                    (projectBudgetMin.getText().isEmpty() ? 1000000 : Double.parseDouble(projectBudgetMin.getText())),      // T = 5 = O(1)
+                    (projectBudgetMax.getText().isEmpty() ? 5000000 : Double.parseDouble(projectBudgetMax.getText())),      // T = 5 = O(1)
+                    (projectTimeline.getText().isEmpty() ? 18 : Integer.parseInt(projectTimeline.getText())),               // T = 5 = O(1)
+                    new Customer(customerName.getText(), customerPhone.getText(),                                           // T = 3 = O(1)
+                        customerEmail.getText()),                                                                           // T = 1 = O(1)
+                    Double.parseDouble(roadLength.getText()),                                                               // T = 2 = O(1)
+                    Double.parseDouble(roadWidth.getText()),                                                                // T = 2 = O(1)
+                    (roadBort.getText().isEmpty() ? 0 : Integer.parseInt(roadBort.getText())));                             // T = 5 = O(1)
+                if (!roadChallenges.getText().isEmpty()) {                                                                  // T = 3 = O(1)
+                  for (String temp : roadChallenges.getText().split(", ", 0)) {                                 // T = 3 + n = O(n) as .split() depends on input size
+                    ((Road) project).addChallenge(temp);                                                                    // T = 2 = O(1)
                   }
                 }
               }
             }
-            if(project!=null) {
-              modelManager.addProject(project);
-              viewHandler.openView("main", null);
-              Start.file = Start.parser.toXml(modelManager.getAllProjects(), "projects.xml");
+            if(project!=null) {                                                                                 // T = 1 = O(1)
+              modelManager.addProject(project);                                                                 // T = 1 = O(1)
+              viewHandler.openView("main", null);                                                    // T = n = O(n)
+              Start.file = Start.parser.toXml(modelManager.getAllProjects(), "projects.xml");           // T = 5 = O(1)
             }
           }
-          catch(java.lang.NumberFormatException exception){
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setHeaderText(null);
-            alert.setContentText("You left one of the necessary fields empty or entered a letter/letters in a numbers-only field.");
-            alert.showAndWait();
+          catch(java.lang.NumberFormatException exception){                                                                             // T = 1 = O(1)
+            Alert alert = new Alert(Alert.AlertType.WARNING);                                                                           // T = 3 = O(1)
+            alert.setHeaderText(null);                                                                                                  // T = 1 = O(1)
+            alert.setContentText("You left one of the necessary fields empty or entered a letter/letters in a numbers-only field.");    // T = 1 = O(1)
+            alert.showAndWait();                                                                                                        // T = 1 = O(1)
           }
-          catch(InvalidTitleException exception){
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setHeaderText(null);
-            alert.setContentText(exception.getMessage());
-            alert.showAndWait();
+          catch(InvalidTitleException exception){                               // T = 1 = O(1)
+            Alert alert = new Alert(Alert.AlertType.WARNING);                   // T = 3 = O(1)
+            alert.setHeaderText(null);                                          // T = 1 = O(1)
+            alert.setContentText(exception.getMessage());                       // T = 2 = O(1)
+            alert.showAndWait();                                                // T = 1 = O(1)
           }
-          catch(ParserException exception){
-            exception.printStackTrace();
+          catch(ParserException exception){                                     // T = 1 = O(1)
+            exception.printStackTrace();                                        // T = 1 = O(1)
           }
 
         }
@@ -213,20 +210,20 @@ public class AddProjectController {
       }
     }
 
-    else if(e.getSource() == backButton){
-      switch(page){
+    else if(e.getSource() == backButton){                                       // T = 2 = O(1)
+      switch(page){                                                             // T = 1 = O(1)
         case 1 -> {
-          page --;
-          stackPane.getChildren().get(0).setVisible(true);
-          stackPane.getChildren().get(1).setVisible(false);
-          backButton.setDisable(true);
+          page --;                                                              // T = 1 = O(1)
+          stackPane.getChildren().get(0).setVisible(true);                      // T = 3 = O(1)
+          stackPane.getChildren().get(1).setVisible(false);                     // T = 3 = O(1)
+          backButton.setDisable(true);                                          // T = 1 = O(1)
         }
 
         case 2 -> {
-          page --;
-          stackPane.getChildren().get(1).setVisible(true);
-          stackPane.getChildren().get(2).setVisible(false);
-          actionButton.setText("Next");
+          page --;                                                              // T = 1 = O(1)
+          stackPane.getChildren().get(1).setVisible(true);                      // T = 3 = O(1)
+          stackPane.getChildren().get(2).setVisible(false);                     // T = 3 = O(1)
+          actionButton.setText("Next");                                         // T = 1 = O(1)
         }
       }
     }

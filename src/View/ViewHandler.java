@@ -60,52 +60,55 @@ public class ViewHandler
    */
   public void openView(String id, Project project)
   {
-    Scene window = null;
-    switch (id)
+    Scene window = null;                                                        // T = 2 = O(1)
+    switch (id)                                                                 // T = 1 = O(1)
     {
       case "main":
-        window = mainViewController.getScene();
-        mainViewController.getOnGoingProjectsController().updateProjects();
-        mainViewController.getCompletedProjectsController().updateProjects();
-        break;
+        window = mainViewController.getScene();                                 // T = 2 = O(1)
+        mainViewController.getOnGoingProjectsController().updateProjects();     // T = 1 + n = O(n)
+        mainViewController.getCompletedProjectsController().updateProjects();   // T = 1 + n = O(n)
+        break;                                                                  // T = 1 = O(1)
       case "add":
-        loadAddProject();
-        window = addProjectController.getScene();
+        loadAddProject();                                                       // T = 1 = O(1)
+        window = addProjectController.getScene();                               // T = 2 = O(1)
         break;
       case "view":
-        loadViewProject(project);
-        window = viewEditProjectController.getScene();
-        break;
+        loadViewProject(project);                                               // T = 1 = O(1)
+        window = viewEditProjectController.getScene();                          // T = 2 = O(1)
+        break;                                                                  // T = 1 = O(1)
       case "update":
-        loadUpdateProject(project);
-        window = updateProjectController.getScene();
-        break;
+        loadUpdateProject(project);                                             // T = 1 = O(1)
+        window = updateProjectController.getScene();                            // T = 2 = O(1)
+        break;                                                                  // T = 1 = O(1)
     }
 
-    stage.setScene(window);
+    stage.setScene(window);                                                     // T = 1 = O(1)
 
-    String title = "";
+    String title = "";                                                          // T = 2 = O(1)
 
-    if(stage.getScene().getRoot().getUserData() !=null)
+    if(stage.getScene().getRoot().getUserData() !=null)                         // T = 4 = O(1)
     {
-      title = stage.getScene().getRoot().getUserData().toString();
+      title = stage.getScene().getRoot().getUserData().toString();              // T = 5 = O(1)
     }
 
-    if(window != null){
-      window.setOnMousePressed(event -> {
-        xOffset = event.getSceneX();
-        yOffset = event.getSceneY();
+    if(window != null){                                                         // T = 1 = O(1)
+      window.setOnMousePressed(event -> {                                       // T = 1 = O(1)
+        xOffset = event.getSceneX();                                            // T = 2 = O(1)
+        yOffset = event.getSceneY();                                            // T = 2 = O(1)
       });
 
-      window.setOnMouseDragged(event -> {
-        stage.setX(event.getScreenX() - xOffset);
-        stage.setY(event.getScreenY() - yOffset);
+      window.setOnMouseDragged(event -> {                                       // T = 1 = O(1)
+        stage.setX(event.getScreenX() - xOffset);                               // T = 3 = O(1)
+        stage.setY(event.getScreenY() - yOffset);                               // T = 3 = O(1)
       });
     }
 
-    stage.setTitle(title);
-    stage.show();
-  }
+    stage.setTitle(title);                                                      // T = 1 = O(1)
+    stage.show();                                                               // T = 1 = O(1)
+  }                                                                             // Final Big O notation of this method is O(n) linear time, due to its
+                                                                                // use of the updateProjects() methods, both of which have a time complexity
+                                                                                // of O(n), as they have for loops that cycle through the entire length of the
+                                                                                // ProjectList.
 
   /**
    * Loads in the mainView's FXML file and initializes its controller.
