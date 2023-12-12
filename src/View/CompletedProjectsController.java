@@ -15,6 +15,14 @@ import parser.ParserException;
 
 import java.io.File;
 
+/**
+ * Controller class responsible for displaying all completed projects saved in the system, as well
+ * as providing the user with the functionality to refresh the view, remove a selected project,
+ * and view and/or edit a selected project.
+ *
+ * @author Group SiedemSyvSiete
+ * @version 1.0
+ */
 public class CompletedProjectsController
 {
   private ProjectModelManager modelManager;
@@ -40,8 +48,16 @@ public class CompletedProjectsController
   private TreeItem<Project> industrialNode;
   private TreeItem<Project> roadNode;
 
-
-
+  /**
+   * Creates the columns in the table that displays the information about completed projects.
+   * Also creates the collapsable cells that are used to organize projects based on their type.
+   * Loads in all completed projects into the table using a different method.
+   *
+   * @param viewHandler   Used for loading the view and/or edit window
+   * @param modelManager  Used for accessing the binary file with the main ProjectList that contains
+   *                      all projects to display them, as well as accessing the information of
+   *                      specific projects when the user wants to view more specific information or edit it.
+   */
   public void initialize(ViewHandler viewHandler, ProjectModelManager modelManager){
     this.modelManager = modelManager;
     this.viewHandler = viewHandler;
@@ -123,6 +139,12 @@ public class CompletedProjectsController
     });
   }
 
+  /**
+   * Used to give functionalities to the 3 buttons available to the user, that is the refresh button,
+   * the view button (also used for editing) and the remove button.
+   *
+   * @param e   Used to tell the different buttons apart from each other.
+   */
   public void handleActions(ActionEvent e)
   {
     if (e.getSource() == refreshButton) {
@@ -145,6 +167,10 @@ public class CompletedProjectsController
     }
   }
 
+  /**
+   * Loads in information into the TreeTableView about all completed projects and organizes
+   * them based on the project type.
+   */
   public void updateProjects(){
     removeButton.setDisable(true);
     viewButton.setDisable(true);

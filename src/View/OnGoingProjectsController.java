@@ -12,6 +12,13 @@ import parser.ParserException;
 import java.io.File;
 import java.util.Arrays;
 
+/**
+ * Controller class responsible for displaying the information of all incomplete projects.
+ * Also gives functionality to the buttons that allow the user to refresh the TreeTableView,
+ * add new projects, mark a selected project as complete, remove a selected project,
+ * update a specific project's total hours and total expenses, and
+ * lastly to view and edit all information about a selected project.
+ */
 public class OnGoingProjectsController
 {
   private ProjectModelManager modelManager;
@@ -42,6 +49,15 @@ public class OnGoingProjectsController
   private TreeItem<Project> industrialNode;
   private TreeItem<Project> roadNode;
 
+  /**
+   * Creates all the columns and expandable rows in the TreeTableView. Also adds a functionality
+   * to the TreeTableView that allows the program to disable the remove, view/edit, update and complete buttons
+   * when a specific project is NOT selected or when an expandable cell is selected instead.
+   *
+   * @param viewHandler   Used to load in the add project page, the view/edit project page and update page.
+   * @param modelManager  Used to access the main binary file containing all projects in order to display
+   *                      them in the TreeTableView.
+   */
   public void initialize(ViewHandler viewHandler, ProjectModelManager modelManager){
     this.modelManager = modelManager;
     this.viewHandler = viewHandler;
@@ -150,6 +166,11 @@ public class OnGoingProjectsController
 
   }
 
+  /**
+   * Gives functionalities to all the buttons in this page.
+   *
+   * @param e   Used to tell the different buttons apart from each other.
+   */
   public void handleActions(ActionEvent e) {
 
     if(e.getSource() == refreshButton){
@@ -174,7 +195,6 @@ public class OnGoingProjectsController
         exception.printStackTrace();
       }
     }
-
 
     else if (e.getSource() == completeButton) {
       modelManager.completeProject(selectedIndex.getValue().getTitle());
@@ -201,6 +221,10 @@ public class OnGoingProjectsController
 
   }
 
+  /**
+   * Loads in information into the TreeTableView about all ongoing projects and organizes
+   * them based on the project type.
+   */
   public void updateProjects(){
     removeButton.setDisable(true);
     completeButton.setDisable(true);

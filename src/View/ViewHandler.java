@@ -12,6 +12,10 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
+/**
+ * The class responsible for managing and showing all the different windows and pages that have to be loaded in.
+ * Also makes the application draggable.
+ */
 public class ViewHandler
 {
   private Stage stage;
@@ -23,6 +27,13 @@ public class ViewHandler
   private AddProjectController addProjectController;
   private UpdateProjectController updateProjectController;
 
+  /**
+   * Constructor that assigns the parameters to their respective fields and sets the style of the stage
+   * as transparent, so that we can create a custom style for it ourselves. Also makes the application non-resizable.
+   *
+   * @param stage
+   * @param modelManager
+   */
   public ViewHandler(Stage stage, ProjectModelManager modelManager) {
     this.stage = stage;
     this.modelManager = modelManager;
@@ -31,12 +42,22 @@ public class ViewHandler
     this.stage.setResizable(false);
   }
 
+  /**
+   * Makes sure that the mainView is the first window that's loaded upon start-up of the application.
+   */
   public void start()
   {
     loadViewMain();
     openView("main", null);
   }
 
+  /**
+   * Opens all the different windows that are part of the GUI, but not shown by the mainView window as one of the tabs.
+   *
+   * @param id        String ID of the window to be initialized, loaded and shown.
+   * @param project   Some windows, such as viewing/editing and updating, require a specific project for their functionin,
+   *                  while some don't, such as the mainView or adding a new project.
+   */
   public void openView(String id, Project project)
   {
     Scene window = null;
@@ -86,6 +107,9 @@ public class ViewHandler
     stage.show();
   }
 
+  /**
+   * Loads in the mainView's FXML file and initializes its controller.
+   */
   private void loadViewMain()
   {
     try
@@ -105,6 +129,9 @@ public class ViewHandler
       }
   }
 
+  /**
+   * Loads in the addProject's FXML file and initializes its controller.
+   */
   private void loadAddProject() {
   try {
     FXMLLoader loader = new FXMLLoader();
@@ -121,6 +148,9 @@ public class ViewHandler
   }
 }
 
+  /**
+   * Loads in the ViewEditProject's FXML file and initializes its controller.
+   */
   private void loadViewProject(Project project) {
       try {
         FXMLLoader loader = new FXMLLoader();
@@ -137,6 +167,9 @@ public class ViewHandler
       }
   }
 
+  /**
+   * Loads in the UpdateProject's FXML file and initializes its controller.
+   */
   private void loadUpdateProject(Project project) {
     try {
       FXMLLoader loader = new FXMLLoader();
@@ -153,6 +186,11 @@ public class ViewHandler
     }
   }
 
+  /**
+   * Returns the stage used by the application to display all the FXML files.
+   *
+   * @return The application's stage used to display a given window's Scene.
+   */
   public Stage getStage(){
     return stage;
   }

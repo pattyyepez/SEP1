@@ -15,6 +15,11 @@ import parser.ParserException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Controller class for the FXML file called "ViewEditProject". It reads all the information available about a project
+ * and displays it in a single page. It also allows the user to edit all the information and save these changes, which
+ * will then be saved to the binary file.
+ */
 public class ViewEditProjectController
 {
   private Scene window;
@@ -76,6 +81,15 @@ public class ViewEditProjectController
   @FXML private TextField roadBort;
   @FXML private TextArea roadChallenges;
 
+  /**
+   * Initializes the controller, only showing the correct, project-specific TextFields based on the
+   * project's type. It also loads in all the project's information using a custom method.
+   *
+   * @param viewHandler     Used to load in the mainView when the user leaves this screen via back button.
+   * @param window          Used for GUI, tying this window together with the MainView, used for displaying this window by the ViewHandler.
+   * @param modelManager    Allows the controller to load in the information about a given project and edit its information.
+   * @param project         Specific project, the information of which is to be shown and, if the user does so, edited.
+   */
   public void initialize(ViewHandler viewHandler, Scene window, ProjectModelManager modelManager, Project project){
     this.window = window;
     this.viewHandler = viewHandler;
@@ -113,6 +127,11 @@ public class ViewEditProjectController
     updateFieldsViewing(project);
   }
 
+  /**
+   * Gives all the available buttons functionalities.
+   *
+   * @param e     Used by the program to distinguish between the available buttons when they are pressed.
+   */
   public void handleActions(ActionEvent e) {
 
     if (e.getSource() == backButton) {
@@ -148,9 +167,14 @@ public class ViewEditProjectController
         double expenses = Double.parseDouble(projectExpenses.getText());
         int hours = Integer.parseInt(projectHours.getText());
 
+        Customer cust = modelManager.getAllProjects().getProject(oldTitle).getCustomer();
+        cust.setName(custName);
+        cust.setPhoneNumber(custPhone);
+        cust.setEmailAddress(custEmail);
+
         if(project instanceof Residential){
           modelManager.editProject(oldTitle, title, address, budgetMin, budgetMax, timeline,
-              new Customer(custName, custPhone, custEmail), expenses, hours,
+              cust, expenses, hours,
               Double.parseDouble(residentialSize.getText()), Integer.parseInt(residentialKitchen.getText()),
               Integer.parseInt(residentialBathroom.getText()), Integer.parseInt(residentialRWP.getText()),
               residentialRenovation.isSelected());
@@ -161,14 +185,14 @@ public class ViewEditProjectController
 
         else if(project instanceof Commercial){
           modelManager.editProject(oldTitle, title, address, budgetMin, budgetMax, timeline,
-              new Customer(custName, custPhone, custEmail), expenses, hours,
+              cust, expenses, hours,
               Double.parseDouble(commercialSize.getText()), Integer.parseInt(commercialFloors.getText()),
               commercialUse.getText());
         }
 
         else if(project instanceof Industrial){
           modelManager.editProject(oldTitle, title, address, budgetMin, budgetMax, timeline,
-              new Customer(custName, custPhone, custEmail), expenses, hours,
+              cust, expenses, hours,
               Double.parseDouble(industrialSize.getText()), industrialUse.getText());
         }
 
@@ -177,7 +201,7 @@ public class ViewEditProjectController
               roadChallenges.getText().split(", ", 0)));
 
           modelManager.editProject(oldTitle, title, address, budgetMin, budgetMax, timeline,
-              new Customer(custName, custPhone, custEmail), expenses, hours,
+              cust, expenses, hours,
               Double.parseDouble(roadLength.getText()), Double.parseDouble(roadWidth.getText()),
               Integer.parseInt(roadBort.getText()), challenges);
         }
@@ -208,10 +232,21 @@ public class ViewEditProjectController
     }
   }
 
+  /**
+   * Returns the Scene of this page.
+   *
+   * @return  The scene of this page.
+   */
   public Scene getScene(){
     return window;
   }
 
+  /**
+   * Reads all the information about a given project and displays it in different TextFields,
+   * corresponding to each of the project's variables.
+   *
+   * @param project   Specific project whose data shall be read and nothing can stop it.
+   */
   public void updateFieldsViewing(Project project){
 
     projectExpenses.setText(project.getTotalExpenses() + "");
@@ -278,6 +313,9 @@ public class ViewEditProjectController
     expensesAndHoursPane.setDisable(true);
   }
 
+  /**
+   * Disables the pane containing all the project type-specific TextFields so that it cannot be edited.
+   */
   public void disableSpecificPane(){
     if(project instanceof Residential){
       residentialFieldPane.setDisable(true);
@@ -294,6 +332,9 @@ public class ViewEditProjectController
     }
   }
 
+  /**
+   * Enables the pane containing all the project type-specific TextFields so that it can be edited.
+   */
   public void enableSpecificPane(){
     if(project instanceof Residential){
       residentialFieldPane.setDisable(false);

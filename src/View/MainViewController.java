@@ -21,6 +21,11 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+/**
+ * Controller class responsible for displaying the frontpage, ongoing projects and completed projects using
+ * a tab pane. Also gives the menu items in the menu functionality.
+ * Also also gives the close and minimize buttons functionalities.
+ */
 public class MainViewController {
   private ViewHandler viewHandler;
   private ProjectModelManager modelManager;
@@ -37,6 +42,16 @@ public class MainViewController {
   @FXML private MenuItem menuUserManual;
   @FXML private MenuItem menuContact;
 
+  /**
+   * Initializes the ongoing projects and completed projects tables. Also ensures that the
+   * main view starts off with the light theme turned on.
+   *
+   * @param viewHandler   Used for minimizing the window when the corresponding button is pressed.
+   * @param window        Used for changing the theme of the whole application.
+   *                      Also used by the GUI as a whole for the purposes of displaying this page when appropriate.
+   * @param modelManager  Used for initializing the ongoing and completed controllers as they use it to access
+   *                      the binary file containing all projects.
+   */
   public void initialize(ViewHandler viewHandler, Scene window, ProjectModelManager modelManager){
     this.viewHandler = viewHandler;
     this.window = window;
@@ -48,6 +63,11 @@ public class MainViewController {
     completedProjectsController.initialize(viewHandler, modelManager);
   }
 
+  /**
+   * This method gives all the menu-items, the close and the minimize buttons functionalities.
+   *
+   * @param e   Used to tell the different buttons apart from each other.
+   */
   public void handleActions(ActionEvent e){
 
     if(e.getSource() == menuTxt){
@@ -118,18 +138,38 @@ public class MainViewController {
     }
   }
 
+  /**
+   * Returns the Scene of this page.
+   *
+   * @return The scene of this page.
+   */
   public Scene getScene(){
     return window;
   }
 
+  /**
+   * Returns the OnGoingProjectsController, which is needed by the ViewHandler
+   * to make sure the most up-to-date state of the binary file is loaded in
+   *
+   * @return The OnGoingProjectsController.
+   */
   public OnGoingProjectsController getOnGoingProjectsController(){
     return onGoingProjectsController;
   }
 
+  /**
+   * Returns the CompletedProjectsController, which is needed by the ViewHandler
+   * to make sure the most up-to-date state of the binary file is loaded in
+   *
+   * @return The CompletedProjectsController.
+   */
   public CompletedProjectsController getCompletedProjectsController(){
     return completedProjectsController;
   }
 
+  /**
+   * Changes the theme of the application to the light theme by changing the stylesheet used by each page's Scene.
+   */
   public void changeThemeToLight() {
     window.getStylesheets().setAll(getClass().getResource("css/themeLight.css").toExternalForm());
     frontPageController.changeImageLight();
@@ -138,6 +178,9 @@ public class MainViewController {
     menuThemeDark.setDisable(false);
   }
 
+  /**
+   * Changes the theme of the application to the dark theme by changing the stylesheet used by each page's Scene.
+   */
   public void changeThemeToDark() {
     window.getStylesheets().setAll(getClass().getResource("css/themeDark.css").toExternalForm());
     frontPageController.changeImageDark();
@@ -146,10 +189,16 @@ public class MainViewController {
     menuThemeDark.setDisable(true);
   }
 
+  /**
+   * Minimizes the application when the minimize button is pressed by the user.
+   */
   public void minimize(){
     viewHandler.getStage().setIconified(true);
   }
 
+  /**
+   * Closes the application when the close button is pressed by the user.
+   */
   public void exit(){
     System.exit(0);
   }

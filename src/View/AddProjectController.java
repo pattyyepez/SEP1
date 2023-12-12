@@ -13,6 +13,13 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import parser.ParserException;
 
+/**
+ * The controller for the FXML file called "AddProject", it is part of the GUI and, as the name suggests,
+ * it is responsible for adding new projects to the system.
+ *
+ * @author Group SiedemSyvSiete
+ * @version 1.0
+ */
 public class AddProjectController {
   private Scene window;
   private ViewHandler viewHandler;
@@ -73,6 +80,14 @@ public class AddProjectController {
   @FXML private TextField roadBort;
   @FXML private TextArea roadChallenges;
 
+  /**
+   * Initializes the AddProject window by hiding the panes that should be hidden in the beginning.
+   * It also gives the ComboBox items, so that the user can choose the appropriate project type.
+   *
+   * @param viewHandler     Used for loading the MainView window after the user finishes or cancels adding projects.
+   * @param window          Used for GUI, tying this window together with the MainView, used for displaying this window by the ViewHandler
+   * @param modelManager    Used for accessing the binary file with the main ProjectList containing all projects, for adding new ones ofc
+   */
   public void initialize(ViewHandler viewHandler, Scene window, ProjectModelManager modelManager){
     this.viewHandler = viewHandler;
     this.window = window;
@@ -91,6 +106,11 @@ public class AddProjectController {
     page = 0;
   }
 
+  /**
+   * This method makes the buttons on this window functional and is responsible for adding new projects.
+   *
+   * @param e   Used to tell the different buttons apart from each other.
+   */
   public void handleActions(ActionEvent e){
 
     if(e.getSource() == cancelButton){
@@ -212,10 +232,18 @@ public class AddProjectController {
     }
   }
 
+  /**
+   * Returns the Scene of this page.
+   *
+   * @return  The scene of this page.
+   */
   public Scene getScene(){
     return window;
   }
 
+  /**
+   * Method that updates all the TextFields with appropriate prompt text depending on which project type has been selected.
+   */
   public void updateFields(){
     switch (projectType.getSelectionModel().getSelectedItem()){
 
