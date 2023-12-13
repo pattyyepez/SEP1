@@ -239,6 +239,7 @@ public class OnGoingProjectsController
 
     for (int i = 0; i < projects.getSize(); i++) {
       Project temp = projects.getProject(i);
+      modelManager.calculateExpected(temp);
       if(!temp.isCompleted()){
         if(temp instanceof Residential) {
           TreeItem<Project> tempNode = new TreeItem<>(temp);
